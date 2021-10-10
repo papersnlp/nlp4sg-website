@@ -24,6 +24,7 @@ export const Box = styled('div', {
     container: {
       true: {
         width: '$container',
+        maxWidth: '100%',
         px: '$4',
       },
     },
@@ -36,7 +37,7 @@ export const Text = styled('p', {
   fontFamily: '$sans',
   fontSize: '$3',
   fontWeight: 300,
-  lineHeight: '$4',
+  lineHeight: '$5',
 
   variants: {
     type: {
@@ -44,11 +45,13 @@ export const Text = styled('p', {
         fontSize: '$7',
         fontWeight: 500,
         lineHeight: '$7',
+        fontFamily: '$serif'
       },
       subtitle: {
         fontSize: '$5',
         fontWeight: 500,
         lineHeight: '$5',
+        fontFamily: '$serif'
       },
     },
     mono: {
@@ -87,4 +90,35 @@ export const Link = styled('a', {
       },
     },
   },
+});
+
+
+export const List = styled('ol', {
+  listStyleType: 'none',
+  px: '0',
+  pl: '$4',  
+  lineHeight: '$5',
+  fontFamily: '$sans',
+  fontSize: '$3',
+  fontWeight: 300,
+  'li::before': {
+      position: 'absolute',
+      content: "• ",
+      display: 'inline-block',
+      width: '$4',
+      ml: '-$4'
+  },
+  'li': {
+    pl: '$3',
+    py: '$2'
+  },
+  variants: {
+      numbered: {
+          true: {
+              counterReset: 'my-counter',
+              'li::before': { content: 'counter(my-counter) ". "' },
+              'li': { counterIncrement: 'my-counter' }
+          },
+      },
+  }
 });

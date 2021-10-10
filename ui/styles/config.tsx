@@ -1,27 +1,28 @@
 import { createStitches } from '@stitches/react';
-import { gray, grayDark } from '@radix-ui/colors';
+import { blue, slate, slateDark } from '@radix-ui/colors';
 
 export const { css, globalCss, styled, getCssText, createTheme } = createStitches({
   theme: {
     colors: {
-      ...gray,
-      primary: 'rgba(255, 221, 0, 1)',
-      contrast1: '$gray1', // Background
-      contrast2: '$gray2', // Subtle background
-      contrast3: '$gray3', // Element normal background
-      contrast4: '$gray4', // Element hovered background
-      contrast5: '$gray5', // Element active/selected/pressed background
-      contrast6: '$gray6', // Subtle border, separator
-      contrast7: '$gray7', // Element border, focus ring
-      contrast8: '$gray8', // Element hovered border
-      contrast9: '$gray9', // Solid background
-      contrast10: '$gray10', // Solid hovered background
-      contrast11: '$gray11', // Text low contrast
-      contrast12: '$gray12', // Text hight contrast
-      background: '$gray1',
+      ...slate, 
+      ...blue, 
+      primary: '$blue9',
+      contrast1: '$slate1', // Background
+      contrast2: '$slate2', // Subtle background
+      contrast3: '$slate3', // Element normal background
+      contrast4: '$slate4', // Element hovered background
+      contrast5: '$slate5', // Element active/selected/pressed background
+      contrast6: '$slate6', // Subtle border, separator
+      contrast7: '$slate7', // Element border, focus ring
+      contrast8: '$slate8', // Element hovered border
+      contrast9: '$slate9', // Solid background
+      contrast10: '$slate10', // Solid hovered background
+      contrast11: '$slate11', // Text low contrast
+      contrast12: '$slate12', // Text hight contrast
+      background: '$slate1',
     },
     fonts: {
-      serif: '',
+      serif: 'Cormorant Garamond, serif',
       sans: 'Inter, sans-serif',
       mono: 'Fira Code VF, monospace',
     },
@@ -146,19 +147,6 @@ export const { css, globalCss, styled, getCssText, createTheme } = createStitche
 
 export const darkTheme = createTheme({
   colors: {
-    ...grayDark,
-    contrast1: '$gray1',
-    contrast2: '$gray2',
-    contrast3: '$gray3',
-    contrast4: '$gray4',
-    contrast5: '$gray5',
-    contrast6: '$gray6',
-    contrast7: '$gray7',
-    contrast8: '$gray8',
-    contrast9: '$gray9',
-    contrast10: '$gray10',
-    contrast11: '$gray11',
-    contrast12: '$gray12',
-    background: '$gray1',
+    ...slateDark
   },
 });
