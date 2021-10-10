@@ -55,7 +55,7 @@ const Home = (props) => {
           <Box container column css={{ py: '$6'}}>
             <Text type='title' css={{ pb: '$4'}}>How can I partecipate &amp; contribute?</Text>
             <List numbered css={{color: '$contrast11'}}>
-              <li> Join our slack "ACL with Love ❤️" => See our #nlp4sg-discussions channel! To keep updated, you are also welcome to join our Google Group mailing list "NLP4SG" [How to join a google group] </li>
+              <li> Join our slack "ACL with Love ❤️": See our #nlp4sg-discussions channel! To keep updated, you are also welcome to join our Google Group mailing list "NLP4SG" [How to join a google group] </li>
               <li> Contribute your opinions to our ongoing survey "What is NLP for Social Good?" (Short link for sharing: bit.ly/nlp4sg-survey) </li>
               <li> Participate in various discussions: ACL 2021 Workshop - NLP for Positive Impact 2021 [Schedule (Aug 5)] </li>
               <li>Tell us "what you want to get from the NLP4SG community" & "what you want to help others with" by filling in a community role form</li>
