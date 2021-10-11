@@ -31,6 +31,14 @@ export const Box = styled('div', {
   },
 });
 
+export const Grid = styled('ul', {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax($7, 1fr));',
+  gridGap: '$3',
+  p: '0',
+  listStyleType: 'none'
+})
+
 export const Text = styled('p', {
   margin: 0,
   color: '$contrast12',

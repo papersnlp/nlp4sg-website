@@ -455,5 +455,337 @@
   {
     "paperId": "b1d24e8e08435b7c52335485a0d635abf9bc604c",
     "title": "FEVER: a Large-scale Dataset for Fact Extraction and VERification"
+  },
+  {
+    "paperId": "0e141942fa265142f41a2a26eb17b6005d3af29e",
+    "title": "The State and Fate of Linguistic Diversity and Inclusion in the NLP World"
+  },
+  {
+    "paperId": "bb53946c7da617a05bbeef47fff74012db27ee78",
+    "title": "ChrEnTranslate: Cherokee-English Machine Translation Demo with Quality Estimation and Corrective Feedback"
+  },
+  {
+    "paperId": "3d309aa1629ef9ca43e252eb6bf539286ed872f9",
+    "title": "Haitian Creole: How to Build and Ship an MT Engine from Scratch in 4 days, 17 hours, & 30 minutes"
+  },
+  {
+    "paperId": "f14cb1828e314a669304b0c37bc78d6b9073f6dd",
+    "title": "Measuring Societal Biases in Text Corpora via First-Order Co-occurrence"
+  },
+  {
+    "paperId": "176420f394014d9e67d5cff1e1d430541fa0f55f",
+    "title": "When do Word Embeddings Accurately Reflect Surveys on our Beliefs About People?"
+  },
+  {
+    "paperId": "c3bcdea205ec9fb1b84d75d4767f346844082b38",
+    "title": "Stereotypes in High-Stakes Decisions: Evidence from U.S. Circuit Courts"
+  },
+  {
+    "paperId": "a1280728623e8fd605284b2b7cf536579b9e2cbf",
+    "title": "Entity-Centric Contextual Affective Analysis"
+  },
+  {
+    "paperId": "d4eeb40b9bd06ed53a26282cd527609f71e6496f",
+    "title": "Unsupervised Discovery of Gendered Language through Latent-Variable Modeling"
+  },
+  {
+    "paperId": "7b5b2a9ad37d1a6c3c8916965b1958eef0a27a6a",
+    "title": "Automatically Inferring Gender Associations from Language"
+  },
+  {
+    "paperId": "6ba951771892f01206f1dd7244f14243e3885109",
+    "title": "Contextual Affective Analysis: A Case Study of People Portrayals in Online #MeToo Stories"
+  },
+  {
+    "paperId": "5e888bfd9b492a3b08f3cc2eb7c617fedf5bd811",
+    "title": "Relating Linguistic Gender Bias, Gender Values, and Gender Gaps: An International Analysis"
+  },
+  {
+    "paperId": "b5d7a19bd0bae10917a8e294960fdacf224d64fe",
+    "title": "Word embeddings quantify 100 years of gender and ethnic stereotypes"
+  },
+  {
+    "paperId": "75d0cb419d7d58e81c2975758a36a11544a9f930",
+    "title": "Language from police body camera footage shows racial disparities in officer respect"
+  },
+  {
+    "paperId": "3d505c5eff8752ac1805ef546d683bfa40aec4b1",
+    "title": "Tie-breaker: Using language models to quantify gender bias in sports journalism"
+  },
+  {
+    "paperId": "ef5fa2e95fc853defb902b58d8e4e4fe95a01c75",
+    "title": "Shirtless and Dangerous: Quantifying Linguistic Signals of Gender Bias in an Online Fiction Writing Community"
+  },
+  {
+    "paperId": "7b14a165c6b7c1dc2c6c44727e623b94d834fb09",
+    "title": "Social Bias Frames: Reasoning about Social and Power Implications of Language"
+  },
+  {
+    "paperId": "070b4a707748e289618880ffbe4762e4e3fc7860",
+    "title": "Racism is a Virus: Anti-Asian Hate and Counterhate in Social Media during the COVID-19 Crisis"
+  },
+  {
+    "paperId": "0c68d7d153bb56e4637d6aee051d87580e05fd5b",
+    "title": "Detecting East Asian Prejudice on Social Media"
+  },
+  {
+    "paperId": "995e477360908175d0b1184f6a0aace9d864bc5a",
+    "title": "Girls Rule, Boys Drool: Extracting Semantic and Affective Stereotypes from Twitter"
+  },
+  {
+    "paperId": "abeee58b9fb5761133636ef117ef1a87203ad7ab",
+    "title": "Automation, Algorithms, and Politics| Talking to Bots: Symbiotic Agency and the Case of Tay"
+  },
+  {
+    "paperId": "e3fd3b1be871da6e048adaef4a4e201af282fe8e",
+    "title": "Empathy Is All You Need: How a Conversational Agent Should Respond to Verbal Abuse"
+  },
+  {
+    "paperId": "8bc7db4bbe5d163285edb69946cfa8139a45ac03",
+    "title": "I'd blush if I could : closing gender divides in digital skills through education"
+  },
+  {
+    "paperId": "f34c73c75a640f59c11472bf6c9786aeb774856a",
+    "title": "Let's Talk About Race: Identity, Chatbots, and AI"
+  },
+  {
+    "paperId": "983ad7c704d0f9a1560af322e4807e5be7799895",
+    "title": "#MeToo Alexa: How Conversational Systems Respond to Sexual Harassment"
+  },
+  {
+    "paperId": "129cbad01be98ee88a930e31898cb76be79c41c1",
+    "title": "How NOT To Evaluate Your Dialogue System: An Empirical Study of Unsupervised Evaluation Metrics for Dialogue Response Generation"
+  },
+  {
+    "paperId": "dff6976f237ecff091547dd2df26937bd6b59198",
+    "title": "Fifty years later: the significance of the Nuremberg Code."
+  },
+  {
+    "paperId": "b7e00e6878922a05fa78e2884371abbbc7e9736e",
+    "title": "ACM code of ethics"
+  },
+  {
+    "paperId": "87eb23f934a0e6293ee8ee9b147fe0d456e65c96",
+    "title": "Data Statements for NLP: Toward Mitigating System Bias and Enabling Better Science"
+  },
+  {
+    "paperId": "0df347f5e3118fac7c351917e3a497899b071d1e",
+    "title": "Datasheets for Datasets"
+  },
+  {
+    "paperId": "221732318e3cc45aa7bc2f48435706f3e5839ddc",
+    "title": "Beyond the Belmont Principles: Ethical Challenges, Practices, and Beliefs in the Online Data Research Community"
+  },
+  {
+    "paperId": "1ece7c00d2eb6fca5443ff8e15f05a2b8b5985c2",
+    "title": "Don’t quote me: reverse identification of research participants in social media studies"
+  },
+  {
+    "paperId": "f298649194c1be9cb55574c047756ae7e8a62d6b",
+    "title": "“Participant” Perceptions of Twitter Research Ethics"
+  },
+  {
+    "paperId": "afe97d05e5b320d2af500cdae1c588f4cc0d14d2",
+    "title": "Towards an Ethical Framework for Publishing Twitter Data in Social Research: Taking into Account Users’ Views, Online Context and Algorithmic Estimation"
+  },
+  {
+    "paperId": "5f827b963939c96968a03318b4c2b011e1871eaf",
+    "title": "Writer Profiling Without the Writer's Text"
+  },
+  {
+    "paperId": "a24d72bd0d08d515cb3e26f94131d33ad6c861db",
+    "title": "Ethical Challenges in Data-Driven Dialogue Systems"
+  },
+  {
+    "paperId": "e8fa186444d98a39ee9139b1f5dd0c7618caef8f",
+    "title": "Privacy-preserving Neural Representations of Text"
+  },
+  {
+    "paperId": "520ec00dc35475e0554dbb72f27bd2eeb6f4191d",
+    "title": "The Secret Sharer: Evaluating and Testing Unintended Memorization in Neural Networks"
+  },
+  {
+    "paperId": "df2df1749b93ba86328ec7b86ff7e8d30029e3f5",
+    "title": "Garbage in, garbage out?: do machine learning application papers in social computing report where human-labeled training data comes from?"
+  },
+  {
+    "paperId": "d3aca13c966bb22eed7086baeb287a64bc18c152",
+    "title": "Comparing Spoken Dialog Corpora Collected with Recruited Subjects versus Real Users"
+  },
+  {
+    "paperId": "5966d7c7f60898d610812e24c64d4d57855ad86a",
+    "title": "Semantics derived automatically from language corpora necessarily contain human biases"
+  },
+  {
+    "paperId": "d08392eee17f809d32d7d37e9345383f41271164",
+    "title": "Sorting Things Out: Classification and Its Consequences"
+  },
+  {
+    "paperId": "d47a682723f710395454687319bb55635e653105",
+    "title": "Language (Technology) is Power: A Critical Survey of “Bias” in NLP"
+  },
+  {
+    "paperId": "493fac37cea49afb98c52c2f5dd75c303a325b25",
+    "title": "Mitigating Gender Bias in Natural Language Processing: Literature Review"
+  },
+  {
+    "paperId": "1935a5e3937753dc7db90126a221f11009c17984",
+    "title": "Algorithms of Oppression: How Search Engines Reinforce Racism"
+  },
+  {
+    "paperId": "31a848022de5933029435a2c8304c2bd12537b0d",
+    "title": "The trouble with using provider assessments for rating clinical performance: it's a matter of bias."
+  },
+  {
+    "paperId": "ccf6a69a7f33bcf052aa7def176d3b9de495beb7",
+    "title": "Man is to Computer Programmer as Woman is to Homemaker? Debiasing Word Embeddings"
+  },
+  {
+    "paperId": "94cf3f2c4410fcb06a90abebd99f7113c69e1ed9",
+    "title": "Lipstick on a Pig: Debiasing Methods Cover up Systematic Gender Biases in Word Embeddings But do not Remove Them"
+  },
+  {
+    "paperId": "5e9c85235210b59a16bdd84b444a904ae271f7e7",
+    "title": "On Measuring Social Biases in Sentence Encoders"
+  },
+  {
+    "paperId": "039b1c1210c437f3b3ce6e0275ee2137bf5b951c",
+    "title": "Assessing Social and Intersectional Biases in Contextualized Word Representations"
+  },
+  {
+    "paperId": "a2ce1fb96c0b78bee18bb2cb2c3d55dc48d54cbd",
+    "title": "Measuring Bias in Contextualized Word Representations"
+  },
+  {
+    "paperId": "3259d52ae00e65b98391e7e6a2f672dfee721bf8",
+    "title": "Quantifying Social Biases in Contextual Word Representations"
+  },
+  {
+    "paperId": "9967cb4fd949039c6f04dd9f2f4c3331dbebe6f7",
+    "title": "Gender Bias in Coreference Resolution"
+  },
+  {
+    "paperId": "0be19fd9896e5d40222c690cc3ff553adc7c0e27",
+    "title": "Gender Bias in Coreference Resolution: Evaluation and Debiasing Methods"
+  },
+  {
+    "paperId": "5d4af8c9321168f9ba7a501f33fb019fa2deaa22",
+    "title": "Examining Gender and Race Bias in Two Hundred Sentiment Analysis Systems"
+  },
+  {
+    "paperId": "e85a50b523915b5fba3e3f1fdb743650f7d21bed",
+    "title": "Women’s Syntactic Resilience and Men’s Grammatical Luck: Gender-Bias in Part-of-Speech Tagging and Dependency Parsing"
+  },
+  {
+    "paperId": "0ab2fb6c850bd1c5882deb4984d37b4ccbee580c",
+    "title": "Towards Understanding Gender Bias in Relation Extraction"
+  },
+  {
+    "paperId": "c590d2c8c2fb6ce5d32ee9165ab24171165f2b70",
+    "title": "Assessing gender bias in machine translation: a case study with Google Translate"
+  },
+  {
+    "paperId": "00059087c954c1af6ece33115315e3e0ecc2f2c2",
+    "title": "Reducing Gender Bias in Neural Machine Translation as a Domain Adaptation Problem"
+  },
+  {
+    "paperId": "008e9001ea78e9654b5c43aeb818ea6cb06ea934",
+    "title": "Automatically Identifying Gender Issues in Machine Translation using Perturbations"
+  },
+  {
+    "paperId": "40a6e8d8f253882c585f163b7333842d60ed6f14",
+    "title": "Toward Gender-Inclusive Coreference Resolution"
+  },
+  {
+    "paperId": "7b8318894cbeca32f1ae55780a0903445a3f4ac6",
+    "title": "Man is to Person as Woman is to Location: Measuring Gender Bias in Named Entity Recognition"
+  },
+  {
+    "paperId": "57032c1e327c88a53ab41c17e91bf1406f9ef5c9",
+    "title": "Mind the GAP: A Balanced Corpus of Gendered Ambiguous Pronouns"
+  },
+  {
+    "paperId": "8417424bf9fe7a67f06f15c487403e953ab24a96",
+    "title": "Men Also Like Shopping: Reducing Gender Bias Amplification using Corpus-level Constraints"
+  },
+  {
+    "paperId": "0f4bcebc95548a7286106b67bf1115802f093469",
+    "title": "Mitigating Gender Bias Amplification in Distribution by Posterior Regularization"
+  },
+  {
+    "paperId": "a24d72bd0d08d515cb3e26f94131d33ad6c861db",
+    "title": "Ethical Challenges in Data-Driven Dialogue Systems"
+  },
+  {
+    "paperId": "7a4f3a0cfc0cc2aafa4ed1a2924380e82d5e3e4c",
+    "title": "Demographic Dialectal Variation in Social Media: A Case Study of African-American English"
+  },
+  {
+    "paperId": "219b7266ae848937da170c5510b2bfc66d17859a",
+    "title": "Racial disparities in automated speech recognition"
+  },
+  {
+    "paperId": "3cc2f69951cd24fe61be4cf32d62afbac297bc2b",
+    "title": "Social Biases in NLP Models as Barriers for Persons with Disabilities"
+  },
+  {
+    "paperId": "a20ecabd83e0962329448d8af5025b8061c4ba36",
+    "title": "Social Bias in Elicited Natural Language Inferences"
+  },
+  {
+    "paperId": "1080dc00733e010fdd6a9b999506a0d4d864519d",
+    "title": "Effects of Talker Dialect, Gender & Race on Accuracy of Bing Speech and YouTube Automatic Captions"
+  },
+  {
+    "paperId": "21e59098bb5e36175f653d5142442d061669d07f",
+    "title": "Race as a Bundle of Sticks: Designs that Estimate Effects of Seemingly Immutable Characteristics"
+  },
+  {
+    "paperId": "59e94c9f21937643678ff494901f3d8b22af4e2f",
+    "title": "Racial Disparity in Natural Language Processing: A Case Study of Social Media African-American English"
+  },
+  {
+    "paperId": "187608bf94b2dccd25d1266ed925abf7b55dbb2e",
+    "title": "Re-imagining Algorithmic Fairness in India and Beyond"
+  },
+  {
+    "paperId": "6d9727f1f058614cada3fe296eeebd8ec4fc512a",
+    "title": "On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? 🦜"
+  },
+  {
+    "paperId": "d6a083dad7114f3a39adc65c09bfbb6cf3fee9ea",
+    "title": "Energy and Policy Considerations for Deep Learning in NLP"
+  },
+  {
+    "paperId": "fb73b93de3734a996829caf31e4310e0054e9c6b", 
+    "title": "Green AI"
+  },
+  {
+    "paperId": "13f25c69973373e616c48688d06a6b6ae2736ef0",
+    "title": "Towards the Systematic Reporting of the Energy and Carbon Footprints of Machine Learning"
+  },
+  {
+    "paperId": "52a14b391f994d83759787500a9bda865acdb3c5",
+    "title": "Recommender systems and their ethical challenges"
+  },
+  {
+    "paperId": "10391eed628dfece8a9136f76c5df53b5704422d",
+    "title": "Social Chemistry 101: Learning to Reason about Social and Moral Norms"
+  },
+  {
+    "paperId": "8755c15fe073c6af03664b2a74aafef1fed5f198",
+    "title": "BERT has a Moral Compass: Improvements of ethical and moral values of machines"
+  },
+  {
+    "paperId": "2a1573cfa29a426c695e2caf6de0167a12b788ef",
+    "title": "Open Problems in Cooperative AI"
+  },
+  {
+    "paperId": "ced289065723368bca48636edf71eeed50f40a39",
+    "title": "Existential Risk Prevention as Global Priority"
+  },
+  {
+    "paperId": "8763723e27cc1d4aad166b5e1d9cb0fc8c8043dd",
+    "title": "Participatory Problem Formulation for Fairer Machine Learning Through Community Based System Dynamics"
   }
 ]

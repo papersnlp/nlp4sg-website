@@ -4,6 +4,7 @@ import { Points, Point, MapControls, Html, PointMaterialImpl } from '@react-thre
 import { Box, Text } from '@styles/components';
 import { css } from '@styles/config';
 import * as THREE from 'three';
+import * as d3 from 'd3'
 
 const colors = [
   '#bdc3c7',
@@ -57,7 +58,7 @@ export default function PapersPlot({ papers, onClick, ...props }) {
   }, [])
 
   return (
-    <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 250], up: [0, 0, 1], far: 10000 }} {...props}>
+    <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 80], up: [0, 0, 1], far: 10000 }} {...props}>
       <ambientLight />
       <MapControls enableDamping={false} />
 
@@ -70,7 +71,7 @@ export default function PapersPlot({ papers, onClick, ...props }) {
           <Point
             key={idx}
             position={[paper.position.x, paper.position.y, 0]}
-            color={colors[paper.cluster + 1]}
+            color={ paper.cluster === -1 ? '#efefef': d3.interpolateRainbow((paper.cluster + 1) / 18.0 ) }
             onClick={(e) => {
               e.stopPropagation() 
               onClick(idx);
@@ -89,7 +90,7 @@ export default function PapersPlot({ papers, onClick, ...props }) {
             { selected === idx ? (
               <Html center style={{position: 'absolute', pointerEvents: 'none', zIndex: 1 }} zIndexRange={[9, 1]}>
                 <svg style={{ width: '50px', height: '50px'}}>
-                  <circle cx="25" cy="27" r="16" fill={'transparent'} stroke={colors[paper.cluster + 1]} strokeWidth={3}/>
+                  <circle cx="25" cy="27" r="16" fill={'transparent'} stroke={paper.cluster === -1 ? '#efefef': d3.interpolateRainbow((paper.cluster + 1) / 18.0 )} strokeWidth={3}/>
                 </svg>
               </Html>
             ) : null }
