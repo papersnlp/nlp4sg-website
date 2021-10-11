@@ -1,6 +1,6 @@
 import { Suspense, useRef, useState, useLayoutEffect, forwardRef } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
-import { Points, Point, MapControls, Html, PointMaterialImpl } from '@react-three/drei';
+import { Instances, Instance, Points, Point, MapControls, Html, PointMaterialImpl, ContactShadows } from '@react-three/drei';
 import { Box, Text } from '@styles/components';
 import { css } from '@styles/config';
 import * as THREE from 'three';
@@ -57,21 +57,27 @@ export default function PapersPlot({ papers, onClick, ...props }) {
     onClick(0)
   }, [])
 
-  return (
-    <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 80], up: [0, 0, 1], far: 10000 }} {...props}>
-      <ambientLight />
-      <MapControls enableDamping={false} />
+  const getColor = (clusterId) => {
+    return clusterId === -1 ? '#efefef': d3.interpolateRainbow((clusterId + 1) / 18.0 )
+  }
 
-      <Points
+  return (
+    <Canvas dpr={[1, 2]} camera={{ position: [0, 30, 50], up: [0, 0, 1], far: 10000 }} {...props}>
+      <ambientLight />
+      <MapControls autoRotate={!hovered} autoRotateSpeed={1.0} enableDamping={false} />
+      <spotLight position={[0,0,100]} />
+
+      <Instances 
         limit={1000} // Optional: max amount of items (for calculating buffer size)
         range={1000} // Optional: draw-range
       >
-        <PointMaterial scale={35} />
+        <sphereGeometry castShadow args={[1, 20, 20]}/>
+        <meshStandardMaterial receiveShadow/>
         {papers.map((paper, idx) => (
-          <Point
+          <Instance
             key={idx}
             position={[paper.position.x, paper.position.y, 0]}
-            color={ paper.cluster === -1 ? '#efefef': d3.interpolateRainbow((paper.cluster + 1) / 18.0 ) }
+            color={ getColor(paper.cluster) }
             onClick={(e) => {
               e.stopPropagation() 
               onClick(idx);
@@ -79,25 +85,24 @@ export default function PapersPlot({ papers, onClick, ...props }) {
               setHovered(null)
             }}
             onPointerEnter={() => setHovered(idx) }
+            onPointerLeave={() => { if(hovered === idx) setHovered(null) }}
           >
 
             { hovered === idx ? (
               <Html className={ hoverBox() } style={{ transform: 'translateX(-50%) translateY(-100%) translateY(-16px)', zIndex: 10 }}  zIndexRange={[19, 10]}>
                 <Text css={{ lineHeight: '$3'}}>{paper.title}</Text>
               </Html>
-            ) : null }
-
-            { selected === idx ? (
-              <Html center style={{position: 'absolute', pointerEvents: 'none', zIndex: 1 }} zIndexRange={[9, 1]}>
-                <svg style={{ width: '50px', height: '50px'}}>
-                  <circle cx="25" cy="27" r="16" fill={'transparent'} stroke={paper.cluster === -1 ? '#efefef': d3.interpolateRainbow((paper.cluster + 1) / 18.0 )} strokeWidth={3}/>
-                </svg>
-              </Html>
-            ) : null }
+            ): null }
             
-          </Point>
+          </Instance>
         ))}
-      </Points>
+      </Instances>
+
+      <mesh position={[papers[selected].position.x, papers[selected].position.y, -0.01]}>
+        <sphereGeometry args={[3, 50]}/>
+        <meshStandardMaterial  color={getColor(papers[selected].cluster)} transparent={true} opacity={0.5} />
+      </mesh>
+
     </Canvas>
   );
 }

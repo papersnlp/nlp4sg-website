@@ -23,52 +23,46 @@ export default function Home({ papers }) {
   if (!mounted) return null;
 
   return (
-    <Box column center>
-      <Box row css={{ width: '100vw', height: '100vh' }}>
-        <Box
-          css={{
-            width: '30vw',
-            height: '100vh',
+    <Box>
+      <PapersPlot
+        style={{ width: '100vw', height: '70vh' }}
+        papers={papers}
+        onClick={(id) => setPaper(papers[id])}
+      />
+      <Box column center css={{width: '100vw', bc: '$contrast2'}}>
+        <Box container css={{
             p: '$4',
             py: '$5',
-            bc: '$contrast2',
-            overflow: 'scroll',
-          }}
-        >
-          <Text type="subtitle" css={{ pb: '$4' }}>
-            {paper.title}
-          </Text>
-          <Text mono css={{ pb: '$4' }}>
-            {paper.authors.map((author) => `${author.name}, `)}
-          </Text>
-          <Text css={{ pb: '$3' }}>{paper.abstract}</Text>
+          }}>
+        <Text type="subtitle" css={{ pb: '$4' }}>
+          {paper.title}
+        </Text>
+        <Text mono css={{ pb: '$4' }}>
+          {paper.authors.map((author) => `${author.name}, `)}
+        </Text>
+        <Text css={{ pb: '$3' }}>{paper.abstract}</Text>
 
-          <Text mono css={{ pb: '$3' }}>
-            <Link underline href={paper.url}>
-              Open in Semantic Scholar
-            </Link>
-          </Text>
-          <br />
-          <ToggleGroup
-            type="single"
-            defaultValue={theme}
-            aria-label="Theme"
-            onValueChange={(value) => onToggleChange(value)}
-            css={{ pt: '$4' }}
-          >
-            <ToggleGroupItem value="light" aria-label="Day">
-              <Icon.Sun size={18} />
-            </ToggleGroupItem>
-            <ToggleGroupItem value="dark" aria-label="Night">
-              <Icon.Moon size={18} />
-            </ToggleGroupItem>
-          </ToggleGroup>
-        </Box>
-        <PapersPlot
-          style={{ width: '70vw', height: '100vh' }}
-          papers={papers}
-          onClick={(id) => setPaper(papers[id])}
-        />
+        <Text mono css={{ pb: '$3' }}>
+          <Link underline href={paper.url}>
+            Open in Semantic Scholar
+          </Link>
+        </Text>
+        <br />
+        <ToggleGroup
+          type="single"
+          defaultValue={theme}
+          aria-label="Theme"
+          onValueChange={(value) => onToggleChange(value)}
+          css={{ pt: '$4' }}
+        >
+          <ToggleGroupItem value="light" aria-label="Day">
+            <Icon.Sun size={18} />
+          </ToggleGroupItem>
+          <ToggleGroupItem value="dark" aria-label="Night">
+            <Icon.Moon size={18} />
+          </ToggleGroupItem>
+        </ToggleGroup>
+      </Box>
       </Box>
     </Box>
   );
