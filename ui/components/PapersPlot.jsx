@@ -59,7 +59,7 @@ export default function PapersPlot({ papers, onClick, ...props }) {
   return (
     <Canvas dpr={[1, 2]} camera={{ position: [0, 30, 60], up: [0, 0, 1], far: 10000 }} {...props}>
       <ambientLight />
-      <OrbitControls autoRotate={!hovered} autoRotateSpeed={1.0} enableDamping={false} enableZoom={false}/>
+      <OrbitControls autoRotate={!hovered} autoRotateSpeed={1.0} enableDamping={false}/>
       <spotLight position={[0,0,100]} />
 
       <Instances 
