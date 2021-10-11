@@ -21,7 +21,6 @@ export default function Papers({ papers }) {
     if (value === '') setTheme('system');
     else setTheme(value);
   }
-
   // To avoid having `theme` undefined.
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
@@ -30,13 +29,13 @@ export default function Papers({ papers }) {
     <Box css={{bc: '$contrast2', width: '100vw', height: '100vh'}}>
       <Parallax ref={parallax} pages={5}>
         <ParallaxLayer speed={-0.5}>
-          <Box css={{ width: '100vw', height: '90vh', bc: '$contrast1'}}>
+          <Box css={{ width: '100vw', height: '80vh', bc: '$contrast1'}}>
             <PapersPlot
               papers={papers}
               onClick={(id) => { 
                 console.log(id, papers)
                 setPaper(papers[id])
-                parallax.current.scrollTo(0.4)
+                parallax.current.scrollTo(0.3)
               }}
             />
           </Box>
@@ -50,7 +49,7 @@ export default function Papers({ papers }) {
           </Link>
         </ParallaxLayer>
 
-        <ParallaxLayer offset={0.92}>
+        <ParallaxLayer offset={0.8}>
           <Box column center css={{width: '100vw', bc: '$contrast2'}}>
             <Box container css={{ p: '$4', py: '$5' }}>
               { paper !== null && ( 
@@ -59,7 +58,7 @@ export default function Papers({ papers }) {
                     {paper.title}
                   </Text>
                   <Text mono css={{ pb: '$4' }}>
-                    {paper.authors.map((author) => `${author.name}, `)}
+                    { paper.authors.map(a=>a.name).join(', ') }
                   </Text>
                   <Text css={{ pb: '$3' }}>{paper.abstract}</Text>
 

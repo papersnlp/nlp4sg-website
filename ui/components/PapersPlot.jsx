@@ -50,14 +50,14 @@ const hoverBox = css({
 export default function PapersPlot({ papers, onClick, ...props }) {
 
   const [hovered, setHovered] = useState(null)
-  const [selected, setSeleted] = useState(0)
+  const [selected, setSeleted] = useState(null)
 
   const getColor = (clusterId) => {
     return clusterId === -1 ? '#efefef': d3.interpolateRainbow((clusterId + 1) / 18.0 )
   }
 
   return (
-    <Canvas dpr={[1, 2]} camera={{ position: [0, 30, 70], up: [0, 0, 1], far: 10000 }} {...props}>
+    <Canvas dpr={[1, 2]} camera={{ position: [0, 30, 60], up: [0, 0, 1], far: 10000 }} {...props}>
       <ambientLight />
       <OrbitControls autoRotate={!hovered} autoRotateSpeed={1.0} enableDamping={false} enableZoom={false}/>
       <spotLight position={[0,0,100]} />
@@ -93,10 +93,10 @@ export default function PapersPlot({ papers, onClick, ...props }) {
         ))}
       </Instances>
 
-      <mesh position={[papers[selected].position.x, papers[selected].position.y, -0.01]}>
+      { selected && <mesh position={[papers[selected].position.x, papers[selected].position.y, -0.01]}>
         <sphereGeometry args={[3, 50]}/>
         <meshStandardMaterial  color={getColor(papers[selected].cluster)} transparent={true} opacity={0.5} />
-      </mesh>
+      </mesh> }
 
     </Canvas>
   );
