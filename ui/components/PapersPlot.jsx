@@ -1,6 +1,6 @@
 import { Suspense, useRef, useState, useLayoutEffect, forwardRef } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
-import { Instances, Instance, Points, Point, MapControls, Html, PointMaterialImpl, ContactShadows } from '@react-three/drei';
+import { Instances, Instance, Points, Point, MapControls, Html, PointMaterialImpl, ContactShadows, OrbitControls } from '@react-three/drei';
 import { Box, Text } from '@styles/components';
 import { css } from '@styles/config';
 import * as THREE from 'three';
@@ -52,19 +52,14 @@ export default function PapersPlot({ papers, onClick, ...props }) {
   const [hovered, setHovered] = useState(null)
   const [selected, setSeleted] = useState(0)
 
-  useLayoutEffect(() => {
-    setSeleted(0)
-    onClick(0)
-  }, [])
-
   const getColor = (clusterId) => {
     return clusterId === -1 ? '#efefef': d3.interpolateRainbow((clusterId + 1) / 18.0 )
   }
 
   return (
-    <Canvas dpr={[1, 2]} camera={{ position: [0, 30, 50], up: [0, 0, 1], far: 10000 }} {...props}>
+    <Canvas dpr={[1, 2]} camera={{ position: [0, 30, 70], up: [0, 0, 1], far: 10000 }} {...props}>
       <ambientLight />
-      <MapControls autoRotate={!hovered} autoRotateSpeed={1.0} enableDamping={false} />
+      <OrbitControls autoRotate={!hovered} autoRotateSpeed={1.0} enableDamping={false} enableZoom={false}/>
       <spotLight position={[0,0,100]} />
 
       <Instances 

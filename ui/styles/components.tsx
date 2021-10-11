@@ -130,3 +130,12 @@ export const List = styled('ol', {
       },
   }
 });
+
+
+export const Separator = styled('hr', { 
+  border: 'none',
+  borderTop: '1.5px solid $contrast5',
+  bc: '$transparent',
+  height: 0,
+  my: '$5'
+})
