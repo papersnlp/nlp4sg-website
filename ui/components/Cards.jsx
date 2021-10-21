@@ -8,12 +8,21 @@ const Card = styled('li', {
 })
 
 const Cards = (props) => {
-  const { title, description, content } = props 
+  const { titles, content } = props 
   return (
     <Box column center css={{ width: '100vw', backgroundColor: '$blue9', position: 'relative', zIndex: 1}}>
       <Box container column css={{ py: '$6'}}>
-        <Text type='title' css={{ color: '$blue1', pb: '$4'}}>{ title }</Text>
-        <Text css={{pb: '$4', color: '$blue5'}}>{description}</Text>
+        {
+          titles.map((v, k) => {
+            return (
+              <>
+                <Text type='title' css={{ color: '$blue1', pb: '$4'}}>{ v.title }</Text>
+                <Text css={{pb: '$4', color: '$blue5'}}>{v.description}</Text>
+              </>
+            )
+          })
+        }
+        
         <Grid>
           {content.map((v, k) => 
             <Card key={k}>

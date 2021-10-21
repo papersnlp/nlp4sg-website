@@ -5,9 +5,17 @@
     "slogan": "An initiative aiming to empower natural language processing (NLP) researchers to expand the societal impact of their work.",
     "content": [
       {
-        "title": "What is NLP for social good?", 
-        "description": "We are a group of researchers who use NLP research to tackle social problems, and help the world to be a better place.",
         "type": "cards",
+        "titles": [
+          {
+            "title": "What is NLP for social good?", 
+            "description": "We are a group of researchers who use NLP research to tackle social problems, and help the world to be a better place."
+          },
+          {
+            "title": "What do we provide?", 
+            "description": "A rich set of resources of useful NLP research and corresponding socially good applications and a network of researchers interested in NLP4SG."
+          }
+        ],
         "content": [
           {
             "text": "View our GitHub paper list of NLP on Social Good curated by Zhijing Jin",
@@ -48,27 +56,30 @@
       },
       { "type": "space" },
       {
-        "title": "How can I participate & contribute?",
+        "title": "What do people think about NLP4SG?",
         "type": "list",
         "content": [
           {
-            "text": "Contribute your opinions to our ongoing survey \"What is NLP for Social Good?\"",
-            "link": "http://bit.ly/nlp4sg-survey"
+            "text": "Contribute your opinions to <a href='http://bit.ly/nlp4sg-survey'>our ongoing survey</a> \"What is NLP for Social Good?\" "
           },
           { 
-            "text": "Survey result overview: \"How Current NLP Researchers Think about NLP4SG\" compiled based on our NLP4SG survey.",
-            "link": "https://docs.google.com/presentation/d/1CYvlV6joY0VfCHhr3FPysq3ZgB4FKKg_YsJj6-tVKOs/edit#slide=id.p"
-          },
+            "text": "Survey result overview: <a href='https://docs.google.com/presentation/d/1CYvlV6joY0VfCHhr3FPysq3ZgB4FKKg_YsJj6-tVKOs/edit#slide=id.p'>\"How Current NLP Researchers Think about NLP4SG\"</a> compiled based on our NLP4SG survey."
+          }
+        ]
+      },
+      { "type": "space"},
+      {
+        "title": "How can I participate in NLP4SG initiative?",
+        "type": "list",
+        "content": [
           {
-            "text": "Participate in various discussions: ACL 2021 Workshop - NLP for Positive Impact 2021",
-            "link": "https://sites.google.com/view/nlp4positiveimpact2021/"
+            "text": "Participate in various discussions: ACL 2021 Workshop - <a href='https://sites.google.com/view/nlp4positiveimpact2021/'>NLP for Positive Impact 2021</a>"
           },
           {
             "text": "Join the Birds-of-A-Feather session of NLP4SG at *ACL conferences."
           },
           {
-            "text": "Support our initiative by signing up as a supporter to be listed on our website.",
-            "link": "https://forms.gle/kJyBx3RPWEKjPLn28"
+            "text": "Support our initiative by <a href='https://forms.gle/kJyBx3RPWEKjPLn28'>signing up as a supporter</a> to be listed on our website."
           }
         ]
       },
@@ -137,8 +148,7 @@
       },
       {
         "title": "Supporters",
-        "description": "If you support our mission, sign up here to become an NLP4SG supporter!",
-        "descriptionLink": "https://forms.gle/kJyBx3RPWEKjPLn28",
+        "description": "If you support our mission, <a href='https://forms.gle/kJyBx3RPWEKjPLn28'>sign up here</a> to become an NLP4SG supporter!",
         "type": "list",
         "content": [
           {

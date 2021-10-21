@@ -55,7 +55,7 @@ const Home = (props) => {
               if (v.type === 'events') return <Events key={k} {...v} />
               if (v.type === 'avatars') return <Avatars key={k} {...v} />
               if (v.type === 'list') return <ListBlock key={k} {...v} />
-              if (v.type === 'space') return <Box css={{py: '$5'}}/>
+              if (v.type === 'space') return <Box css={{py: '$4'}}/>
             })
           }
       </Box>
