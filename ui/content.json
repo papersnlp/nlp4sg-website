@@ -39,21 +39,6 @@
           }
         ]
       },
-      {
-        "type": "space"
-      },
-      {
-        "title": "What is our initiative about?",
-        "type": "list",
-        "content": [
-          {
-            "text": "A rich set of resources of useful NLP research and corresponding socially good applications."
-          },
-          {
-            "text": "A network for researchers interested in NLP4SG"
-          }
-        ]
-      },
       { "type": "space" },
       {
         "title": "What do people think about NLP4SG?",
@@ -116,7 +101,7 @@
         "content": [
           {
             "name": "Zhijing Jin",
-            "description": "PhD (Max Planck Institute &amp; ETH)",
+            "description": "PhD (Max Planck Institute & ETH)",
             "image": "/images/zhijing_jin.jpeg",
             "url": "https://zhijing-jin.com/fantasy/"
           },
@@ -134,13 +119,13 @@
           },
           {
             "name": "Brian Tse",
-            "description": "Policy Affiliate (Oxford) &amp; Founder (Concordia Consulting)",
+            "description": "Policy Affiliate (Oxford) & Founder (Concordia Consulting)",
             "image": "/images/brian_tse.jpeg",
             "url": "https://www.fhi.ox.ac.uk/team/brian-tse/"
           },
           {
             "name": "Dan Lahav",
-            "description": "Researcher (IBM Research) &amp; Grad (Tel Aviv University)",
+            "description": "Researcher (IBM Research) & Grad (Tel Aviv University)",
             "image": "/images/dan_lahav.jpeg",
             "url": "https://www.linkedin.com/in/dan-lahav-037a67185/"
           }
