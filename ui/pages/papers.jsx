@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import { useEffect, useState, useRef } from 'react';
-import { Box, Text, Span, Link, Separator } from '@styles/components';
+import { Box, Text, Span, Link, Separator, List } from '@styles/components';
 import { styled } from '@styles/config';
 import * as Icon from 'react-feather';
 import { useTheme } from 'next-themes';
@@ -27,46 +27,46 @@ export default function Papers({ papers }) {
 
   return (
     <Box css={{bc: '$contrast2', width: '100vw', height: '100vh'}}>
-      <Parallax ref={parallax} pages={5}>
-        <ParallaxLayer speed={-0.5}>
+      {/*<Parallax ref={parallax} pages={5} style={{ top: '0', left: '0' }}>
+        <ParallaxLayer speed={-0.5}>*/}
           <Box css={{ width: '100vw', height: '80vh', bc: '$contrast1'}}>
             <PapersPlot
               papers={papers}
               onClick={(id) => { 
-                console.log(id, papers)
                 setPaper(papers[id])
-                parallax.current.scrollTo(0.3)
+                //parallax.current.scrollTo(0.3)
               }}
             />
           </Box>
-          { !paper && <Text css={{ position: 'absolute', top: 0, textAlign: 'center', width: '100vw', pt: '$3'}} mono>
-            Click a sphere!
-          </Text>}
+          
+          <Text type='subtitle' css={{ position: 'absolute', top: '0', textAlign: 'center', width: '100vw', pt: '$4', px: '$3'}}>
+            Visualization of Existing NLP4SG Research ({papers.length} Papers)
+          </Text>
 
-
-          <Link href='#what' css={{ position: 'absolute', top: '0', right: 0, p: '$3'}}>
+          <Link href='#what' css={{ position: 'absolute', bottom: '20vh', right: 0, p: '$3'}}>
             <Text mono><HelpCircle/></Text>  
           </Link>
-        </ParallaxLayer>
+        {/*</ParallaxLayer>*/}
 
-        <ParallaxLayer offset={0.8}>
+        {/*<ParallaxLayer offset={0.8}> */}
           <Box column center css={{width: '100vw', bc: '$contrast2'}}>
             <Box container css={{ p: '$4', py: '$5' }}>
               { paper !== null && ( 
                 <>
-                  <Text type="subtitle" css={{ pb: '$4' }}>
+                  <Text type="subtitle" css={{ pb: '$3' }}>
                     {paper.title}
                   </Text>
-                  <Text mono css={{ pb: '$4' }}>
-                    { paper.authors.map(a=>a.name).join(', ') }
-                  </Text>
-                  <Text css={{ pb: '$3' }}>{paper.abstract}</Text>
-
                   <Text mono css={{ pb: '$3' }}>
+                    By { paper.authors.map(a=>a.name).join(', ') }
+                  </Text>
+
+                  <Text mono css={{ pb: '$4' }}>
                     <Link underline href={paper.url}>
                       Open in Semantic Scholar
                     </Link>
                   </Text>
+                  <Text css={{ pb: '$3' }}>{paper.abstract}</Text>
+
                   <br />
                   <ToggleGroup
                     type="single"
@@ -87,16 +87,23 @@ export default function Papers({ papers }) {
               )}
               <Box css={{ pb: '$7'}}>
                 <Text type="subtitle" css={{ pb: '$3'}} id='what'>
-                  What is this?
+                  Where do the papers come from?
                 </Text>
                 <Text>
-                  This is a visualization of papers from the <Link underline href='https://github.com/zhijing-jin/NLP4SocialGood_Papers'>NLP4SG list</Link>, papers that are closer togheter are considere more similar. We use the Semantic Scholar API to obtain the paper data. The visualization is then constructed automatically by feeding the title and abstract of each paper through a pretrained transformer neural network model which extracts a high dimensional embedding which is then projected to 2 dimension using the T-SNE algorithm. The coloring is automatically produced by clustering the papers using the <Link underline href='https://hdbscan.readthedocs.io/en/latest/how_hdbscan_works.html'>HDBSCAN</Link> algorithm. The website is built with ReactJS, and the 3D visualization with ThreeJS. The entire code to generate the <Link underline href='https://github.com/papersnlp/nlp4sg-website/blob/main/models/src/scripts/papers_abstract_to_tsne.py'>clustering</Link> and the <Link underline href='https://github.com/papersnlp/nlp4sg-website/tree/main/ui'>visualization</Link> is available on GitHub.
+                  This is a visualization of papers from the GitHub <Link underline href='https://github.com/zhijing-jin/NLP4SocialGood_Papers'>NLP4SG paper list</Link>, papers that are closer together are considered more similar. The paper data is obtained using the <Link underline href='https://www.semanticscholar.org/product/api'>Semantic Scholar API</Link>. 
+                </Text>
+
+                <Text type="subtitle" css={{ pb: '$3', pt: '$4'}} >
+                  How is the visualization made?
+                </Text>
+                <Text>
+                  The visualization is constructed automatically by feeding the title and abstract of each paper through a pretrained transformer neural network model which extracts a high dimensional embedding which is then projected to two dimensions using <Link underline href='https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html'>T-SNE algorithm</Link>. The coloring is automatically produced by clustering papers using <Link underline href='https://hdbscan.readthedocs.io/en/latest/how_hdbscan_works.html'>HDBSCAN</Link> algorithm. The website is built with ReactJ and ThreeJS for the data visualization. The entire code to generate the <Link underline href='https://github.com/papersnlp/nlp4sg-website/blob/main/models/src/scripts/papers_abstract_to_tsne.py'>clustering</Link> and the <Link underline href='https://github.com/papersnlp/nlp4sg-website/tree/main/ui'>visualization</Link> is available on <Link underline href='https://github.com/papersnlp/nlp4sg-website'>our GitHub</Link>.
                 </Text>
               </Box>
             </Box>
           </Box>
-        </ParallaxLayer>
-      </Parallax>
+        {/*</Box></ParallaxLayer>
+      </Parallax>*/}
     </Box>
   );
 }

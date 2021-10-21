@@ -8,21 +8,22 @@ const Card = styled('li', {
 })
 
 const Cards = (props) => {
-  const { title, content } = props 
+  const { title, description, content } = props 
   return (
     <Box column center css={{ width: '100vw', backgroundColor: '$blue9', position: 'relative', zIndex: 1}}>
       <Box container column css={{ py: '$6'}}>
         <Text type='title' css={{ color: '$blue1', pb: '$4'}}>{ title }</Text>
+        <Text css={{pb: '$4', color: '$blue5'}}>{description}</Text>
         <Grid>
           {content.map((v, k) => 
             <Card key={k}>
-              <Link href={v.link} css={{ height: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end'}}>
+              <Link href={v.link} css={{ height: '270px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end'}}>
                 <Box css={{ p: '$4'}}>
                   <Text>{ v.text }</Text>
                 </Box>
                 <Box css={{flex: 1}}></Box>
                 <Box css={{ borderTop: '1.5px solid $contrast5', p: '$4', py: '$3'}}>
-                  <Text>{ v.linkText}</Text>
+                  <Text>{ v.linkText }</Text>
                 </Box>
               </Link>
             </Card>

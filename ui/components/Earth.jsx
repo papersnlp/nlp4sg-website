@@ -4,7 +4,7 @@ const svg = css({
   fill: '$contrast4',
   height: '30vh',
   position: 'absolute',
-  bottom: 0,
+  bottom: '-60px',
   zIndex: '0'
 })
 

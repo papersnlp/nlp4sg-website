@@ -2,31 +2,175 @@
   "title": "NLP4SG",
   "index": {
     "title": "NLP for Social Good",
-    "slogan": "A new initiative aiming to empower NLP researchers who want to consider the societal impact of their work.",
+    "slogan": "An initiative aiming to empower natural language processing (NLP) researchers to expand the societal impact of their work.",
     "content": [
       {
-        "title": "But what is it exactly?",
+        "title": "What is NLP for social good?", 
+        "description": "We are a group of researchers who use NLP research to tackle social problems, and help the world to be a better place.",
         "type": "cards",
         "content": [
           {
-            "text": "A curated GitHub paper list of NLP on Social Good curated by Zhijing Jin",
+            "text": "View our GitHub paper list of NLP on Social Good curated by Zhijing Jin",
             "link": "https://github.com/zhijing-jin/NLP4SocialGood_Papers",
             "linkText": "View on Github"
           },
           {
-            "text": "An idea from the paper 'How Good Is NLP? A Sober Look at NLP Tasks through the Lens of Social Impact' ",
+            "text": "Check the definition and thinking framework in our ACL 2021 Findings paper “How Good Is NLP?”",
             "link": "https://arxiv.org/abs/2106.02359",
-            "linkText": "View on ArXiv"
+            "linkText": "Check arXiv"
           },
           {
-            "text": "A survey result overview 'How Current NLP Researchers Think about NLP4SG' based on our NLP4SG survey",
-            "link": "https://docs.google.com/presentation/d/1CYvlV6joY0VfCHhr3FPysq3ZgB4FKKg_YsJj6-tVKOs/edit",
-            "linkText": "Open on GDocs"
+            "text": "Join our Slack \"ACL with Love ❤️\" #nlp4sg-discussions channel to keep you updated.",
+            "link": "https://acl-with-love.slack.com/",
+            "linkText": "Join Slack Channel"
           },
           {
-            "text": "A reading group (once a week for 8 weeks) to go through NLP4SG papers & questions with a group of NLP researchers!",
-            "link": "https://docs.google.com/forms/d/e/1FAIpQLScTiUPUUSh8P3TksisKUWuzpUslD-kGsME3KfsJTyexlVy3Dw/viewform",
-            "linkText": "Join Group"
+            "text": "Follow us on Twitter @nlp4sg !",
+            "link": "https://twitter.com/nlp4sg",
+            "linkText": "Open Twitter"
+          }
+        ]
+      },
+      {
+        "type": "space"
+      },
+      {
+        "title": "What is our initiative about?",
+        "type": "list",
+        "content": [
+          {
+            "text": "A rich set of resources of useful NLP research and corresponding socially good applications."
+          },
+          {
+            "text": "A network for researchers interested in NLP4SG"
+          }
+        ]
+      },
+      { "type": "space" },
+      {
+        "title": "How can I participate & contribute?",
+        "type": "list",
+        "content": [
+          {
+            "text": "Contribute your opinions to our ongoing survey \"What is NLP for Social Good?\"",
+            "link": "http://bit.ly/nlp4sg-survey"
+          },
+          { 
+            "text": "Survey result overview: \"How Current NLP Researchers Think about NLP4SG\" compiled based on our NLP4SG survey.",
+            "link": "https://docs.google.com/presentation/d/1CYvlV6joY0VfCHhr3FPysq3ZgB4FKKg_YsJj6-tVKOs/edit#slide=id.p"
+          },
+          {
+            "text": "Participate in various discussions: ACL 2021 Workshop - NLP for Positive Impact 2021",
+            "link": "https://sites.google.com/view/nlp4positiveimpact2021/"
+          },
+          {
+            "text": "Join the Birds-of-A-Feather session of NLP4SG at *ACL conferences."
+          },
+          {
+            "text": "Support our initiative by signing up as a supporter to be listed on our website.",
+            "link": "https://forms.gle/kJyBx3RPWEKjPLn28"
+          }
+        ]
+      },
+      { "type": "space" },
+      {
+        "title": "Events",
+        "type": "events",
+        "content": [
+          {
+            "name": "NLP for Positive Impact (Date tentative)",
+            "date": "08-01-2022",
+            "link": "https://sites.google.com/view/nlp4positiveimpact2020"
+          },
+          {
+            "name": "ACL 2021 Workshop - NLP for Positive Impact",
+            "date": "08-05-2021",
+            "link": "https://2021.aclweb.org/"
+          },
+          {
+            "name": "ACL 2021 - Theme Track \"NLP for Social Good\"",
+            "date": "08-04-2021",
+            "link": "https://2021.aclweb.org/"
+          },
+          {
+            "name": "BoF/Meetup: NLP for Social Good",
+            "date": "08-03-2021",
+            "link": "https://2021.aclweb.org/"
+          }
+        ]
+      },
+      {
+        "title": "Promoters",
+        "type": "avatars",
+        "content": [
+          {
+            "name": "Zhijing Jin",
+            "description": "PhD (Max Planck Institute &amp; ETH)",
+            "image": "/images/zhijing_jin.jpeg",
+            "url": "https://zhijing-jin.com/fantasy/"
+          },
+          {
+            "name": "Rada Mihalcea",
+            "description": "Professor (University of Michigan)",
+            "image": "/images/rada_mihalcea.jpeg",
+            "url": "https://web.eecs.umich.edu/~mihalcea/"
+          },
+          {
+            "name": "Mrinmaya Sachan" ,
+            "description": "Assistant Professor (ETH)",
+            "image": "/images/mrinmaya_sachan.jpeg",
+            "url": "http://www.mrinmaya.io/"
+          },
+          {
+            "name": "Brian Tse",
+            "description": "Policy Affiliate (Oxford) &amp; Founder (Concordia Consulting)",
+            "image": "/images/brian_tse.jpeg",
+            "url": "https://www.fhi.ox.ac.uk/team/brian-tse/"
+          },
+          {
+            "name": "Dan Lahav",
+            "description": "Researcher (IBM Research) &amp; Grad (Tel Aviv University)",
+            "image": "/images/dan_lahav.jpeg",
+            "url": "https://www.linkedin.com/in/dan-lahav-037a67185/"
+          }
+        ]
+      },
+      {
+        "title": "Supporters",
+        "description": "If you support our mission, sign up here to become an NLP4SG supporter!",
+        "descriptionLink": "https://forms.gle/kJyBx3RPWEKjPLn28",
+        "type": "list",
+        "content": [
+          {
+            "text": "Alejandrina Cristia: CNRS research director and director of the Laboratoire de Sciences Cognitives et Psycholinguistique (LSCP) (France)",
+            "link": "https://sites.google.com/site/acrsta"
+          },
+          {
+            "text": "Pranita Mahajan: researcher, India",
+            "link": "https://scholar.google.com/citations?hl=en&user=hBe7a38AAAAJ6IO7W7INZ-PWhr5cJFZI&sciund=7418951614516010055"
+          },
+          {
+            "text": "Annajiat Alim: lecturer, Bangladesh",
+            "link": "http://annajiat.googlepages.com/"
+          },
+          {
+            "text": "Prof. Dr. Lucie Flek: conversational AI and social analytics (CAISA) lab, University of Marburg",
+            "link": "https://caisa-lab.github.io/"
+          },
+          {
+            "text": "Shamsuddeen Muhammad: researcher at Bayero University, Kano, Nigeria",
+            "link": "https://scholar.google.com/citations?user=Ne1nt4gAAAAJ&hl=en&authuser=1"
+          },
+          {
+            "text": "Fatma Elsafoury: PhD from University of The West of Scotland, The United Kingdom",
+            "link": "https://efatmae.github.io/"
+          },
+          {
+            "text": "Manikant Roy: PhD Student at IIT Delhi India"
+          },
+          {
+            "text": "Sabbir Ahmed Sibli: postgraduate student at BRAC University, Bangladesh",
+            "link": "tinyurl.com/sabbirshibli"
           }
         ]
       }
