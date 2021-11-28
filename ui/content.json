@@ -128,6 +128,24 @@
             "description": "Researcher (IBM Research) & Grad (Tel Aviv University)",
             "image": "/images/dan_lahav.jpeg",
             "url": "https://www.linkedin.com/in/dan-lahav-037a67185/"
+          },
+          {
+            "name": "Bernhard Schoelkopf",
+            "description": "Professor at Max Planck Institute & ETH",
+            "image": "/images/bernhard_schoelkopf.jpeg",
+            "url": "https://www.is.mpg.de/~bs"
+          },
+          {
+            "name": "Joel Tetreault",
+            "description": "Senior Director of Research at Dataminr",
+            "image": "/images/joel_tetreault.jpeg",
+            "url": "https://www.linkedin.com/in/joel-tetreault-67234512/"
+          },
+          {
+            "name": "Geeticka Chauhan",
+            "description": "PhD at MIT",
+            "image": "/images/geeticka_chauhan.jpeg",
+            "url": "http://people.csail.mit.edu/geeticka/"
           }
         ]
       },

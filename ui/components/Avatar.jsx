@@ -59,7 +59,7 @@ export const UserBox = (props) => {
           />
           <AvatarFallback delayMs={600}>{getAcronym(name)}</AvatarFallback>
         </Avatar>
-        <Text css={{pt: '$3', pb: '0', lineHeight: '$2', color: '$contrast11'}}>{name}</Text>
+        <Text css={{pt: '$3', pb: '0', lineHeight: '$2', color: '$contrast11', textAlign: 'center'}}>{name}</Text>
         <Text css={{ fontSize: '$1', textAlign: 'center', lineHeight: '$1', pb: '$4', color: '$contrast9' }}>{description}</Text> 
       </Box>    
     </Link>
