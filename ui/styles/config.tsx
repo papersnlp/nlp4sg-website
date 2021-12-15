@@ -4,8 +4,8 @@ import { blue, slate, slateDark } from '@radix-ui/colors';
 export const { css, globalCss, styled, getCssText, createTheme } = createStitches({
   theme: {
     colors: {
-      ...slate, 
-      ...blue, 
+      ...slate,
+      ...blue,
       primary: '$blue9',
       contrast1: '$slate1', // Background
       contrast2: '$slate2', // Subtle background
@@ -147,6 +147,6 @@ export const { css, globalCss, styled, getCssText, createTheme } = createStitche
 
 export const darkTheme = createTheme({
   colors: {
-    ...slateDark
+    ...slateDark,
   },
 });

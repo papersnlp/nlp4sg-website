@@ -36,8 +36,8 @@ export const Grid = styled('ul', {
   gridTemplateColumns: 'repeat(auto-fit, minmax($7, 1fr));',
   gridGap: '$3',
   p: '0',
-  listStyleType: 'none'
-})
+  listStyleType: 'none',
+});
 
 export const Text = styled('p', {
   margin: 0,
@@ -53,13 +53,13 @@ export const Text = styled('p', {
         fontSize: '$7',
         fontWeight: 500,
         lineHeight: '$7',
-        fontFamily: '$serif'
+        fontFamily: '$serif',
       },
       subtitle: {
         fontSize: '$5',
         fontWeight: 500,
         lineHeight: '$5',
-        fontFamily: '$serif'
+        fontFamily: '$serif',
       },
     },
     mono: {
@@ -100,42 +100,40 @@ export const Link = styled('a', {
   },
 });
 
-
 export const List = styled('ol', {
   listStyleType: 'none',
   px: '0',
-  pl: '$4',  
+  pl: '$4',
   lineHeight: '$5',
   fontFamily: '$sans',
   fontSize: '$3',
   fontWeight: 300,
   'li::before': {
-      position: 'absolute',
-      content: "• ",
-      display: 'inline-block',
-      width: '$4',
-      ml: '-$4'
+    position: 'absolute',
+    content: '• ',
+    display: 'inline-block',
+    width: '$4',
+    ml: '-$4',
   },
-  'li': {
+  li: {
     pl: '$3',
-    py: '$2'
+    py: '$2',
   },
   variants: {
-      numbered: {
-          true: {
-              counterReset: 'my-counter',
-              'li::before': { content: 'counter(my-counter) ". "' },
-              'li': { counterIncrement: 'my-counter' }
-          },
+    numbered: {
+      true: {
+        counterReset: 'my-counter',
+        'li::before': { content: 'counter(my-counter) ". "' },
+        li: { counterIncrement: 'my-counter' },
       },
-  }
+    },
+  },
 });
 
-
-export const Separator = styled('hr', { 
+export const Separator = styled('hr', {
   border: 'none',
   borderTop: '1.5px solid $contrast5',
   bc: '$transparent',
   height: 0,
-  my: '$5'
-})
+  my: '$5',
+});

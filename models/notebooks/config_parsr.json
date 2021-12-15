@@ -1,0 +1,49 @@
+{
+  "version": 0.9,
+  "extractor": {
+    "pdf": "pdfminer",
+    "ocr": "tesseract",
+    "language": ["eng"]
+  },
+  "cleaner": [
+    "out-of-page-removal",
+    [
+      "whitespace-removal",
+      {
+        "minWidth": 0
+      }
+    ],
+    [
+      "header-footer-detection",
+      {
+        "ignorePages": [],
+        "maxMarginPercentage": 8
+      }
+    ],
+    "words-to-line-new",
+    [
+      "reading-order-detection",
+      {
+        "minVerticalGapWidth": 5,
+        "minColumnWidthInPagePercent": 15
+      }
+    ],
+    [
+      "lines-to-paragraph",
+      {
+        "tolerance": 0.25
+      }
+    ]
+  ],
+  "output": {
+    "granularity": "word",
+    "includeMarginals": false,
+    "includeDrawings": false,
+    "formats": {
+      "json": true,
+      "text": true,
+      "pdf": false,
+      "simpleJson": true
+    }
+  }
+}

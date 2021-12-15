@@ -1,7 +1,3 @@
-
-
-
-
 ## Getting Started
 
 Install all packages:

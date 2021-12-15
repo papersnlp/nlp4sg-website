@@ -1,4 +1,4 @@
-import { styled } from '@styles/config'
+import { styled } from '@styles/config';
 import { Box, Text, Link } from '@styles/components';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 
@@ -42,26 +42,37 @@ const AvatarImage = StyledImage;
 const AvatarFallback = StyledFallback;
 
 export const UserBox = (props) => {
-  const { name, description, image, url } = props
-  
+  const { name, description, image, url } = props;
+
   const getAcronym = (sentence) => {
-    var matches = sentence.match(/\b(\w)/g); 
+    var matches = sentence.match(/\b(\w)/g);
     return matches.join('');
-  }
+  };
 
   return (
     <Link href={url}>
       <Box column center>
         <Avatar>
-          <AvatarImage
-            src={image}
-            alt={name}
-          />
+          <AvatarImage src={image} alt={name} />
           <AvatarFallback delayMs={600}>{getAcronym(name)}</AvatarFallback>
         </Avatar>
-        <Text css={{pt: '$3', pb: '0', lineHeight: '$2', color: '$contrast11', textAlign: 'center'}}>{name}</Text>
-        <Text css={{ fontSize: '$1', textAlign: 'center', lineHeight: '$1', pb: '$4', color: '$contrast9' }}>{description}</Text> 
-      </Box>    
+        <Text
+          css={{ pt: '$3', pb: '0', lineHeight: '$2', color: '$contrast11', textAlign: 'center' }}
+        >
+          {name}
+        </Text>
+        <Text
+          css={{
+            fontSize: '$1',
+            textAlign: 'center',
+            lineHeight: '$1',
+            pb: '$4',
+            color: '$contrast9',
+          }}
+        >
+          {description}
+        </Text>
+      </Box>
     </Link>
-  )
-}
+  );
+};

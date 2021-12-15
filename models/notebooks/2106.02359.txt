@@ -1,0 +1,1792 @@
+How Good Is NLP? A Sober Look at NLP Tasks through the
+Lens of Social Impact
+
+Zhijing Jin
+Max Planck Institute for Intelligent Systems
+T¨ubingen, Germany
+zjin@tue.mpg.de
+
+Geeticka Chauhan
+MIT
+geeticka@mit.edu
+
+Brian Tse
+Oxford
+briantsemanhei@gmail.com
+
+Mrinmaya Sachan
+ETH Z¨urich
+msachan@ethz.ch
+
+Rada Mihalcea
+University of Michigan
+mihalcea@umich.edu
+
+Abstract
+
+Recent years have seen many breakthroughs
+in natural language processing (NLP), transi-
+tioning it from a mostly theoretical ﬁeld to one
+with many real-world applications. Noting the
+rising number of applications of other machine
+learning and AI techniques with pervasive so-
+cietal impact, we anticipate the rising impor-
+tance of developing NLP technologies for so-
+cial good. Inspired by theories in moral phi-
+losophy and global priorities research, we aim
+to promote a guideline for social good in the
+context of NLP. We lay the foundations via
+the moral philosophy deﬁnition of social good,
+propose a framework to evaluate the direct and
+indirect real-world impact of NLP tasks, and
+adopt the methodology of global priorities re-
+search to identify priority causes for NLP re-
+search. Finally, we use our theoretical frame-
+work to provide some practical guidelines for
+future NLP research for social good.1
+
+1
+
+Introduction
+
+Advances on multiple NLP fronts have given rise
+to a plethora of applications that are now integrated
+into our daily lives. NLP-based intelligent agents
+like Amazon Echo and Google Home have entered
+millions of households (Voicebot, 2020). NLP tools
+are now prevalent on phones, in cars, and in many
+daily services such as Google search and electronic
+health record analysis (Townsend, 2013).
+
+In the current COVID-19 context, NLP has al-
+ready had important positive social impact in the
+face of a public health crisis. When the pandemic
+broke out, Allen AI collected the CORD-19 dataset
+(Wang et al., 2020) with the goal of helping public
+health experts efﬁciently sift through the myriad of
+
+1Our data and code are available at http://github.
+com/zhijing-jin/nlp4sg_acl2021.
+In addition,
+we curate a list of papers and resources on NLP for so-
+cial good at https://github.com/zhijing-jin/
+NLP4SocialGood_Papers.
+
+COVID-19 research papers that emerged in a short
+time period. Subsequently, NLP services such as
+Amazon Kendra were deployed to help organize
+the research knowledge around COVID-19 (Bhatia
+et al., 2020). The NLP research community worked
+on several problems like the question-answering
+and summarization system CAiRE-COVID (Su
+et al., 2020), the expressive interviewing conversa-
+tional system (Welch et al., 2020) and annotation
+schemas to help ﬁght COVID-19 misinformation
+online (Alam et al., 2020; Hossain et al., 2020).
+
+As NLP transits from theory into practice and
+into daily lives, unintended negative consequences
+that early theoretical researchers did not anticipate
+have also emerged, from the toxic language of Mi-
+crosoft’s Twitter bot Tay (Shah and Chokkattu,
+2016), to the leak of privacy of Amazon Alexa
+(Chung et al., 2017). A current highly-debated
+topic in NLP ethics is GPT-3 (Brown et al., 2020),
+whose risks and harms include encoding gender
+and racist biases (Bender et al., 2021).
+
+It is now evident that we must consider the neg-
+ative and positive impacts of NLP as two sides of
+the same coin, a consequence of how NLP and
+more generally AI pervade our daily lives. The
+consideration of the negative impacts of AI has en-
+gendered the recent and popular interdisciplinary
+ﬁeld of AI ethics, which puts forth issues such as
+algorithmic bias, fairness, transparency and equity
+with an aim to provide recommendations for ethical
+development of algorithms.
+
+Highly inﬂuential works in AI ethics include
+(Buolamwini and Gebru, 2018; Mitchell et al.,
+2019; Raji et al., 2020; Chen et al., 2019; Blodgett
+et al., 2020). AI for social good (AI4SG) (Tomaˇsev
+et al., 2020) is a related sub-ﬁeld that beneﬁts from
+results of AI ethics and while keeping ethical prin-
+ciples as a pre-requisite, has the goal of creating
+positive impact and addressing society’s biggest
+challenges. Work in this space includes (Wang
+
+1
+2
+0
+2
+ 
+l
+u
+J
+ 
+4
+2
+ 
+ 
+]
+L
+C
+.
+s
+c
+[
+ 
+ 
+2
+v
+9
+5
+3
+2
+0
+.
+6
+0
+1
+2
+:
+v
+i
+X
+r
+a
+
+et al., 2020; Bhatia et al., 2020; Killian et al., 2019;
+Lampos et al., 2020).
+
+Active conversations about ethics and social
+good have expanded broadly, in the NLP commu-
+nity as well as the broader AI and ML commu-
+nities. Starting with early discussions in works
+such as (Hovy and Spruit, 2016; Leidner and Pla-
+chouras, 2017), the communities introduced the
+ﬁrst workshop on ethics in NLP (Hovy et al., 2017)
+and the AI for social good workshop (Luck et al.,
+2018), which inspired various follow-up workshops
+at venues like ICML and ICLR. The upcoming
+NLP for Positive Impact Workshop (Field et al.,
+2020) ﬁnds inspiration from these early papers
+and workshops. In 2020, NeurIPS required all re-
+search papers to submit broader impact statements
+(Castelvecchi, 2020; Gibney, 2020). NLP confer-
+ences followed suit and introduced optional ethical
+and impact statements, starting with ACL in 2021
+(Association for Computational Linguistics, 2021).
+With the growing impact of our models in daily
+lives, we need comprehensive guidelines for fol-
+lowing ethical standards to result in positive impact
+and prevent unnecessary societal harm. (Tomaˇsev
+et al., 2020) provide general guidelines for suc-
+cessful AI4SG collaborations through the lens
+of United Nations (UN) sustainable development
+goals (SDGs) (United Nations, 2015) and (Hovy
+and Spruit, 2016; Leidner and Plachouras, 2017)
+begin the ethics discussions in NLP. However, there
+is room for iteration in terms of presenting a com-
+prehensive picture of NLP for social good, with
+an evaluation framework and guidelines. At the
+moment, researchers eager to make a beneﬁcial
+contribution need to base their research agenda
+on intuition and word of mouth recommendations,
+rather than a scientiﬁc evaluation framework.
+
+To this end, our paper presents a modest effort
+to the understanding of social good, and sketches
+thinking guidelines and heuristics for NLP for so-
+cial good. Our main goal is to answer the question:
+
+Given a speciﬁc researcher or team with
+skills s, and the set of NLP technologies
+T they can work on, what is the best
+technology t ∈ T for them to optimize
+the social good impact I?
+
+In order to answer this overall question, we take
+
+a multidisciplinary approach in our paper:
+
+• §2 relies on theories in moral philosophy to
+approach what is social good versus bad (i.e.,
+
+the sign and rough magnitude of impact I for
+a direct act a);
+
+• §3 relies on causal structure models as a
+framework to estimate I for t ∈ T , consider-
+ing that t can be an indirect cause of impact;
+• §4 relies on concepts from global priorities
+research and economics to introduce a high-
+level framework to choose a technology t that
+optimizes the social impact I;
+
+• §5 applies the above tools to analyze several
+example NLP directions, and provides a prac-
+tical guide on how to reﬂect on the social im-
+pact of NLP.
+
+We acknowledge the iterative nature of a newly
+emerging ﬁeld in NLP for social good, requir-
+ing continuing discussions on deﬁnitions and the
+development of ethical frameworks and guide-
+lines. Echoing the history of scientiﬁc develop-
+ment (Kuhn, 2012), the goal of our work is not to
+provide a perfect, quantitative, and deterministic
+answer about how to maximize social good with
+our NLP applications. The scope of our work is
+to take one step closer to a comprehensive under-
+standing, through high-level philosophies, thinking
+frameworks, together with heuristics and examples.
+
+2 What is social good?
+
+Deﬁning social good can be controversial. For ex-
+ample, if we deﬁne saving energy as social good,
+then what about people who get sick because of not
+turning on the air-conditioner on a cold day? There-
+fore, social good is context-dependent, relevant to
+people, times, and states of nature (Broome, 2017).
+This section is to provide a theoretical framework
+about the social impact I for a direct act a.
+
+2.1 Moral philosophy theories
+
+We can observe that for some acts, it is relatively
+certain to judge whether the impact is positive or
+negative. For example, solving global hunger is in
+general a positive act. Such judgement is called
+intuitionalism (Sidgwick, 1874), a school of moral
+philosophy.
+
+There are many areas of social impact that can-
+not receive consensus by intuitions. To ﬁnd ana-
+lytical solutions to these debatable topics, several
+moral philosophies have been proposed. We intro-
+duce below three categories of philosophical per-
+spectives to judge moral laws (Kagan, 2018), and
+provide the percentage of professional philosophers
+who support the theory (Bourget and Chalmers,
+
+2014):
+
+1. Deontology: emphasizes duties or rules, en-
+
+dorsed by 25.9% philosophers;
+
+2. Consequentialism: emphasizes consequences
+of acts, endorsed by 23.6% philosophers;
+3. Virtue ethics: emphasizes virtues and moral
+character, endorsed by 18.2% philosophers.
+
+Note that the above three schools, deontology, con-
+sequentialism, and virtue ethics, follows the stan-
+dard textbook introductions for normative ethics in
+the analytic philosophy tradition. It is also possible
+for future research to consider different perspec-
+tives while deﬁning social good.
+
+A practical guide for using these philosophies.
+The three perspectives provide us dimensions to
+think about the impact I of an act a, so that the
+ﬁnal decision is (hopefully) more reliable than one
+single thought which is subject to biases. Such de-
+composition practices are often used in highly com-
+plicated analyses (e.g., business decisions), such as
+radar charts to rate a decision/candidate or SMART
+goals.
+
+A practical guide for using moral philosophies
+to judge an act a is to think along each of the three
+perspectives, collect estimations of how good the
+act a is from the three dimensions, and merge them.
+For example, using NLP for healthcare to save lives
+can be good from all three perspectives, and thus it
+is an overall social good act.
+
+When merging judgements from the above philo-
+sophical views, there can be tradeoffs, such as sac-
+riﬁcing one life for ﬁve lives in the Trolley prob-
+lem (Thomson, 1976), which scores high on con-
+sequentialism but low on deontology and virtue
+ethics. One solution by the moral uncertainty the-
+ory (MacAskill et al., 2020) is to favor acts with
+more balanced judgements on all criteria, and re-
+ject acts that are completely unacceptable on any
+criterion.
+
+2.2 Principles for future AI
+
+Many agencies from academia, government, and
+industries have proposed principles for future AI
+(Jobin et al., 2019), which can be regarded as a
+practical guide by deontology. Zeng et al. (2019)
+surveyed the principles of the governance of AI
+proposed by 27 agencies. The main areas are as
+follows (with keywords):
+
+• Humanity: beneﬁcial, well-being, human
+right, dignity, freedom, education, human-
+friendly.
+
+• Privacy: personal information, data protec-
+tion, explicit conﬁrmation, control of the data,
+notice and consent.
+
+• Security: cybersecurity, hack, conﬁdential.
+• Fairness: justice, bias, discrimination.
+• Safety: validation, test, controllability.
+• Accountability: responsibility.
+• Transparency: explainable, predictable, intel-
+
+ligible.
+
+• Collaboration: partnership, dialog.
+• Share: share, equal.
+• AGI: superintelligence.
+
+3 Evaluating the indirect impact of NLP
+
+Given the general moral guide to judge an act with
+direct impacts, we now step towards the second
+stage – understanding the downstream impact of
+scientiﬁc research which typically has indirect im-
+pacts. For example, it is not easily tractable to
+estimate the impact of some linguistic theories. To
+sketch a solution, this section will ﬁrst classify NLP
+tasks by the dimension of theory→application, and
+then provide an evaluation framework for I of a
+technology t that may have indirect real-life im-
+pacts.
+
+3.1 Classifying tasks from upstream to
+
+downstream
+
+To evaluate each NLP research topic, we propose
+four stages in the theory→application develop-
+ment, as shown in Figure 1, and categorize the
+570 long papers from ACL 20202 according to the
+four stages in Figure 2. Details of the annotation
+are in Appendix A. The four stages are as follows.
+
+Stage 1. Fundamental theories. Fundamental
+theories are the foundations of knowledge, such
+as linguistic theories by Noam Chomsky. In ACL
+2020, the most prevalent topic for papers in Stage 1
+is linguistics theory in Figure 2. Importantly, Stage
+1’s main goal is the advancement of knowledge,
+and to widen the potentials for later-stage research.
+
+Stage 2. Building block tools. Moving one step
+from theory towards applications is the research
+on building block tools, which serves as important
+building blocks and toolboxes for downstream tech-
+nologies. The most frequently researched Stage-
+2 topics at ACL 2020 are information extraction,
+model design, and interpretability (in Figure 2).
+
+2https://www.aclweb.org/anthology/
+
+events/acl-2020/#2020-acl-main
+
+Figure 2: Distribution of ACL 2020 papers by the four
+stages. For each stage, we highlight the top several
+topics of the papers. We only list the top one topic
+for Stage 1 due to visual space limit. Abbreviations
+of technologies include Information Extraction (IE), In-
+terpretability (Interpret.), machine translation (Trans.),
+question answering (QA), and misinformation (Mis-
+info.).
+
+time for human fact-checkers, to aid them in more
+quickly detecting fake news through the increasing
+number of digital news articles being published.
+
+The impact of more user free time is varied. In
+the case of healthcare, NLP can free up time for
+more personalized patient care, or allow free time
+for activities of choice, such as spending time on
+passion projects or more time with family. We
+recognize these varied impacts of NLP deployment,
+and recommend user productivity as one way to
+measure it.
+
+Note that there can be positive as well as neg-
+ative impact associated with rising productivity,
+and the polarity can be decided according to Sec-
+tion 2.1. Typical positive impacts of NLP technol-
+ogy include better healthcare and well-being, and
+in some cases it indirectly helps with avoiding exis-
+tential risks, sustainability, and so on. Typical neg-
+ative impacts include more prevalent surveillance,
+propaganda, breach of privacy, and so on. For ex-
+ample, intelligent bots can improve efﬁciency at
+work (to beneﬁt economics), and bring generally
+better well-being for households, but they might
+leak user privacy (Chung et al., 2017).
+
+Thus, estimating the overall end impact of a tech-
+nology t in the Stage 4 needs to accumulate over a
+set of aspects AS:
+
+I(t) =
+
+scaleas(t) · impactas(t) ,
+
+(1)
+
+(cid:88)
+
+as∈AS
+
+where scaleas(t) is the usage scale of applica-
+tions of technology t used in the aspect as, and
+
+Figure 1: Stream of technology development from the-
+ory to application with end impacts. The end impacts
+are a distribution of use cases and their corresponding
+weighted impacts.
+
+Stage 3. Applicable tools. Applicable tools are
+pre-commercialized NLP systems which can serve
+as the backbones of real-world applications. This
+category includes NLP tasks such as dialog re-
+sponse generation, question answering, and ma-
+chine translation. The most common research top-
+ics in this category are dialog, machine translation,
+and question answering (in Figure 2).
+
+Stage 4. Deployed applications/products. De-
+ployed applications often build upon tools in Stage
+3, and wrap them with user interfaces, customer
+services, and business models. Typical examples
+of Stage-4 technologies include Amazon Echo,
+Google Translate, and so on. The top three top-
+ics of ACL 2020 papers in this category are ways
+to address misinformation (e.g., a fact checker for
+news bias), dialog, and NLP for healthcare.
+
+3.2 Estimating impact
+
+Direct impacts of Stage-4 technologies. A di-
+rect impact of NLP development is allowing users
+more free time. This is evident in automatic ma-
+chine translation, which saves the effort and time of
+human translators, or in NLP for healthcare, which
+allows doctors to more quickly sift through patient
+history. Automatic fake news detection frees up
+
+Major Classes of Use CasesProbability of Usage * Impact1Fundamental Theories(Linguistic theory, etc.)2Building Block Tools(Syntactic parsing)3Applicable Tools(Dialog response generator,machine translation model)4Deployed Applications/Products(Alexa, Google Home)Impact on Human LivesAvoidingexistential risksSustainabilityHuman rights, diversity, equalityWell-beingEducationHelping basichuman needsSaving livesExample Positive Use CasesViolenceWeaponsSuppression of free speechSurveillanceExample Negative Use CasesPropagandaHarming PeopleStream of TechnologyDevelopmentMisinfo.HealthcareDialogDialogTrans.QALinguisticsIEModelInterpret.Figure 3: Viewing the theory→application process
+with a structural causal model.
+
+stages (§3.1)
+
+broader impact statements, it will be useful and im-
+portant for researchers to have practical guidelines
+on evaluating the impact of their NLP tasks.
+
+We ﬁrst introduce some thinking steps to esti-
+
+mate the impact of research on an NLP task t:
+
+(S1) Classify the NLP task t into one of the four
+
+(S2) If t is in Stage 4, think of the set of aspects
+AS that t will impact, the scale of applica-
+tions, and aspect-speciﬁc impact magnitude.
+Finally, estimate impact using Eq. (1).
+(S2’) If t is in Stage 1-3, think of its descendant
+technologies, their success rate, and the con-
+tribution of t to them. Finally, estimate impact
+using Eq. (1) and (2).
+
+Next, we introduce some high-level heuristics to
+
+facilitate fast decisions:
+
+(H1) For earlier stages (i.e., Stage 1-2), it is chal-
+lenging to quantify the exact social impact.
+Their overall impact tends to lean towards
+positive as they create more knowledge that
+beneﬁts future technology development.
+(H2) Developers of Stage-4 technologies should be
+the most careful about ethical concerns. Enu-
+merate the use cases, and estimate the scale
+of each usage by thinking of the stakeholders,
+economic impact, and users in the market. Fi-
+nally, evaluate the ﬁnal impact before proceed-
+ing. (E.g., if the ﬁnal impact is very negative,
+then abandon or do it with restrictions).
+(H3) For Stage-3 technologies, if their Stage-4 de-
+scendants are tractable to enumerate and es-
+timate for their impacts, then aggregate the
+descendants’ impacts by Eq. 2. Otherwise,
+treat them like (H1).
+
+4 Deciding research priority
+
+There are many directions for expansion of our
+efforts for social good; however, due to limited
+resources and availability of support for each re-
+searcher, we provide a research priority list. In
+this section, we are effectively trying to answer the
+overall question proposed in Section 1. Speciﬁ-
+cally, we adopt the practice in the research ﬁeld
+global priorities (GP) (MacAskill, 2015; Greaves
+and McAskill, 2017). We ﬁrst introduce the high-
+level decision-making framework in Section 4.1,
+and then formulate these principles using technical
+terms in Section 4.2.
+
+impactas(t) is the impact of t in this aspect.
+
+Indirect
+impacts of early stage technologies.
+Although the direct impact of Stage-4 technologies
+can be estimated by Eq. (1), it is difﬁcult to cal-
+culate the impact of a technology in earlier stages
+(i.e., Stage 1-3).
+
+We can approach the calculation of indirect im-
+pacts I of an early-stage technology t by a struc-
+tural causal model. As shown in the causal graph
+G in Figure 3, each technology t is in a causal
+chain from its parent vertex set PA(t) (i.e., up-
+stream technologies that directly causes the inven-
+tion of t), to its children vertex set (i.e., downstream
+technologies directly resulting from t). Formally,
+we denote a directed (causal) path in G as a se-
+quence of distinct vertices (t1, t2, . . . , tn) such that
+ti+1 ∈ CH(ti) for all i = 1, . . . , n − 1. We call
+tn a descendant of t1. After enumerating all paths,
+we denote the set of all descendants of t as DE(t).
+Speciﬁcally, we denote all descendant nodes in
+Stage 4 as Stage-4 DE(t).
+
+Hence, the impact of any technology t is the sum
+
+of impact of all its descendants in Stage 4:
+
+I(t) =
+
+(cid:88)
+
+x∈Stage-4 DE(t)
+
+p(x) · cx(t) · I(x) ,
+
+(2)
+
+where p(x) is the probability that the descendent
+technology x can be successfully developed, cx(t)
+is the contribution of t to x, and I(x) can be cal-
+culated by Eq. (1). This formula can also be inter-
+preted from the light of do-calculus (Pearl, 1995)
+as P (X|do(t)) − P (X), for X ∈ Stage-4 DE(t),
+which means the effect of intervention do(t) on
+Stage 4 descendants.
+
+Note that Eq. (1) and (2) are meta frameworks,
+and we leave it to future work to utilize these for
+assessing the social impact of their work.
+
+3.3 Takeaways for NLP tasks
+
+With the growing interest of AI and NLP publica-
+tion venues (e.g., NeurIPS, ACL) in ethical and
+
+1234t......CH(t)......Stage-4 DE(t)PA(t)Stage4.1
+
+Important/Neglected/Tractable (INT)
+framework
+
+Notation Meaning
+
+Our thinking framework to address the research
+priority follows the practice of existing cost-beneﬁt
+analysis in GP (MacAskill, 2015; Greaves and
+McAskill, 2017), which aligns with the norms in
+established ﬁelds such as development economics,
+welfare economics, and public policy.
+
+We draw an analogy between the existing GP
+research and NLP for social good. Basically, GP
+addresses the following problem: given, for exam-
+ple, 500 billion US dollars (which is the annual
+worldwide expenditure on social good), what prior-
+ity areas should we spend on? Inspired by this prac-
+tical setting, we form an analogy to NLP research
+efforts, namely to answer the question proposed
+in Section 1 about how to attribute resources and
+efforts on NLP research for social good.
+
+The high-level intuitions are drawn from the
+Important/Neglected/Tractable (INT) framework
+(MacAskill, 2015), a commonly adopted frame-
+work in global priorities research on social good.
+Assume each agent has something to contribute
+(e.g., money, effort, etc.). It is generally effective
+to contribute to important, neglected, and tractable
+areas.
+
+4.2 Calculation of priority
+
+Although the INT framework is commonly used
+in practice of many philanthropy organizations
+(MacAskill, 2015), it will be more helpful to for-
+mulate it using mathematical terms and economic
+concepts. Note that the terms we formulate in this
+section can be regarded as elements in our pro-
+posed thinking framework, but they are not directly
+calculable.3
+
+Our end goal is to estimate the cost-effectiveness
+of contributing a unit time and effort of a certain
+researcher or team to research on the technology t.
+So far we have a meta framework to estimate the
+impacts I brought by successful development of a
+technology t. And we introduce the notations in
+Table 1.
+
+3We adapted these terms from GP. Such terms to estimate
+priority has been successfully used by real-world social good
+organizations, e.g., GiveWell, Global Priorities Institute, the
+Open Philanthropy Project (a foundation with over 10 billion
+USD investment), ReThink Priorities, 80,000 Hours Organi-
+zation. In the long run, the NLP community may potentially
+beneﬁt from aligning with GP’s terminology. Still, we do not
+recommend applying our framework in high-stake settings yet,
+since it serves only as a starting point currently.
+
+r
+T (r)
+
+t
+I(t)
+
+prog(t)
+p(t; r)
+
+An NLP researcher or research group
+The set of NLP topics that the researcher can
+pursue (limited by skills, resources, and passion)
+An NLP technology
+Social impacts brought by successful develop-
+ment of t
+The current progress of t
+Probability that research in t succeeds based on
+the skills of the researcher r
+
+p(t; r)I(t) Expected social impact of the researcher r’s
+
+∆t(r)
+
+work on t
+Improvement of t per unit resource (incl. time,
+effort, money, etc.) of the researcher r
+
+Table 1: Notations and their corresponding meanings
+used for cost-effectiveness calculation.
+
+For a researcher r, the action set per unit re-
+source is {∆t|t ∈ T (r)}. Equivalently speaking,
+they can intervene at a node t by the amount of
+∆t(r) in the structured causal graph G in Figure 3.
+
+The ﬁrst useful concept is p(t; r)I(t), the ex-
+pected social impact of research on a technology
+t. Here the success rate p(t; r) is crucial because
+most research does not necessarily produce the
+expected outcome. However, if the impact of a
+technology can be extremely large (for example,
+prevention of extinction has impact near positive
+inﬁnity), then even with a very little success rate,
+we should still devote considerable efforts into it.
+
+The second concept that is worth attention is
+the marginal impact (Pindyck et al., 1995) of one
+more unit of resources of the researcher r into the
+technology t, calculated as
+
+∆I(t; r) := I(prog(t) + ∆t(r)) − I(prog(t)) .
+
+(3)
+
+For example, if the ﬁeld associated with the tech-
+nology is almost saturated, or if many other re-
+searchers working on this ﬁeld are highly com-
+petent, then, for a certain research group, blindly
+devoting time to the ﬁeld may have little marginal
+impact. However, on the other hand, if a ﬁeld is
+important but neglected, the marginal impact of
+pushing it forward can be large. This also explains
+why researchers are passionate about creating a
+new research ﬁeld.
+
+The third useful concept is the opportunity cost
+(Palmer and Raftery, 1999) to devote researcher
+r’s resources into the technology t instead of a
+possibly more optimal technology t(cid:63). Formally,
+
+the opportunity cost is calculated as
+
+t(cid:63)(r) := arg max
+
+∆I(x(r)),
+
+x
+Cost(t; r) := ∆I(t(cid:63)(r); r) − ∆I(t; r) ,
+
+(4)
+
+(5)
+
+where t(cid:63) is the optimal technology that can bring
+the largest expected improvement of social impact.
+The opportunity cost conveys the important mes-
+sage that we should not just do good, but do the
+best, because the difference from good to best can
+be a large loss.
+
+Estimating the variables. Note that the frame-
+works we have proposed so far are at the meta level,
+useful for guiding thought experiments, and future
+research. Exact calculations are not possible with
+the current state of research in NLP for social good,
+although achievable in the future.
+
+A practical insight is that NLP researchers es-
+timate the impact of their research via qualitative
+explanations (natural language) or rough quantita-
+tive ones. For example, the introduction section of
+most NLP papers or funding proposals is a natu-
+ral language-based estimation of the impact of the
+research. Such estimations can be useful to some
+extent (Hubbard and Drummond, 2011), although
+precise indicators of impact can motivate the work
+more strongly.
+
+We can also borrow some criteria from effec-
+tive altruism, a global movement that establishes
+a philosophical framework, and also statistical
+calculations of social good. One of the estab-
+lished metrics for calculating impact is called the
+“quality-adjusted life years” (QALYs) proposed by
+MacAskill (2015). QALYs count the number of
+life years (calibrated by life quality such as health
+conditions) that an act helps to increase.
+
+5 Evaluating NLP tasks
+
+In this section, we will ﬁrst try to categorize the
+current state of NLP research for social good based
+on ACL 2020 papers, and then highlight NLP top-
+ics that are aligned with the UN’s SDGs. We will
+conclude with a practical checklist and case studies
+of common NLP tasks using this checklist.
+
+5.1 Current state of NLP research for social
+good – ACL 2020 as a case study
+
+We want to compare the ideal priority list with the
+current distribution of NLP papers for social good.
+As a case study of the current research frontier,
+we plot the topic distribution of the 89 ACL 2020
+
+Figure 4: Social good topics at ACL 2020 by countries.
+
+papers that are related to NLP for social good in
+Figure 4. We also show the portion of papers by
+the 10 countries with the most social-good papers.
+Our annotation details are in Appendix A.
+
+Illustrated in Figure 4, most social-good papers
+work on interpretability, tackling misinformation
+(e.g., fact-checking for news), and healthcare (e.g.,
+to increase the capacity of doctors). In terms of
+countries, the US has the most papers on inter-
+pretability, and no papers on NLP for education,
+NLP for legal applications, and some other topics.
+China has few papers on interpretability, although
+interpretability is the largest topic. India has no
+papers on ﬁghting misinformation, although it is
+the second largest topic. Only 5 countries have pub-
+lications across more than two social good topics.
+Please refer to Appendix B for more analyses such
+as social-good papers by academia vs. industries.
+However, compared with the UN’s SDGs
+(United Nations, 2015), the current NLP research
+(at least in the scope of ACL conference submis-
+sions) lacks attention to other important cause areas
+such as tackling global hunger, extreme poverty,
+clean water and sanitation, and clean energy. There
+are also too few research papers on NLP for educa-
+tion, although education is the 4th most important
+area in SDGs.
+
+One cause of this difference is value misalign-
+ment. Most NLP research is supported by stake-
+holders and funding agencies, which have a large
+impact on the current research trends or preferences
+in the NLP community. The perspective from so-
+cial good with a framework to calculate the priority
+list has still not reached many in the NLP commu-
+nity.
+
+Although we do not have data on expenditure
+
+Cause
+
+Annual Spending (USD)
+
+Global R&D
+Luxury Goods
+US Social Welfare
+Climate Change
+Global Poverty
+Nuclear Security
+Pandemic Prevention
+AI Safety Research
+
+1.5 trillion (UNESCO, 2017)
+1.3 trillion (D’arpizio et al., 2015)
+900 billion (Ferrara, 2011)
+>300 billion (Buchner et al., 2014)
+>250 billion (Todd, 2017)
+1-10 billion (Todd, 2017)
+1 billion (Todd, 2017)
+10 million (Todd, 2017)
+
+Table 2: Annual spending of the cause areas.
+
+Priority Example NLP research topics
+
+Poverty
+
+• Predicting povery by geo-located Wikipedia
+
+Hunger
+
+Health
+& Well-
+being
+
+articles (Sheehan et al., 2019)
+
+• Parsing fund applicant proﬁles (proposed)
+• NLP for agriculture (Yunpeng et al., 2019)
+• NLP for food allocation (proposed)
+• NLP to analyze clinical notes (Dernoncourt
+et al., 2017a,b; Luo et al., 2018; Gopinath et al.,
+2020; Leiter et al., 2020a,b)
+
+• NLP for psychotherapy and counseling (Biester
+et al., 2020; Xu et al., 2020; P´erez-Rosas et al.,
+2019)
+
+• NLP for happiness (Asai et al., 2018; Evensen
+
+et al., 2019)
+
+• Assistive speech generation (proposed)
+
+Education • NLP for educational question answering (At-
+apattu et al., 2015; Lende and Raghuwanshi,
+2016)
+
+• Improving textbooks (Agrawal et al., 2010)
+• Automated grading (Madnani and Cahill, 2018;
+
+Taghipour and Ng, 2016)
+
+• Plagiarism detection (Chong et al., 2010)
+• Tools for learners with disabilities (proposed)
+• Interpretability (K¨ohn, 2015; Belinkov et al.,
+
+Equality
+
+2017; Nie et al., 2020)
+
+• Ethics of NLP (Hovy and Spruit, 2016;
+
+Stanovsky et al., 2019; Sap et al., 2019)
+
+• NLP for low-resource languages (Zoph et al.,
+
+2016; Kim et al., 2017)
+
+• NLP on resource-limited devices (Sun et al.,
+
+2020)
+
+• NLP tools that signal bias in human language
+
+and speech (proposed)
+
+Clean
+water
+Clean
+energy
+
+(proposed)
+
+et al., 2020)
+
+• Green NLP (Strubell et al., 2019; Schwartz
+
+• NLP to analyze cultural values regarding cli-
+mate change (Jiang et al., 2017; Koenecke and
+Feliu-Fab`a, 2019)
+
+• Cross-cultural models of climate change per-
+
+ceptions (proposed)
+
+Table 3: Top priorities and some NLP research related
+to each of them. This list may not be exhaustive. We
+also propose a high-impact research problem in each of
+the areas which has received less attention so far.
+
+in each NLP subarea, we can get a glimpse of the
+value misalignment in general. Table 2 shows the
+annual spending of some cause areas. Note that
+the ranking of the expenditure does not align with
+
+our priority list for social good. For example, lux-
+ury goods are not as important as global poverty,
+but luxury goods cost 1.3 trillion USD each year,
+almost ﬁve times the expenditure in global poverty.
+
+5.2 Aligning NLP with social good
+
+In this subsection, we list the top priorities accord-
+ing to UN’s SDGs (United Nations, 2015). For
+each goal, in Table 3 we include examples of exist-
+ing NLP research, and suggest potential NLP tasks
+that can be developed (labeled as (proposed)).
+
+5.3 Checklist
+
+As a practical guide, we compile the takeaways
+of this paper into a list of heuristics that might be
+helpful for future practioners of NLP for social
+good. To inspect the social goodness of an NLP
+research direction (especially in Stage 3-4), the
+potential list of questions to answer is as follows:
+(Q1) What kind of people/process will beneﬁt from
+
+the technology?
+
+(Q2) Does it reinforce the traditional structure of
+beneﬁciaries? I.e., what groups of underpriv-
+ileged people can be beneﬁted? (e.g., by
+gender, demographics, socio-economic status,
+country, native languages, disability type)
+
+(Q3) Does it contribute to SDG priority goals such
+as poverty, hunger, health, education, equality,
+clean water, and clean energy?
+
+(Q4) Can it directly improve quality of lives? E.g.,
+how many QALYs might it result in?
+(Q5) Does it count as (a) mitigating problems
+brought by NLP, or (b) proactively helping
+out-of-NLP social problems?
+
+We conduct some case studies of NLP technologies
+using the checklist.
+
+Low-resource NLP & machine translation.
+This category includes NLP on low-resource lan-
+guages, such as NLP for Filipino (Sagum et al.,
+2019; Cruz et al., 2020), and machine translation in
+general. Because this direction expands the users
+of NLP technologies from English-speaking peo-
+ple to other languages, it beneﬁts people speaking
+these languages (Q1), and helps to narrow the gap
+between English-speaking and non-English speak-
+ing end users (Q2), although it is still likely that
+people who can afford intelligent devices will ben-
+eﬁt more than those who cannot. This category
+can contribute directly to goals such as equality
+
+• Raising public awareness of water sanitation
+
+5.4 Case studies by the checklist
+
+and education, and indirectly to other goals be-
+cause translation of documents in general helps the
+sharing of information and knowledge (Q3). It di-
+rectly improves quality of lives, for example, for
+immigrants who may have difﬁculties with the lo-
+cal language (Q4). Thus, it counts as social good
+category (b) in (Q5).
+
+interpretability,
+
+algorithmic
+Transparency,
+fairness and bias. Research in this direction can
+impact users who need more reliable decision-
+making NLP, such as the selection process for
+loans, jobs, criminal judgements, and medical
+treatments (Q1). It can shorten the waiting time of
+candidates and still make fair decisions regardless
+of spurious correlations (Q2) (Q4).
+It reduces
+inequality raised by AI, but not increasing equality
+over man-made decisions, at least by the current
+technology (Q2). Thus, it is social good category
+(a) in (Q5).
+
+Green NLP. Green NLP reduces the energy con-
+sumption of large-scale NLP models. Although
+it works towards the goal of affordable and clean
+energy (Q3) by neutralizing the negative impact of
+training NLP models, but it does not impact out-
+of-NLP energy problems. Green NLP belongs to
+social good category (a) in (Q5). It does not have
+large impacts directly targeted at (Q1), (Q2) and
+(Q4).
+
+QA & dialog. People who can afford devices em-
+bedded with intelligent agents can use it, which is
+about 48.46% of the global population (BankMy-
+Cell, 2021) (Q1). So this beneﬁts people with
+higher socio-economic status, and beneﬁts English
+speaking people more than others, not to mention
+job replacements for labor-intensive service posi-
+tions (Q2). It does not contribute to priority goals
+except for education and healthcare for people who
+can afford intelligent devices (Q3). Nonetheless, it
+can improve the quality of lives for its user group
+(Q4). It can be regarded as social good of category
+(b) in (Q5).
+
+Information extraction, NLP-powered search
+engine & summarization. This direction speeds
+up the information compilation process, which can
+increase the productivity in many areas. About
+50% of the world population have access to the
+Internet and thus can use it (Meeker, 2019) (Q1)
+(Q2). This category indirectly helps education, and
+the information compilation process of other goals
+
+(Q3). It can largely improve the lives of its user
+group because people gather information very fre-
+quently (e.g., do at least one Google search every
+day) (Q4). Thus, it belongs to social good category
+(b) in (Q5).
+
+NLP for social media. Research on social media
+provides tools for multiple parties. Social scientists
+can mine interesting trends and cultural phenom-
+ena; politicians can survey constituents’ opinions
+and inﬂuence them; companies can investigate user
+interests and expand their markets (Q1). The caveat
+of dual use is large, and heavily rely on the stake-
+holders’ intent: exploitation of the tools will lead
+to bleach of user privacy, and information manip-
+ulation, whereas good use of the tools can help
+evidence-based policy makers (social good cate-
+gory (a) in (Q5)), and help to understand the driv-
+ing principles of democratic behavior and combat
+the mechanisms that undermine it (social good cat-
+egory (b) in (Q5)). Such diverse possibilities of
+parties who use them leave (Q2) and (Q4) unan-
+swerable. Also, this research direction has limited
+(and often indirect) contribution to priorities such
+as poverty and hunger, unless the related policies
+are in heat discussion online (Q3).
+
+6 Conclusion
+
+This paper presented a meta framework to evaluate
+NLP tasks in the light of social good, and proposed
+a practical guide for practitioners in NLP. We call
+for more attention towards awareness and catego-
+rization of social impact of NLP research, and we
+envision future NLP research taking on an impor-
+tant social role and contributing to multiple priority
+areas. We also acknowledge the iterative nature
+of this emerging ﬁeld, requiring continuing discus-
+sions, improvements to our thinking framework
+and different ways to implement it in practice. We
+highlight that the goal of our work is to take one
+step closer to a comprehensive understanding of
+social good rather than introducing a deterministic
+answer about how to maximize social good with
+NLP applications.
+
+Acknowledgments
+
+We thank Bernhard Schoelkopf, Kevin Jin, and
+Qipeng Guo for insightful discussions on the main
+ideas and methodology of the paper. We thank Os-
+mond Wang for checking the economic concepts
+in the paper. We also thank Chris Brockett for
+
+checking many details in the paper. We thank the
+labmates in the LIT lab at University of Michi-
+gan, especially Laura Biester, Ian Stewart, Ashkan
+Kazemi, and Andrew Lee for constructive feed-
+back. We also thank labmates at the MIT MEDG
+group, especially William Boag and Peter Szolovits
+for their constructive feedback. We also received
+many feedbacks based on the ﬁrst version of the
+paper, – we thank Niklas Stoehr for constructive
+suggestions to help some arguments be more com-
+prehensive in the current version. We thank Jingwei
+Ni for the help with the annotation of the country
+and afﬁliation of the ACL 2020 papers.
+
+Ethical and societal implications
+
+Our paper establishes a framework to better under-
+stand the deﬁnition of social good in the context
+of NLP research, and lays out a recommended di-
+rection on how to achieve it. The contributions of
+our paper could beneﬁt a focused, organized and
+accountable development of NLP for social good.
+The data used in our work is public, and without
+privacy concerns.
+
+References
+
+Rakesh Agrawal, Sreenivas Gollapudi, Krishnaram
+Kenthapadi, Nitish Srivastava, and Raja Velu. 2010.
+In Pro-
+Enriching textbooks through data mining.
+ceedings of the First ACM Symposium on Comput-
+ing for Development, pages 1–9.
+
+Firoj Alam, Fahim Dalvi, Shaden Shaar, Nadir Durrani,
+Hamdy Mubarak, Alex Nikolov, Giovanni Da San
+Martino, Ahmed Abdelali, Hassan Sajjad, Kareem
+Darwish, et al. 2020. Fighting the covid-19 info-
+demic in social media: a holistic perspective and a
+call to arms. arXiv preprint arXiv:2007.07996.
+
+Akari Asai, Sara Evensen, Behzad Golshan, Alon Y.
+Halevy, Vivian Li, Andrei Lopatenko, Daniela
+Stepanov, Yoshihiko Suhara, Wang-Chiew Tan, and
+Yinzhan Xu. 2018. HappyDB: A corpus of 100, 000
+In Proceedings of
+crowdsourced happy moments.
+the Eleventh International Conference on Language
+Resources and Evaluation, LREC 2018, Miyazaki,
+Japan, May 7-12, 2018. European Language Re-
+sources Association (ELRA).
+
+Association for Computational Linguistics. 2021.
+
+Ethics FAQ at ACL-IJCNLP 2021.
+
+Thushari Atapattu, Katrina Falkner, and Nickolas
+Falkner. 2015. Educational question answering mo-
+tivated by question-speciﬁc concept maps. In Inter-
+national Conference on Artiﬁcial Intelligence in Ed-
+ucation, pages 13–22. Springer.
+
+BankMyCell. 2021. How many smartphones are in the
+
+world?
+
+Yonatan Belinkov, Llu´ıs M`arquez, Hassan Sajjad,
+Nadir Durrani, Fahim Dalvi, and James Glass. 2017.
+Evaluating layers of representation in neural ma-
+chine translation on part-of-speech and semantic
+In Proceedings of the Eighth In-
+tagging tasks.
+ternational Joint Conference on Natural Language
+Processing (Volume 1: Long Papers), pages 1–10,
+Taipei, Taiwan. Asian Federation of Natural Lan-
+guage Processing.
+
+Emily M Bender, Timnit Gebru, Angelina McMillan-
+Major, and Shmargaret Shmitchell. 2021. On the
+dangers of stochastic parrots: Can language models
+be too big. In Proceedings of the 2021 Conference
+on Fairness, Accountability, and Transparency.
+
+Parminder Bhatia, Kristjan Arumae, Nima Pour-
+Suyog Deshpande, Ben Snively,
+damghani,
+Mona Mona,
+Price,
+Shyam Ramaswamy, and Taha Kass-Hout. 2020.
+AWS CORD19-search: A scientiﬁc literature
+arXiv preprint
+search engine for COVID-19.
+arXiv:2007.09186.
+
+Colby Wise, George
+
+Laura Biester, Katie Matton, Janarthanan Rajendran,
+Emily Mower Provost, and Rada Mihalcea. 2020.
+Quantifying the effects of COVID-19 on mental
+In Proceedings of the 1st
+health support forums.
+Workshop on NLP for COVID-19 (Part 2) at EMNLP
+2020, Online. Association for Computational Lin-
+guistics.
+
+Su Lin Blodgett, Solon Barocas, Hal Daum´e III, and
+Hanna Wallach. 2020. Language (technology) is
+power: A critical survey of “bias” in NLP. In Pro-
+ceedings of the 58th Annual Meeting of the Asso-
+ciation for Computational Linguistics, pages 5454–
+5476, Online. Association for Computational Lin-
+guistics.
+
+David Bourget and David J Chalmers. 2014. What
+Philosophical studies,
+
+do philosophers believe?
+170(3):465–500.
+
+John Broome. 2017. Weighing goods: Equality, uncer-
+
+tainty and time. John Wiley & Sons.
+
+Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie
+Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind
+Neelakantan, Pranav Shyam, Girish Sastry, Amanda
+Askell, Sandhini Agarwal, Ariel Herbert-Voss,
+Gretchen Krueger, Tom Henighan, Rewon Child,
+Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu,
+Clemens Winter, Christopher Hesse, Mark Chen,
+Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin
+Chess, Jack Clark, Christopher Berner, Sam Mc-
+Candlish, Alec Radford, Ilya Sutskever, and Dario
+Amodei. 2020. Language models are few-shot learn-
+ers. In Advances in Neural Information Processing
+Systems 33: Annual Conference on Neural Informa-
+tion Processing Systems 2020, NeurIPS 2020, De-
+cember 6-12, 2020, virtual.
+
+Barbara Buchner, Morgan Herve-Mignucci, Chiara
+Jane Wilkinson, Martin Stadelmann,
+Trabacchi,
+Rodney Boyd, Federico Mazza, Angela Falconer,
+and Valerio Micale. 2014. Global landscape of cli-
+mate ﬁnance 2015. Climate Policy Initiative, 32.
+
+Joy Buolamwini and Timnit Gebru. 2018. Gender
+shades: Intersectional accuracy disparities in com-
+mercial gender classiﬁcation. In Conference on fair-
+ness, accountability and transparency, pages 77–91.
+PMLR.
+
+Davide Castelvecchi. 2020.
+
+Prestigious ai meeting
+
+takes steps to improve ethics of research. Nature.
+
+Irene Y Chen, Peter Szolovits, and Marzyeh Ghassemi.
+2019. Can ai help reduce disparities in general med-
+ical and mental health care? AMA journal of ethics,
+21(2):167–179.
+
+Miranda Chong, Lucia Specia, and Ruslan Mitkov.
+2010. Using natural language processing for auto-
+In Proceedings of
+matic detection of plagiarism.
+the 4th International Plagiarism Conference (IPC-
+2010).
+
+Hyunji Chung, Michaela Iorga, Jeffrey Voas, and
+Sangjin Lee. 2017. Alexa, can i trust you? Com-
+puter, 50(9):100–104.
+
+Jan Christian Blaise Cruz, Jose Kristian Resabal, James
+Lin, Dan John Velasco, and Charibeth Cheng. 2020.
+Investigating the true performance of transformers in
+low-resource languages: A case study in automatic
+corpus creation. CoRR, abs/2010.11574.
+
+Claudia D’arpizio, Federica Levato, Daniele Zito, and
+Joelle de Montgolﬁer. 2015. Luxury goods world-
+wide market study. Bain & Company’s report.
+
+Franck Dernoncourt, Ji Young Lee, and Peter Szolovits.
+2017a. NeuroNER: an easy-to-use program for
+named-entity recognition based on neural networks.
+In Proceedings of the 2017 Conference on Empiri-
+cal Methods in Natural Language Processing: Sys-
+tem Demonstrations, pages 97–102. Association for
+Computational Linguistics.
+
+Franck Dernoncourt, Ji Young Lee, Ozlem Uzuner,
+and Peter Szolovits. 2017b. De-identiﬁcation of pa-
+tient notes with recurrent neural networks. Journal
+of the American Medical Informatics Association,
+24(3):596–606.
+
+Sara Evensen, Yoshihiko Suhara, Alon Y. Halevy, Vi-
+vian Li, Wang-Chiew Tan, and Saran Mumick. 2019.
+Happiness entailment: Automating suggestions for
+well-being. In 8th International Conference on Af-
+fective Computing and Intelligent Interaction, ACII
+2019, Cambridge, United Kingdom, September 3-6,
+2019, pages 62–68. IEEE.
+
+Peter Ferrara. 2011. America’s ever expanding welfare
+
+empire. Forbes, April, 22.
+
+Anjalie Field, Shrimai Prabhumoye, Maarten Sap, Zhi-
+jing Jin, Jieyu Zhao, and Chris Brockett. 2020. 1st
+workshop on nlp for positive impact.
+
+Elizabeth Gibney. 2020. The battle for ethical ai at the
+world’s biggest machine-learning conference. Na-
+ture, 577(7792):609–609.
+
+Divya Gopinath, Monica Agrawal, Luke Murray,
+Steven Horng, David Karger, and David Sontag.
+2020. Fast, structured clinical documentation via
+contextual autocomplete. In Machine Learning for
+Healthcare Conference, pages 842–870. PMLR.
+
+Hilary Greaves and William McAskill. 2017. A re-
+search agenda for the Global Priorities Institute.
+University of Oxford, London.
+
+Tamanna Hossain, Robert L. Logan IV, Arjuna Ugarte,
+Yoshitomo Matsubara, Sean Young, and Sameer
+Singh. 2020. COVIDLies: Detecting COVID-19
+misinformation on social media. In Proceedings of
+the 1st Workshop on NLP for COVID-19 (Part 2)
+at EMNLP 2020, Online. Association for Computa-
+tional Linguistics.
+
+Dirk Hovy, Shannon Spruit, Margaret Mitchell,
+Emily M. Bender, Michael Strube, and Hanna Wal-
+lach, editors. 2017. Proceedings of the First ACL
+Workshop on Ethics in Natural Language Process-
+ing. Association for Computational Linguistics, Va-
+lencia, Spain.
+
+Dirk Hovy and Shannon L Spruit. 2016. The social
+impact of natural language processing. In Proceed-
+ings of the 54th Annual Meeting of the Association
+for Computational Linguistics (Volume 2: Short Pa-
+pers), pages 591–598.
+
+Douglas W Hubbard and David Drummond. 2011.
+How to measure anything. Wiley Online Library.
+
+Ye Jiang, Xingyi Song, Jackie Harrison, Shaun Quegan,
+and Diana Maynard. 2017. Comparing attitudes to
+climate change in the media using sentiment analy-
+sis based on latent dirichlet allocation. In Proceed-
+ings of the 2017 Workshop: Natural Language Pro-
+cessing meets Journalism, NLPmJ@EMNLP, Copen-
+hagen, Denmark, September 7, 2017, pages 25–30.
+Association for Computational Linguistics.
+
+Anna Jobin, Marcello Ienca, and Effy Vayena. 2019.
+The global landscape of ai ethics guidelines. Nature
+Machine Intelligence, 1(9):389–399.
+
+Shelly Kagan. 2018. Normative ethics. Routledge.
+
+Jackson A Killian, Bryan Wilder, Amit Sharma, Vinod
+Choudhary, Bistra Dilkina, and Milind Tambe. 2019.
+Learning to prescribe interventions for tuberculosis
+In Proceed-
+patients using digital adherence data.
+ings of the 25th ACM SIGKDD International Con-
+ference on Knowledge Discovery & Data Mining,
+pages 2430–2438.
+
+Joo-Kyung Kim, Young-Bum Kim, Ruhi Sarikaya, and
+Eric Fosler-Lussier. 2017. Cross-lingual transfer
+learning for pos tagging without cross-lingual re-
+sources. In Proceedings of the 2017 conference on
+empirical methods in natural language processing,
+pages 2832–2838.
+
+Allison Koenecke and Jordi Feliu-Fab`a. 2019. Learn-
+ing twitter user sentiments on climate change with
+limited labeled data. CoRR, abs/1904.07342.
+
+Arne K¨ohn. 2015. What’s in an embedding? analyzing
+word embeddings through multilingual evaluation.
+In Proceedings of the 2015 Conference on Empiri-
+cal Methods in Natural Language Processing, pages
+2067–2073.
+
+Thomas S Kuhn. 2012. The structure of scientiﬁc revo-
+
+lutions. University of Chicago press.
+
+Vasileios Lampos, Simon Moura, Elad Yom-Tov, Inge-
+mar J Cox, Rachel McKendry, and Michael Edel-
+stein. 2020.
+Tracking COVID-19 using online
+search. arXiv preprint arXiv:2003.08086.
+
+Jochen L Leidner and Vassilis Plachouras. 2017. Eth-
+ical by design: Ethics best practices for natural lan-
+guage processing. In Proceedings of the First ACL
+Workshop on Ethics in Natural Language Process-
+ing, pages 30–40.
+
+Richard Leiter, Enrico Santus, Zhijing Jin, Katherine
+Lee, Miryam Yusufov, Edward Moseley, Yujie Qian,
+Jiang Guo, and Charlotta Lindvall. 2020a. An arti-
+ﬁcial intelligence algorithm to identify documented
+symptoms in patients with heart failure who received
+cardiac resynchronization therapy (s717). Journal
+of Pain and Symptom Management, 59(2):537–538.
+
+Richard E Leiter, Enrico Santus, Zhijing Jin, Kather-
+ine C Lee, Miryam Yusufov, Isabel Chien, Ashwin
+Ramaswamy, Edward T Moseley, Yujie Qian, Debo-
+rah Schrag, et al. 2020b. Deep natural language pro-
+cessing to identify symptom documentation in clin-
+ical notes for patients with heart failure undergoing
+cardiac resynchronization therapy. Journal of Pain
+and Symptom Management, 60(5):948–958.
+
+Sweta P Lende and MM Raghuwanshi. 2016. Ques-
+tion answering system on education acts using nlp
+techniques. In 2016 world conference on futuristic
+trends in research and innovation for social welfare
+(Startup Conclave), pages 1–6. IEEE.
+
+Margaux Luck, Jonnie Penn, Tristan Sylvain, Mark
+Crowley, Joseph Paul Cohen, Margaux Luck, Sean
+McGregor, Myriam Cˆot´e, Valentine Goddard, Mar-
+gaux Luck, Kenny Chen, Arsene Fansi Tchango,
+Joseph Paul Cohen, and Yoshua Bengio. 2018. Ai
+for social good workshop.
+
+Yuan Luo, Yu Cheng, ¨Ozlem Uzuner, Peter Szolovits,
+and Justin Starren. 2018. Segment convolutional
+neural networks (seg-cnns) for classifying relations
+in clinical notes. Journal of the American Medical
+Informatics Association, 25(1):93–98.
+
+Michael MacAskill, Krister Bykvist, and Toby Ord.
+2020. Moral uncertainty. Oxford University Press.
+
+William MacAskill. 2015. Doing good better: Effec-
+tive altruism and a radical new way to make a differ-
+ence. Guardian Faber Publishing.
+
+Nitin Madnani and Aoife Cahill. 2018. Automated
+scoring: Beyond natural language processing.
+In
+Proceedings of the 27th International Conference on
+Computational Linguistics, pages 1099–1109.
+
+Mary Meeker. 2019. Internet trends report; 2019.
+
+Margaret Mitchell, Simone Wu, Andrew Zaldivar,
+Parker Barnes, Lucy Vasserman, Ben Hutchinson,
+Elena Spitzer, Inioluwa Deborah Raji, and Timnit
+Gebru. 2019. Model cards for model reporting. In
+Proceedings of the conference on fairness, account-
+ability, and transparency, pages 220–229.
+
+Yixin Nie, Adina Williams, Emily Dinan, Mohit
+Bansal, Jason Weston, and Douwe Kiela. 2020. Ad-
+versarial NLI: A new benchmark for natural lan-
+guage understanding. In Proceedings of the 58th An-
+nual Meeting of the Association for Computational
+Linguistics, pages 4885–4901, Online. Association
+for Computational Linguistics.
+
+Stephen Palmer and James Raftery. 1999. Opportunity
+
+cost. Bmj, 318(7197):1551–1552.
+
+Judea Pearl. 1995. Causal diagrams for empirical re-
+
+search. Biometrika, 82(4):669–688.
+
+Ver´onica P´erez-Rosas, Xinyi Wu, Kenneth Resnicow,
+and Rada Mihalcea. 2019. What makes a good coun-
+selor? learning to distinguish between high-quality
+In Pro-
+and low-quality counseling conversations.
+ceedings of the 57th Annual Meeting of the Associa-
+tion for Computational Linguistics, pages 926–935,
+Florence, Italy. Association for Computational Lin-
+guistics.
+
+Robert S Pindyck, Daniel L Rubinfeld, and Prem L
+Mehta. 1995. Microeconomics, volume 4. Prentice
+Hall Englewood Cliffs, NJ.
+
+Inioluwa Deborah Raji, Andrew Smart, Rebecca N
+White, Margaret Mitchell, Timnit Gebru, Ben
+Hutchinson, Jamila Smith-Loud, Daniel Theron, and
+Parker Barnes. 2020. Closing the ai accountability
+gap: deﬁning an end-to-end framework for internal
+In Proceedings of the 2020
+algorithmic auditing.
+Conference on Fairness, Accountability, and Trans-
+parency, pages 33–44.
+
+Ria Ambrocio Sagum, Aldrin D Ramos,
+
+and
+Monique T Llanes. 2019. Ficobu: Filipino wordnet
+construction using decision tree and language mod-
+International Journal of Machine Learning
+eling.
+and Computing, 9(1):103–107.
+
+Maarten Sap, Dallas Card, Saadia Gabriel, Yejin Choi,
+and Noah A Smith. 2019. The risk of racial bias in
+In Proceedings of the 57th
+hate speech detection.
+
+2020. Ai for social good: unlocking the opportu-
+nity for positive impact. Nature Communications,
+11(1):1–6.
+
+Hilary Townsend. 2013. Natural language processing
+and clinical outcomes: the promise and progress of
+nlp for improved care. Journal of AHIMA, 84(2):44–
+45.
+
+UNESCO. 2017. Facts and ﬁgures: R&d expenditure.
+
+United Nations. 2015. UN Sustainable Development
+
+Goals.
+
+Voicebot. 2020. Amazon Echo & Alexa stats.
+
+Lucy Lu Wang, Kyle Lo, Yoganand Chandrasekhar,
+Russell Reas, Jiangjiang Yang, Darrin Eide, Kathryn
+Funk, Rodney Kinney, Ziyang Liu, William Merrill,
+et al. 2020. Cord-19: The COVID-19 open research
+dataset. ArXiv.
+
+Charles Welch, Allison Lahnala, Veronica Perez-Rosas,
+Siqi Shen, Sarah Seraj, Larry An, Kenneth Resni-
+cow, James Pennebaker, and Rada Mihalcea. 2020.
+Expressive interviewing: A conversational system
+for coping with COVID-19. In Proceedings of the
+1st Workshop on NLP for COVID-19 (Part 2) at
+EMNLP 2020, Online. Association for Computa-
+tional Linguistics.
+
+Zhentao Xu, Ver´onica P´erez-Rosas, and Rada Mihal-
+cea. 2020.
+Inferring social media users’ mental
+health status from multimodal information. In Pro-
+ceedings of the 12th Language Resources and Eval-
+uation Conference, pages 6292–6299, Marseille,
+France. European Language Resources Association.
+
+Cui Yunpeng, Wang Jian, and Liu Juan. 2019. The de-
+velopment of deep learning based natural language
+processing (nlp) technology and applications in agri-
+culture. Journal of Agricultural Big Data, 1(1):38.
+
+Yi Zeng, Enmeng Lu, and Cunqing Huangfu. 2019.
+In Work-
+Linking artiﬁcial intelligence principles.
+shop on Artiﬁcial
+Intelligence Safety 2019 co-
+located with the Thirty-Third AAAI Conference on
+Artiﬁcial Intelligence 2019 (AAAI-19), Honolulu,
+Hawaii, January 27, 2019, volume 2301 of CEUR
+Workshop Proceedings. CEUR-WS.org.
+
+Barret Zoph, Deniz Yuret, Jonathan May, and Kevin
+Knight. 2016. Transfer learning for low-resource
+In Proceedings of the
+neural machine translation.
+2016 Conference on Empirical Methods in Natu-
+ral Language Processing, pages 1568–1575, Austin,
+Texas. Association for Computational Linguistics.
+
+annual meeting of the association for computational
+linguistics, pages 1668–1678.
+
+Roy Schwartz, Jesse Dodge, Noah A. Smith, and
+Oren Etzioni. 2020. Green ai. Commun. ACM,
+63(12):54–63.
+
+Saqib Shah and Julian Chokkattu. 2016. Microsoft
+kills AI chatbot Tay (twice) after it goes full Nazi.
+
+Evan Sheehan, Chenlin Meng, Matthew Tan, Burak
+Uzkent, Neal Jean, Marshall Burke, David B. Lo-
+bell, and Stefano Ermon. 2019.
+Predicting eco-
+nomic development using geolocated wikipedia ar-
+In Proceedings of the 25th ACM SIGKDD
+ticles.
+International Conference on Knowledge Discovery
+& Data Mining, KDD 2019, Anchorage, AK, USA,
+August 4-8, 2019, pages 2698–2706. ACM.
+
+Henry Sidgwick. 1874.
+Macmillan and Co.
+
+The methods of ethics.
+
+Gabriel Stanovsky, Noah A. Smith, and Luke Zettle-
+moyer. 2019. Evaluating gender bias in machine
+translation. In Proceedings of the 57th Annual Meet-
+ing of the Association for Computational Linguistics,
+Florence, Italy. Association for Computational Lin-
+guistics.
+
+Emma Strubell, Ananya Ganesh, and Andrew Mc-
+Energy and policy considera-
+arXiv preprint
+
+Callum. 2019.
+tions for deep learning in nlp.
+arXiv:1906.02243.
+
+Dan Su, Yan Xu, Tiezheng Yu, Farhad Bin Siddique,
+Elham Barezi, and Pascale Fung. 2020. CAiRE-
+COVID: A question answering and query-focused
+multi-document summarization system for COVID-
+19 scholarly information management. In Proceed-
+ings of the 1st Workshop on NLP for COVID-19
+(Part 2) at EMNLP 2020, Online. Association for
+Computational Linguistics.
+
+Zhiqing Sun, Hongkun Yu, Xiaodan Song, Renjie Liu,
+Yiming Yang, and Denny Zhou. 2020. Mobilebert:
+a compact task-agnostic BERT for resource-limited
+In Proceedings of the 58th Annual Meet-
+devices.
+ing of the Association for Computational Linguistics,
+ACL 2020, Online, July 5-10, 2020, pages 2158–
+2170. Association for Computational Linguistics.
+
+Kaveh Taghipour and Hwee Tou Ng. 2016. A neural
+In Proceed-
+approach to automated essay scoring.
+ings of the 2016 conference on empirical methods in
+natural language processing, pages 1882–1891.
+
+Judith Jarvis Thomson. 1976. Killing, letting die, and
+the trolley problem. The Monist, 59(2):204–217.
+
+Benjamin Todd. 2017. The case for reducing existen-
+
+tial risks.
+
+Nenad Tomaˇsev,
+
+Julien Cornebise, Frank Hutter,
+Shakir Mohamed, Angela Picciariello, Bec Con-
+nelly, Danielle CM Belgrave, Daphne Ezer,
+Fanny Cachat van der Haert, Frank Mugisha, et al.
+
+A ACL 2020 paper annotations
+
+For the case study on ACL 2020 papers, such as
+Figure 2 and 4, we collect the 570 long papers at
+ACL 2020. An NLP researcher with four years of
+research experience conducted the entire annota-
+tion, so that the categorization is consistent across
+all papers.4
+
+The ﬁrst annotation task is to categorize
+all papers into one of the four stages in the
+theory→application development. We showed the
+annotator the description of the four stages in Sec-
+tion 3.1. Next, provided with the title, abstract, and
+PDF of each paper, the annotator was asked to an-
+notate which of the four stages each paper belongs
+to. The annotator had passed a test batch before
+starting the large-scale annotation.
+
+The second annotation task is to annotate the
+research topics of the papers related to social good
+at ACL 2020. If the paper has a clear social good
+impact (89 out of 570 papers), the annotator needs
+to classify the topic of the paper into one of the
+given categories: bias mitigation, education, equal-
+ity, ﬁghting misinformation, green NLP, healthcare,
+interpretability, legal applications, low-resource
+language, mental healthcare, robustness, science
+literature parsing, and others. For the other meta
+information such as countries, or academia vs. in-
+dustry, we decide based on the information of the
+leading ﬁrst author.
+
+B More statistics about ACL 2020 papers
+
+For the case study on ACL 2020 papers, we further
+investigate the following statistics.
+
+Stage 1-4 by countries. Recall that in Figure 2
+of the main paper, we plot the distributions of pa-
+pers by the four stages, and highlight the most
+frequent topics in each stage. Additionally, it is
+also interesting to explore the distribution of stages
+for different countries. In Figure 5, we have the
+following observations:
+
+China does not have Stage-1 papers (i.e., funda-
+mental theories), although it has the second largest
+total number of papers. The reason might be that
+there are not many Chinese researchers on linguis-
+tic theories who publish at English conferences.
+
+Most countries’ number of papers in the four
+stages follows the overall trend (i.e., Stage-2 pa-
+pers > Stage-3 papers > Stage-4 papers > Stage-1
+
+4The annotation ﬁle has been uploaded to the softconf
+
+system.
+
+papers), with a few exceptions. For example, China
+has almost the same number of papers in Stage 2
+and 3, Germany has more papers in Stage 4 (i.e.,
+deployed applications) than in Stage 3, and Canada
+has the most papers in Stage 3.
+
+Figure 5: Stage 1-4 of ACL 2020 papers by countries.
+
+Social good topics by academia vs.
+industry.
+As we call for more research attention to NLP for
+social good, it is important to understand the afﬁl-
+iations behind the current social good papers. A
+coarse way is to look at the afﬁliation of the ﬁrst
+author, and inspect whether the main work of the
+paper is done by people from academia or industry.
+
+Figure 6: Social good topics at ACL 2020 by afﬁlia-
+tions.
+
+As in Figure 6, overall academia publishes sev-
+eral times more papers on social good than the
+industry. This ratio is higher than the average ra-
+tio of papers from academia out of all ACL 2020
+papers (389 from academia out of 570). Industry
+does not have ACL 2020 papers on topics such as
+
+NLP ethics. Note that using statistics from ACL
+papers alone could be limiting because researchers
+in academia typically present almost all research
+achievements through publications, but many in-
+dustry researchers do not publish in public venues
+such as ACL, although their research may impact
+various products.
+
+

@@ -31,5 +31,5 @@ export const globalStyles = globalCss({
       outline: 'none',
       opacity: 0.4,
     },
-  }
+  },
 });

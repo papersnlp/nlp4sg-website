@@ -8,11 +8,11 @@
         "type": "cards",
         "titles": [
           {
-            "title": "What is NLP for social good?", 
+            "title": "What is NLP for social good?",
             "description": "We are a group of researchers who use NLP research to tackle social problems, and help the world to be a better place."
           },
           {
-            "title": "What do we provide?", 
+            "title": "What do we provide?",
             "description": "A rich set of resources of useful NLP research and corresponding socially good applications and a network of researchers interested in NLP4SG."
           }
         ],
@@ -47,12 +47,12 @@
           {
             "text": "Contribute your opinions to <a href='http://bit.ly/nlp4sg-survey'>our ongoing survey</a> \"What is NLP for Social Good?\" "
           },
-          { 
+          {
             "text": "Survey result overview: <a href='https://docs.google.com/presentation/d/1CYvlV6joY0VfCHhr3FPysq3ZgB4FKKg_YsJj6-tVKOs/edit#slide=id.p'>\"How Current NLP Researchers Think about NLP4SG\"</a> compiled based on our NLP4SG survey."
           }
         ]
       },
-      { "type": "space"},
+      { "type": "space" },
       {
         "title": "How can I participate in NLP4SG initiative?",
         "type": "list",
@@ -112,7 +112,7 @@
             "url": "https://web.eecs.umich.edu/~mihalcea/"
           },
           {
-            "name": "Mrinmaya Sachan" ,
+            "name": "Mrinmaya Sachan",
             "description": "Assistant Professor (ETH)",
             "image": "/images/mrinmaya_sachan.jpeg",
             "url": "http://www.mrinmaya.io/"

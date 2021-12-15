@@ -1,0 +1,15 @@
+# @package _global_
+type: script 
+
+script:
+  _target_: src.scripts.json_to_ner_model.JSONToNERModel
+  config:
+    json_in_dir: ${work_dir}/data/annot_sample_size.json
+    ner_out_dir: ${work_dir}/data/ner_sample_size
+    train:
+      epochs: 50
+      batch_size: 4
+      dropout: 0.0
+
+
+
