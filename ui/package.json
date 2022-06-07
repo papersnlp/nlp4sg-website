@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@bundled-es-modules/pdfjs-dist": "^2.5.207-rc1",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.8.2",
     "@radix-ui/colors": "^0.1.7",
     "@radix-ui/react-avatar": "^0.1.1",
     "@radix-ui/react-toggle-group": "^0.1.0",
@@ -20,11 +23,13 @@
     "@react-three/fiber": "^7.0.7",
     "@stitches/react": "^1.0.0",
     "@use-gesture/react": "^10.1.1",
+    "chart.js": "^3.8.0",
     "d3": "^7.1.1",
     "graphire": "^0.0.0-beta.5",
     "next": "11.1.2",
     "next-themes": "^0.0.15",
     "react": "17.0.2",
+    "react-chartjs-2": "^4.1.0",
     "react-dom": "17.0.2",
     "react-feather": "^2.0.9",
     "react-pdf": "^5.5.0",
@@ -33,6 +38,7 @@
     "three": "^0.132.2"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.1.0",
     "@types/react": "17.0.22",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
