@@ -196,7 +196,7 @@ function valuetext(value) {
         </Grid>
         <Grid container spacing={4} >
                  
-          <Grid item xs={4}> 
+          <Grid item xs={3}> 
             <Wrap>
                 <Content>
                   <br/>
@@ -209,12 +209,19 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
+                  <br/>
+                  <br/>
                 </Content>
 
             </Wrap>
+            <Item>
+              <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 1: No Poverty
+              </Typography>
+            </Item>
           </Grid>
 
-          <Grid item xs={4}> 
+          <Grid item xs={3}> 
             <Wrap sx={{'&:before':  {
                       backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_2-1-1024x1024.jpg') `
                       }}}>
@@ -229,11 +236,18 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
+                  <br/>
+                  <br/>
                 </Content>
 
             </Wrap>
+            <Item>
+              <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 2: Zero Hunger
+              </Typography>
+            </Item>
           </Grid>
-          <Grid item xs={4}> 
+          <Grid item xs={3}> 
           <Wrap sx={{'&:before':  {
                       backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_3-1024x1024.jpg') `
                       }}}>
@@ -248,11 +262,18 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
+                  <br/>
+                  <br/>
                 </Content>
 
             </Wrap>
+            <Item>
+              <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 3: Good Health and Well-Being
+              </Typography>
+            </Item>
           </Grid>
-          <Grid item xs={4}> 
+          <Grid item xs={3}> 
           <Wrap sx={{'&:before':  {
                       backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_4-1024x1024.jpg') `
                       }}}>
@@ -267,11 +288,18 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
+                  <br/>
+                  <br/>
                 </Content>
 
             </Wrap>
+            <Item>
+              <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 4: Quality Education
+              </Typography>
+            </Item>
           </Grid>
-          <Grid item xs={4}> 
+          <Grid item xs={3}> 
           <Wrap sx={{'&:before':  {
                       backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_5-1024x1024.jpg') `
                       }}}>
@@ -286,11 +314,18 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
+                  <br/>
+                  <br/>
                 </Content>
 
             </Wrap>
+            <Item>
+              <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 5: Gender Equality
+              </Typography>
+            </Item>
           </Grid>
-          <Grid item xs={4}> 
+          <Grid item xs={3}> 
           <Wrap sx={{'&:before':  {
                       backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_6-1024x1024.jpg') `
                       }}}>
@@ -305,11 +340,18 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
+                  <br/>
+                  <br/>
                 </Content>
 
             </Wrap>
+            <Item>
+              <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 6: Clean Water and Sanitation
+              </Typography>
+            </Item>
           </Grid>
-          <Grid item xs={4}> 
+          <Grid item xs={3}> 
           <Wrap sx={{'&:before':  {
                       backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_7-1024x1024.jpg') `
                       }}}>
@@ -324,9 +366,16 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
+                  <br/>
+                  <br/>
                 </Content>
 
             </Wrap>
+            <Item>
+              <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 7: Affordable and Clean Energy
+              </Typography>
+            </Item>
           </Grid>
           
 

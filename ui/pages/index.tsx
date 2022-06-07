@@ -71,12 +71,6 @@ const Home = (props) => {
             <Text mono css={{ pt: '$3', zIndex: '1', color: '$contrast8' }}>
               Open paper visualization
             </Text>
-            <Button onClick={() => router.push('/social_needs')}>
-              <Icon.Play></Icon.Play>
-            </Button>
-            <Text mono css={{ pt: '$3', zIndex: '1', color: '$contrast8' }}>
-              Open social needs visualization
-            </Text>
           </Box>
         </Box>
 
