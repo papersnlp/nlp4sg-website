@@ -37,7 +37,7 @@ export default function Papers({ papers }) {
   const [paper, setPaper] = useState(null);
   const parallax = useRef();
   const [year, setYear] = useState(2022);
-  const labels = ['January'];
+  const labels = [''];
 
   const [data, setdata] = useState({
     labels,
