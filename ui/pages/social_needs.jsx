@@ -43,15 +43,17 @@ export default function Papers({ papers }) {
     labels,
     datasets: [
       {
-        label: 'Current proportion',
-        data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === "Gender Equality" ).map((data) => data['proportion']),
-        backgroundColor: '#ff6666',
-      },
-      {
         label: 'Expected proportion',
         data: labels.map(() => faker.datatype.number({ min: 5.88, max: 5.88 })),
         backgroundColor: '#6666ff',
       },
+
+      {
+        label: 'Current proportion',
+        data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === "Gender Equality" ).map((data) => data['proportion']),
+        backgroundColor: '#ff6666',
+      },
+
     ],
   });
   
@@ -60,14 +62,14 @@ export default function Papers({ papers }) {
       labels,
       datasets: [
         {
-          label: 'Current proportion',
-          data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === "Gender Equality" ).map((data) => data['proportion']),
-          backgroundColor: '#ff6666',
-        },
-        {
           label: 'Expected proportion',
           data: [5.8],
           backgroundColor: '#6666ff',
+        },
+        {
+          label: 'Current proportion',
+          data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === "Gender Equality" ).map((data) => data['proportion']),
+          backgroundColor: '#ff6666',
         },
       ],});
   
@@ -78,15 +80,16 @@ export default function Papers({ papers }) {
       labels,
       datasets: [
         {
-          label: 'Current proportion',
-          data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === goal ).map((data) => data['proportion']),
-          backgroundColor: '#ff6666',
-        },
-        {
           label: 'Expected proportion',
           data: [5.8],
           backgroundColor: '#6666ff',
         },
+        {
+          label: 'Current proportion',
+          data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === goal ).map((data) => data['proportion']),
+          backgroundColor: '#ff6666',
+        },
+
       ],};
   }
 
@@ -152,6 +155,17 @@ const Content = styled("div")`
 position: relative;
 `;
 
+const options={
+
+  scales: { yAxes: {title: {
+    display: true,
+    text: "% NLP4SG papers", 
+    font: {
+      size: 10
+      }
+      }
+      },
+   }}
 
 function valuetext(value) {
   return `${value}`;
@@ -159,6 +173,7 @@ function valuetext(value) {
 
   return (
     <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh'}}>
+      <Box css={{width: '100vw', height: '15vh',position:'fixed',top:'0',backgroundColor:'white',zIndex: '1'}}>
 
       <Text
         type="subtitle"
@@ -177,7 +192,8 @@ function valuetext(value) {
          <br/>
          <br/>
          <br/>
-         <Grid item xs={10}>
+         
+         <Grid item xs={10} >
             <Slider style={{ width: '90vw',left: '5%'}}
             value={year}
             onChange={event => setYear(event.target.value)}
@@ -193,7 +209,17 @@ function valuetext(value) {
             // https://mui.com/material-ui/react-slider/
 
             ></Slider>
-        </Grid>
+          </Grid>
+        </Box>
+        </Box>
+        <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+
+        <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={4} >
                  
           <Grid item xs={3}> 
@@ -202,8 +228,9 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
+
                   <br/>
-                <Bar  data={goal_specific("No Poverty")} />
+                <Bar options={options} data={goal_specific("No Poverty")} />
                   <br/>
                   <br/>
                   <br/>
@@ -230,7 +257,7 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
-                <Bar  data={goal_specific("No Hunger")} />
+                <Bar options={options} data={goal_specific("No Hunger")} />
                   <br/>
                   <br/>
                   <br/>
@@ -256,7 +283,7 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
-                <Bar  data={goal_specific("Good Health and Well-Being")} />
+                <Bar options={options} data={goal_specific("Good Health and Well-Being")} />
                   <br/>
                   <br/>
                   <br/>
@@ -282,7 +309,7 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
-                <Bar  data={goal_specific("Quality Education")} />
+                <Bar options={options} data={goal_specific("Quality Education")} />
                   <br/>
                   <br/>
                   <br/>
@@ -308,7 +335,7 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
-                <Bar  data={goal_specific("Gender Equality")}/>
+                <Bar options={options} data={goal_specific("Gender Equality")}/>
                   <br/>
                   <br/>
                   <br/>
@@ -334,7 +361,7 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
-                <Bar  data={goal_specific("Clean Water and Sanitation")} />
+                <Bar options={options} data={goal_specific("Clean Water and Sanitation")} />
                   <br/>
                   <br/>
                   <br/>
@@ -360,7 +387,7 @@ function valuetext(value) {
                   <br/>
                   <br/>
                   <br/>
-                <Bar  data={goal_specific("Affordable and Clean Energy")} />
+                <Bar options={options} data={goal_specific("Affordable and Clean Energy")} />
                   <br/>
                   <br/>
                   <br/>
@@ -377,7 +404,273 @@ function valuetext(value) {
               </Typography>
             </Item>
           </Grid>
-          
+          <Grid item xs={3}> 
+          <Wrap sx={{'&:before':  {
+                      backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_8-1024x1024.jpg') `
+                      }}}>
+                <Content>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                <Bar options={options} data={goal_specific("Decent Work and Economic Growth")} />
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                </Content>
+
+            </Wrap>
+            <Item>
+              <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 8: Decent Work and Economic Growth
+              </Typography>
+            </Item>
+          </Grid>
+          <Grid item xs={3}> 
+          <Wrap sx={{'&:before':  {
+                      backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_9-1024x1024.jpg') `
+                      }}}>
+                <Content>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                <Bar options={options} data={goal_specific("Industry, Innovation and Infrastrucure")} />
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                </Content>
+
+            </Wrap>
+            <Item>
+              <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 9: Industry, Innovation and Infrastrucure
+              </Typography>
+            </Item>
+          </Grid>
+          <Grid item xs={3}> 
+          <Wrap sx={{'&:before':  {
+                      backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_10-1024x1024.jpg') `
+                      }}}>
+                <Content>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                <Bar options={options} data={goal_specific("Reduced Inequalities")} />
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                </Content>
+
+            </Wrap>
+            <Item>
+            <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 10: Reduced Inequalities
+              </Typography>
+
+            </Item>
+          </Grid>
+          <Grid item xs={3}> 
+          <Wrap sx={{'&:before':  {
+                      backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_11-1024x1024.jpg') `
+                      }}}>
+                <Content>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                <Bar options={options} data={goal_specific("Sustainable Cities and Communities")} />
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                </Content>
+
+            </Wrap>
+            <Item>
+            <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 11: Sustainable Cities and Communities
+              </Typography>
+
+            </Item>
+          </Grid>
+          <Grid item xs={3}> 
+          <Wrap sx={{'&:before':  {
+                      backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_12-1024x1024.jpg') `
+                      }}}>
+                <Content>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                <Bar options={options} data={goal_specific("Responsible Consumption and Production")} />
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                </Content>
+
+            </Wrap>
+            <Item>
+            <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 12: Responsible Consumption and Production
+              </Typography>
+
+            </Item>
+          </Grid>
+          <Grid item xs={3}> 
+          <Wrap sx={{'&:before':  {
+                      backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_13-1024x1024.jpg') `
+                      }}}>
+                <Content>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                <Bar options={options} data={goal_specific("Climate Action")} />
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                </Content>
+
+            </Wrap>
+            <Item>
+            <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 13: Climate Action
+              </Typography>
+
+            </Item>
+          </Grid>
+          <Grid item xs={3}> 
+          <Wrap sx={{'&:before':  {
+                      backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_14-1024x1024.jpg') `
+                      }}}>
+                <Content>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                <Bar options={options} data={goal_specific("Life Below Water")} />
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                </Content>
+
+            </Wrap>
+            <Item>
+            <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 14: Life Below Water
+              </Typography>
+
+            </Item>
+          </Grid>
+          <Grid item xs={3}> 
+          <Wrap sx={{'&:before':  {
+                      backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_15-1024x1024.jpg') `
+                      }}}>
+                <Content>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                <Bar options={options} data={goal_specific("Life on Land")} />
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                </Content>
+
+            </Wrap>
+            <Item>
+            <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 15: Life on Land
+              </Typography>
+
+            </Item>
+          </Grid>
+          <Grid item xs={3}> 
+          <Wrap sx={{'&:before':  {
+                      backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_16-1024x1024.jpg') `
+                      }}}>
+                <Content>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                <Bar options={options} data={goal_specific("Peace, Justice and Strong Institutions")} />
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                </Content>
+
+            </Wrap>
+            <Item>
+
+            <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 16: Peace, Justice and Strong Institutions
+              </Typography>
+            </Item>
+          </Grid>
+          <Grid item xs={3}> 
+          <Wrap sx={{'&:before':  {
+                      backgroundImage:  `url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_17-1024x1024.jpg') `
+                      }}}>
+                <Content>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                <Bar options={options} data={goal_specific("Partnership for the Goals")} />
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                </Content>
+
+            </Wrap>
+            <Item>
+              <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
+                          Goal 17: Partnership for the Goals
+              </Typography>
+            </Item>
+          </Grid>
 
         </Grid>
       </Box>
