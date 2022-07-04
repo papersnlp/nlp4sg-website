@@ -7,7 +7,7 @@ import * as Icon from 'react-feather';
 import { useTheme } from 'next-themes';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import PapersPlot from '@components/PapersPlot';
-import papers from 'public/papers.json';
+import papers from 'public/json/papers.json';
 import Paper from '@mui/material/Paper';
 import { HelpCircle } from 'react-feather';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
@@ -18,14 +18,12 @@ import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import { Chart as ChartJS } from 'chart.js/auto'
 import { Chart }            from 'react-chartjs-2'
-import data_tasks from 'public/json/tasks_scirex.json';
-import data_methods from 'public/json/methods_scirex.json';
+import data_tasks from 'public/tasks_scirex.json';
+import data_methods from 'public/methods_scirex.json';
 import { ImageBitmapLoader } from 'three';
 import GetPapers from './GetPapers';
 
 // or
-import Sidenav from 'rsuite/Sidenav';
-import Nav from 'rsuite/Nav';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -175,22 +173,7 @@ const handleSelect = (eventKey) => {
   return (
     <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh'}}>
       <Box css={{  width: '30vw', height: '10vh'}}>
-        <Sidenav defaultOpenKeys={['3', '4']} onSelect={handleSelect}>
-          <Sidenav.Body>
-            <Nav activeKey="1">
-              <Nav.Item eventKey="1" goal_local="Climate Action">
-              Climate Action
-              </Nav.Item>
-              <Nav.Item eventKey="2" goal_local="Gender Equality">
-              Gender Equality
-              </Nav.Item>
-              <Nav.Item eventKey="3" goal_local="Quality Education">
-              Quality Education
-              </Nav.Item>
-              
-            </Nav>
-          </Sidenav.Body>
-        </Sidenav>
+
       </Box>
     <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh'}}>
       <Grid container spacing={4} >
