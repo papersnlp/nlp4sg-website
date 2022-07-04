@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { useState, useEffect } from "react";
-import papers from 'public/json/papers_goals.json';
+import papers from 'public/papers_goals.json';
 import Highlighter from "react-highlight-words";
 // get posts from online api
 // it's return a json file
