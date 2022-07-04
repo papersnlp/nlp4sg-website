@@ -7,7 +7,7 @@ import * as Icon from 'react-feather';
 import { useTheme } from 'next-themes';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import PapersPlot from '@components/PapersPlot';
-import papers from 'public/papers.json';
+import papers from 'public/json/papers.json';
 import Paper from '@mui/material/Paper';
 import { HelpCircle } from 'react-feather';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
@@ -18,16 +18,16 @@ import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import { Chart as ChartJS } from 'chart.js/auto'
 import { Chart }            from 'react-chartjs-2'
-import data_papers from 'public/json/proportions.json';
+import { useRouter } from 'next/router';
+import data_papers from 'public/proportions.json';
+import data_people from 'public/proportions_people.json';
+import data_survey from 'public/proportions_survey.json';
 import { ImageBitmapLoader } from 'three';
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+import Sankey_chart from './sankey';
+import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import Navbar from 'react-bootstrap/Navbar'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
 
 
 
@@ -38,57 +38,42 @@ export default function Papers({ papers }) {
   const parallax = useRef();
   const [year, setYear] = useState(2022);
   const labels = [''];
-
-  const [data, setdata] = useState({
-    labels,
-    datasets: [
-      {
-        label: 'Expected proportion',
-        data: labels.map(() => faker.datatype.number({ min: 5.88, max: 5.88 })),
-        backgroundColor: '#6666ff',
-      },
-
-      {
-        label: 'Current proportion',
-        data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === "Gender Equality" ).map((data) => data['proportion']),
-        backgroundColor: '#ff6666',
-      },
-
-    ],
-  });
   
-  useEffect(() => {
-    setdata({
-      labels,
-      datasets: [
-        {
-          label: 'Expected proportion',
-          data: [5.8],
-          backgroundColor: '#6666ff',
-        },
-        {
-          label: 'Current proportion',
-          data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === "Gender Equality" ).map((data) => data['proportion']),
-          backgroundColor: '#ff6666',
-        },
-      ],});
+  const [data, setdata] = useState();
+  const router = useRouter();
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
   
-  }, [year]);
 
   function goal_specific(goal) {
     return {
       labels,
       datasets: [
         {
-          label: 'Expected proportion',
-          data: [5.8],
+          label: '# People suffering',
+          yAxisID: 'y1',
+          extended_label: '# People suffering (Millions)',
+          data: data_people.filter((a) => a.Goal === goal ).map((data) => data['Num_people_suffering']),
           backgroundColor: '#6666ff',
         },
         {
-          label: 'Current proportion',
+          label: '% NLP4SG papers',
+          yAxisID: 'y2',
+          extended_label: '% NLP4SG papers that help this goal',
           data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === goal ).map((data) => data['proportion']),
           backgroundColor: '#ff6666',
         },
+        /*{
+          label: '% Researchers',
+          extended_label: '% Researchers that think we should pursue this goal',
+          data: data_survey.filter((a) => a.Goal === goal ).map((data) => data['Normalized_proportion']),
+          backgroundColor: '#85e085',
+        },*/
 
       ],};
   }
@@ -128,6 +113,8 @@ export default function Papers({ papers }) {
 
   const Wrap = styled("Item")`
   position: relative;
+  display: block;
+  background-size: cover;
   &:before {
     content: ' ';
     display: block;
@@ -137,9 +124,9 @@ export default function Papers({ papers }) {
     width: 100%;
     height: 100%;
     opacity: 0.2;
-    background-image: url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_1-1024x1024.jpg');
     background-repeat: no-repeat;
     background-position: 50% 0;
+    background-image: url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_1-1024x1024.jpg');
     background-size: cover;
   }
 `;
@@ -157,15 +144,61 @@ position: relative;
 
 const options={
 
-  scales: { yAxes: {title: {
-    display: true,
-    text: "% NLP4SG papers", 
-    font: {
-      size: 10
-      }
-      }
+  scales: { 
+    y1: {
+      type: 'linear',
+      display: true,
+      position: 'left',
+      min: 0,
+        max: 7000,
+        title: {
+          display: true,
+          text: '# People Suffering'
+        }
+
+    },
+    y2: {
+      type: 'linear',
+      display: true,
+      position: 'right',
+      min: 0,
+        max: 45,
+        title: {
+          display: true,
+          text: 'NLP Papers'
+        },
+      // grid line settings
+      grid: {
+        drawOnChartArea: false, // only want the grid lines for one axis to show up
       },
-   }}
+    },
+   },
+  plugins: {
+    tooltip: {
+      enabled: true,
+      callbacks: {
+              label: function (tooltipItems, data) {
+                console.log(tooltipItems)
+                    return  tooltipItems.dataset.extended_label+": "+Math.round(tooltipItems.raw*100)/100;
+              }
+      }
+    }
+  }
+}
+const Button = styled('button', {
+  borderRadius: '$round',
+  width: '$5',
+  height: '$5',
+  border: 'none',
+  bc: '$primary',
+  color: '$contrast1',
+  cursor: 'pointer',
+  position: 'relative',
+  zIndex: 1,
+  '&:hover': {
+    opacity: 0.7,
+  },
+});
 
 function valuetext(value) {
   return `${value}`;
@@ -173,28 +206,39 @@ function valuetext(value) {
 
   return (
     <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh'}}>
-      <Box css={{width: '100vw', height: '15vh',position:'fixed',top:'0',backgroundColor:'white',zIndex: '1'}}>
+
+   
+      <Box css={{width: '100vw', height: '22.5vh',position:'fixed',backgroundColor:'white',zIndex: '1'}}>
+    <Navbar bg="dark" variant="dark" fixed="top" css={{zIndex: '1'}}>
+    <Container>
+    <Nav className="me-auto">
+      <Nav.Link href="/social_needs">NLP4SG UN Goals</Nav.Link><br/>
+      <Nav.Link href="/sankey">NLP4SG Overview</Nav.Link><br/>
+      <Nav.Link href="/sankey_org">NLP4SG Organizations</Nav.Link>
+    </Nav>
+    </Container>
+  </Navbar>
 
       <Text
         type="subtitle"
         css={{
           position: 'absolute',
-          top: '0',
           textAlign: 'center',
           width: '100vw',
           pt: '$4',
           px: '$3',
         }}
       >
-        Visualization of Existing NLP4SG Research Papers
-      </Text>
+        Visualization of NLP4SG Research Papers Tracking              
+      </Text> 
        <Box sx={{ flexGrow: 1 }}>
          <br/>
          <br/>
          <br/>
          
+         
          <Grid item xs={10} >
-            <Slider style={{ width: '90vw',left: '5%'}}
+            <Slider style={{ width: '85vw',left: '5%'}}
             value={year}
             onChange={event => setYear(event.target.value)}
             aria-label="Year"
@@ -218,10 +262,16 @@ function valuetext(value) {
          <br/>
          <br/>
          <br/>
-
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
         <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={4} >
-                 
+
+        <Grid container spacing={4} > 
+
+
           <Grid item xs={3}> 
             <Wrap>
                 <Content>
@@ -230,7 +280,10 @@ function valuetext(value) {
                   <br/>
 
                   <br/>
-                <Bar options={options} data={goal_specific("No Poverty")} />
+                 
+                  <Bar options={options} data={goal_specific("No Poverty")} />
+             
+                
                   <br/>
                   <br/>
                   <br/>
@@ -241,7 +294,7 @@ function valuetext(value) {
                 </Content>
 
             </Wrap>
-            <Item>
+            <Item  onClick={() => router.push('/sankey')}>
               <Typography gutterBottom variant="subtitle1" component="div" css={{position: 'relative' }}>
                           Goal 1: No Poverty
               </Typography>
@@ -673,6 +726,7 @@ function valuetext(value) {
           </Grid>
 
         </Grid>
+
       </Box>
     </Box>
   );
