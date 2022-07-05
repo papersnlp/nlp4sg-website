@@ -62,10 +62,10 @@ export default function Papers({ papers }) {
           backgroundColor: '#6666ff',
         },
         {
-          label: '% NLP4SG papers',
+          label: '# NLP4SG papers',
           yAxisID: 'y2',
-          extended_label: '% NLP4SG papers that help this goal',
-          data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === goal ).map((data) => data['proportion']),
+          extended_label: '# NLP ACL anthology papers that help this goal',
+          data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === goal ).map((data) => data['papers']),
           backgroundColor: '#ff6666',
         },
         /*{
@@ -162,10 +162,10 @@ const options={
       display: true,
       position: 'right',
       min: 0,
-        max: 45,
+        max: 120,
         title: {
           display: true,
-          text: 'NLP Papers'
+          text: '# NLP Papers'
         },
       // grid line settings
       grid: {
