@@ -19,7 +19,7 @@ import { faker } from '@faker-js/faker';
 import { Chart as ChartJS } from 'chart.js/auto'
 import { Chart }            from 'react-chartjs-2'
 import { useRouter } from 'next/router';
-import data_papers from 'public/proportions.json';
+import data_papers from 'public/proportions1.json';
 import data_people from 'public/proportions_people.json';
 import data_survey from 'public/proportions_survey.json';
 import { ImageBitmapLoader } from 'three';
@@ -162,7 +162,7 @@ const options={
       display: true,
       position: 'right',
       min: 0,
-        max: 120,
+        max: 400,
         title: {
           display: true,
           text: '# NLP Papers'
