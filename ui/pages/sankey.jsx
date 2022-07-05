@@ -80,6 +80,7 @@ function valuetext(value) {
   <Menu iconShape="square">
     <MenuItem onClick={() => router.push('/social_needs')}>UN Goals </MenuItem>
     <MenuItem onClick={() => router.push('/sankey')}>NLP4SG </MenuItem>
+    <MenuItem onClick={() => router.push('/sankey_org')}>NLP4SG org</MenuItem>
   </Menu>
 </ProSidebar>
       <Box css={{width: '90vw', height: '100vh',position:'fixed',top:'0',backgroundColor:'white',left:'8%'}}>
