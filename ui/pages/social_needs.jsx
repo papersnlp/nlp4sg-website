@@ -19,7 +19,7 @@ import { faker } from '@faker-js/faker';
 import { Chart as ChartJS } from 'chart.js/auto'
 import { Chart }            from 'react-chartjs-2'
 import { useRouter } from 'next/router';
-import data_papers from 'public/proportions1.json';
+import data_papers from 'public/proportions2.json';
 import data_people from 'public/proportions_people.json';
 import data_survey from 'public/proportions_survey.json';
 import { ImageBitmapLoader } from 'three';
@@ -37,9 +37,11 @@ export default function Papers({ papers }) {
   const [paper, setPaper] = useState(null);
   const parallax = useRef();
   const [year, setYear] = useState(2022);
+  const [slideryear, setsliderYear] = useState(2022);
   const labels = [''];
   
   const [data, setdata] = useState();
+  const [RadioSelect, setRadioSelect] = useState(false);
   const router = useRouter();
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -48,6 +50,13 @@ export default function Papers({ papers }) {
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
+  const setRadio = () => {
+    setRadioSelect(!RadioSelect)
+  };
+  
+  useEffect(() => {
+    if (RadioSelect==false){setYear(slideryear);}else{setYear(2022);}
+  }, [slideryear,RadioSelect]);
   
 
   function goal_specific(goal) {
@@ -200,6 +209,10 @@ const Button = styled('button', {
   },
 });
 
+
+
+
+
 function valuetext(value) {
   return `${value}`;
 }
@@ -224,23 +237,37 @@ function valuetext(value) {
         css={{
           position: 'absolute',
           textAlign: 'center',
+          top:10,
           width: '100vw',
           pt: '$4',
           px: '$3',
         }}
       >
-        Visualization of NLP4SG Research Papers Tracking              
+        Visualization of NLP4SG Research Papers Tracking     
+        <div>{year}</div>
+                 <div >
+              <input
+                type='checkbox'
+                id='bar'
+                name='chart'
+                checked={RadioSelect}
+                onClick={setRadio}
+              />
+              <label htmlFor="bar">All years</label>
+            </div>         
       </Text> 
+
+      
        <Box sx={{ flexGrow: 1 }}>
          <br/>
          <br/>
          <br/>
-         
+
          
          <Grid item xs={10} >
             <Slider style={{ width: '85vw',left: '5%'}}
-            value={year}
-            onChange={event => setYear(event.target.value)}
+            value={slideryear}
+            onChange={event => setsliderYear(event.target.value)}
             aria-label="Year"
             defaultValue={2012}
             getAriaValueText={valuetext}
