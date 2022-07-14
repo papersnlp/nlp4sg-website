@@ -7,6 +7,7 @@ import * as Icon from 'react-feather';
 import { useTheme } from 'next-themes';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import papers from 'public/json/papers.json';
+import order from 'public/order_sankey.json';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Sankey, {
@@ -72,7 +73,9 @@ position: relative;
 function valuetext(value) {
   return `${value}`;
 }
-
+const customPalette = ['#0000c5','#ff2100','#de0000','#0095dd','#ffc900','#00bc00','#00aaa8','#75ff00','#fc0000','#00aa9d','#cf0000',
+'#00b200','#49ff00','#7e008f','#f0ea00','#cc1c1c','#ff7500','#00e400','#ff9d00','#00c400','#00ec00','#009c00','#00a700','#00a0c7','#7a008b','#e4f100','#ff5100','#b0ff00','#83009a','#d8f500','#009d1d','#41004b','#ffad00','#002fdd','#3800a3','#00a13d','#0000d1','#58009f','#0080dd','#009cd3',
+'#670075','#fbd500','#f2f2f2','#830094','#cccccc','#00aa95','#00a6b7','#e90000','#0fff00','#0000b5','#cc5c5c','#d30000','#f10000','#000000','#cc9c9c','#0054dd','#ffbd00','#c8fb00','#008add','#f5df00','#0078dd','#0d00a8','#00f700','#00cf00','#1c0020','#00a668','#0009dd','#d80000','#f2f2f2'];
   return (
     
     <Box css={{ bc: '$contrast2', width: '90vw', height: '100vh'}}>
@@ -86,10 +89,12 @@ function valuetext(value) {
       <Box css={{width: '90vw', height: '100vh',position:'fixed',top:'0',backgroundColor:'white',left:'8%'}}>
       <Grid item xs={10} >
       <Sankey id="sankey" css={{ height: '100vh',width: '90vw'}}
+      palette={customPalette}
         dataSource={data2}
         sourceField="source"
         targetField="target"
         weightField="weight"
+        sortData ={order}
         title="NLP Research Activity"
         
       >

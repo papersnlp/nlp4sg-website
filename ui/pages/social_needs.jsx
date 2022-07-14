@@ -19,8 +19,9 @@ import { faker } from '@faker-js/faker';
 import { Chart as ChartJS } from 'chart.js/auto'
 import { Chart }            from 'react-chartjs-2'
 import { useRouter } from 'next/router';
-import data_papers from 'public/proportions1.json';
+import data_papers from 'public/proportions2.json';
 import data_people from 'public/proportions_people.json';
+import data_priority from 'public/social_needs_priorities.json';
 import data_survey from 'public/proportions_survey.json';
 import { ImageBitmapLoader } from 'three';
 import Sankey_chart from './sankey';
@@ -37,9 +38,11 @@ export default function Papers({ papers }) {
   const [paper, setPaper] = useState(null);
   const parallax = useRef();
   const [year, setYear] = useState(2022);
+  const [slideryear, setsliderYear] = useState(2022);
   const labels = [''];
-  
+
   const [data, setdata] = useState();
+  const [RadioSelect, setRadioSelect] = useState(true);
   const router = useRouter();
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -48,6 +51,20 @@ export default function Papers({ papers }) {
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
+  const setRadio = () => {
+    setRadioSelect(!RadioSelect)
+  };
+  const  setsliderradio = (val) => {
+    console.log(val)
+    setsliderYear(val)
+    setRadioSelect(false)
+  };
+
+
+  
+  useEffect(() => {
+    if (RadioSelect==false){setYear(slideryear);}else{setYear("All years");}
+  }, [slideryear,RadioSelect]);
   
 
   function goal_specific(goal) {
@@ -55,25 +72,39 @@ export default function Papers({ papers }) {
       labels,
       datasets: [
         {
-          label: '# People suffering',
+          label: 'Priority score',
           yAxisID: 'y1',
-          extended_label: '# People suffering (Millions)',
-          data: data_people.filter((a) => a.Goal === goal ).map((data) => data['Num_people_suffering']),
+          extended_label: 'Priority score',
+          additionalinfo: '',
+          data: data_priority.filter((a) => a.Goal === goal ).map((data) => data['priority_score']),
           backgroundColor: '#6666ff',
         },
-        {
-          label: '# NLP4SG papers',
+       {
+          label: '% People suffering',
           yAxisID: 'y2',
-          extended_label: '# NLP ACL anthology papers that help this goal',
-          data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === goal ).map((data) => data['papers']),
-          backgroundColor: '#ff6666',
+          extended_label: '% World population suffering',
+          additionalinfo: '# People suffering (millions): '+Math.round(data_people.filter((a) => a.Goal === goal ).map((data) => data['Num_people_suffering'])*10)/10,
+          
+          data: data_people.filter((a) => a.Goal === goal ).map((data) => data['proportion_people']),
+          backgroundColor: 'green',
         },
-        /*{
-          label: '% Researchers',
+        {
+          label: '% NLP Researchers',
+          yAxisID: 'y2',
           extended_label: '% Researchers that think we should pursue this goal',
+          additionalinfo: '',
           data: data_survey.filter((a) => a.Goal === goal ).map((data) => data['Normalized_proportion']),
           backgroundColor: '#85e085',
-        },*/
+        },
+        {
+          label: '% NLP4SG papers',
+          yAxisID: 'y2',
+          extended_label: '% NLP ACL papers that help this goal',
+          additionalinfo: '# NLP ACL papers: '+data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === goal ).map((data) => data['papers']),
+          data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === goal ).map((data) => data['proportion']*100),
+          backgroundColor: '#ff6666',
+        },
+
 
       ],};
   }
@@ -150,10 +181,10 @@ const options={
       display: true,
       position: 'left',
       min: 0,
-        max: 7000,
+        max: 100,
         title: {
           display: true,
-          text: '# People Suffering'
+          text: 'Score'
         }
 
     },
@@ -162,10 +193,10 @@ const options={
       display: true,
       position: 'right',
       min: 0,
-        max: 400,
+        max: 100,
         title: {
           display: true,
-          text: '# NLP Papers'
+          text: '% Percentage'
         },
       // grid line settings
       grid: {
@@ -178,8 +209,11 @@ const options={
       enabled: true,
       callbacks: {
               label: function (tooltipItems, data) {
-                console.log(tooltipItems)
-                    return  tooltipItems.dataset.extended_label+": "+Math.round(tooltipItems.raw*100)/100;
+                var multistringText=[tooltipItems.dataset.extended_label+": "+Math.round(tooltipItems.raw*100)/100];
+                if (tooltipItems.dataset.additionalinfo!=''){
+                  multistringText.push(tooltipItems.dataset.additionalinfo);
+                }
+                return  multistringText
               }
       }
     }
@@ -200,6 +234,10 @@ const Button = styled('button', {
   },
 });
 
+
+
+
+
 function valuetext(value) {
   return `${value}`;
 }
@@ -209,7 +247,7 @@ function valuetext(value) {
 
    
       <Box css={{width: '100vw', height: '22.5vh',position:'fixed',backgroundColor:'white',zIndex: '1'}}>
-    <Navbar bg="dark" variant="dark" fixed="top" css={{zIndex: '1'}}>
+    <Navbar bg="dark" variant="dark" fixed="top" css={{zIndex: '100'}}>
     <Container>
     <Nav className="me-auto">
       <Nav.Link href="/social_needs">NLP4SG UN Goals</Nav.Link><br/>
@@ -224,23 +262,39 @@ function valuetext(value) {
         css={{
           position: 'absolute',
           textAlign: 'center',
+          top:10,
           width: '100vw',
           pt: '$4',
           px: '$3',
+          zIndex: '-1',
         }}
       >
-        Visualization of NLP4SG Research Papers Tracking              
+        Visualization of NLP4SG Research Papers Tracking     
+        <div>{year}</div>   
       </Text> 
+
+      
        <Box sx={{ flexGrow: 1 }}>
          <br/>
          <br/>
-         <br/>
-         
+
          
          <Grid item xs={10} >
+         <div     style={{   display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',textAlign: 'center'}}>
+              <input
+                type='checkbox'
+                id='bar'
+                name='chart'
+                checked={RadioSelect}
+                onClick={setRadio}
+              />
+              <label htmlFor="bar" >All years</label>
+            </div>      
             <Slider style={{ width: '85vw',left: '5%'}}
-            value={year}
-            onChange={event => setYear(event.target.value)}
+            value={slideryear}
+            onChange={event => setsliderradio(event.target.value)}
             aria-label="Year"
             defaultValue={2012}
             getAriaValueText={valuetext}
