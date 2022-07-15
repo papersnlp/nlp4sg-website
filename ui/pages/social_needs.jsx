@@ -72,14 +72,14 @@ export default function Papers({ papers }) {
       labels,
       datasets: [
         {
-          label: 'Priority score',
+          label: 'Importance Yang et al. (2020)',
           yAxisID: 'y1',
-          extended_label: 'Priority score',
+          extended_label: 'Importance rated by Yang et al. (2020)',
           additionalinfo: '',
           data: data_priority.filter((a) => a.Goal === goal ).map((data) => data['priority_score']),
           backgroundColor: '#6666ff',
         },
-       {
+       /*{
           label: '% People suffering',
           yAxisID: 'y2',
           extended_label: '% World population suffering',
@@ -87,21 +87,21 @@ export default function Papers({ papers }) {
           
           data: data_people.filter((a) => a.Goal === goal ).map((data) => data['proportion_people']),
           backgroundColor: 'green',
-        },
+        },*/
         {
           label: '% NLP Researchers',
           yAxisID: 'y2',
-          extended_label: '% Researchers that think we should pursue this goal',
+          extended_label: '% Researchers that think we should pursue this goal: '+Math.round(data_survey.filter((a) => a.Goal === goal ).map((data) => data['Normalized_proportion'])*10)/10,
           additionalinfo: '',
-          data: data_survey.filter((a) => a.Goal === goal ).map((data) => data['Normalized_proportion']),
+          data: data_survey.filter((a) => a.Goal === goal ).map((data) => data['Normalized_proportion']+3),
           backgroundColor: '#85e085',
         },
         {
           label: '% NLP4SG papers',
           yAxisID: 'y2',
-          extended_label: '% NLP ACL papers that help this goal',
+          extended_label: '% NLP ACL papers that help this goal'+": "+Math.round(data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === goal ).map((data) => (data['proportion']*100))*10)/10,
           additionalinfo: '# NLP ACL papers: '+data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === goal ).map((data) => data['papers']),
-          data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === goal ).map((data) => data['proportion']*100),
+          data: data_papers.filter((a) => a.year === year ).filter((a) => a.Goal === goal ).map((data) => (data['proportion']*100)+3),
           backgroundColor: '#ff6666',
         },
 
@@ -209,7 +209,7 @@ const options={
       enabled: true,
       callbacks: {
               label: function (tooltipItems, data) {
-                var multistringText=[tooltipItems.dataset.extended_label+": "+Math.round(tooltipItems.raw*100)/100];
+                var multistringText=[tooltipItems.dataset.extended_label];
                 if (tooltipItems.dataset.additionalinfo!=''){
                   multistringText.push(tooltipItems.dataset.additionalinfo);
                 }
@@ -270,7 +270,7 @@ function valuetext(value) {
         }}
       >
         Visualization of NLP4SG Research Papers Tracking     
-        <div>{year}</div>   
+        <div>Current visualization showing: <span style={{fontWeight: 'bold'}}>{year}</span></div>   
       </Text> 
 
       
