@@ -91,7 +91,7 @@ export default function Papers({ papers }) {
         {
           label: '% NLP Researchers',
           yAxisID: 'y2',
-          extended_label: '% Researchers that think we should pursue this goal: '+Math.round(data_survey.filter((a) => a.Goal === goal ).map((data) => data['Normalized_proportion'])*10)/10,
+          extended_label: '% NLP Researchers that think we should pursue this goal: '+Math.round(data_survey.filter((a) => a.Goal === goal ).map((data) => data['Normalized_proportion'])*10)/10,
           additionalinfo: '',
           data: data_survey.filter((a) => a.Goal === goal ).map((data) => data['Normalized_proportion']+3),
           backgroundColor: '#85e085',
