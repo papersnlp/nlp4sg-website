@@ -73,9 +73,9 @@ position: relative;
 function valuetext(value) {
   return `${value}`;
 }
-const customPalette = ['#0000c5','#ff2100','#de0000','#0095dd','#ffc900','#00bc00','#00aaa8','#75ff00','#fc0000','#00aa9d','#cf0000',
-'#00b200','#49ff00','#7e008f','#f0ea00','#cc1c1c','#ff7500','#00e400','#ff9d00','#00c400','#00ec00','#009c00','#00a700','#00a0c7','#7a008b','#e4f100','#ff5100','#b0ff00','#83009a','#d8f500','#009d1d','#41004b','#ffad00','#002fdd','#3800a3','#00a13d','#0000d1','#58009f','#0080dd','#009cd3',
-'#670075','#fbd500','#f2f2f2','#830094','#cccccc','#00aa95','#00a6b7','#e90000','#0fff00','#0000b5','#cc5c5c','#d30000','#f10000','#000000','#cc9c9c','#0054dd','#ffbd00','#c8fb00','#008add','#f5df00','#0078dd','#0d00a8','#00f700','#00cf00','#1c0020','#00a668','#0009dd','#d80000','#f2f2f2'];
+const customPalette = ['#ecef00','#0000c5','#ee0000','#ffa900','#ff7500','#00aa8d','#f9d700','#49ff00','#ff5100','#00a3bf','#009b13','#00aaa8','#0025dd','#0041dd','#ffcd00','#cc0c0c','#008add','#00a97d',
+'#84ff00','#830094','#009f33','#00d200','#b0ff00','#ffb500','#0000d1','#00e200','#dc0000','#d80000','#00a400','#700080','#00a7b3','#00da00','#1c0020','#cc6c6c','#dcf400','#63009e','#0082dd','#c4fc00','#7f0090','#f1e700','#00c700','#00fc00','#00aa95','#380040','#009adb','#870098','#f5df00','#f2f2f2','#fe0000','#0300aa','#cc9c9c','#0078dd','#1dff00','#000000','#ff9900',
+'#009c00','#e60000','#00aaa0','#f60000','#d40000','#009fcb','#ffc100','#0092dd','#0000dd','#4300a2','#d00000','#2300a6','#d0f800','#0000b9','#00b700','#00ea00','#005ddd','#7b008c','#00bf00','#540060','#ff2d00','#00f400','#00a55d','#f2f2f2'];
   return (
     
     <Box css={{ bc: '$contrast2', width: '90vw', height: '100vh'}}>
@@ -105,7 +105,7 @@ const customPalette = ['#0000c5','#ff2100','#de0000','#0095dd','#ffc900','#00bc0
         </Tooltip>
 
         <Link
-          colorMode="gradient">
+          colorMode="gradient" border={{width:0.01}}>
         </Link>
         <Node
           width={10}
@@ -127,7 +127,7 @@ export async function getStaticProps(context) {
 
 function customizeLinkTooltip(info) {
   return {
-    html: `<b>From:</b> ${info.source}<br/><b>To:</b> ${info.target}<br/><b>Weight:</b> ${info.weight}`,
+    html: `<b>From:</b> ${info.source}<br/><b>To:</b> ${info.target}<br/><b># Weighted papers:</b> ${info.weight}`,
   };
 }
 
