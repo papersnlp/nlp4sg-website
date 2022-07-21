@@ -74,7 +74,7 @@ export default function Papers({ papers }) {
         {
           label: 'Importance Yang et al. (2020)',
           yAxisID: 'y1',
-          extended_label: 'Importance rated by Yang et al. (2020)',
+          extended_label: 'Importance rated by Yang et al. (2020):  '+Math.round(data_priority.filter((a) => a.Goal === goal ).map((data) => data['priority_score'])*10)/10,
           additionalinfo: '',
           data: data_priority.filter((a) => a.Goal === goal ).map((data) => data['priority_score']),
           backgroundColor: '#6666ff',
@@ -180,7 +180,7 @@ const options={
       type: 'linear',
       display: true,
       position: 'left',
-      min: 0,
+      min: 30,
         max: 100,
         title: {
           display: true,
