@@ -1,9 +1,7 @@
-import dynamic from 'next/dynamic';
 import { useEffect, useState, useRef } from 'react';
 import { Box, Text, Span, Separator, List } from '@styles/components';
 
 import { styled } from '@mui/material/styles';
-import * as Icon from 'react-feather';
 import { useTheme } from 'next-themes';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import papers from 'public/json/papers.json';
@@ -16,9 +14,11 @@ import Sankey, {
   Node,
 } from 'devextreme-react/sankey';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-
-import  data2   from 'public/sankey_no_org.json';
+import GetPapers from './GetPapers';
+import data2 from 'public/sankey_no_org.json';
+import names from 'public/names.json';
 import { useRouter } from 'next/router';
+import Navbar from './navbar';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -28,8 +28,6 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-
-
 export default function Sankey_chart({ papers }) {
   const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -37,9 +35,7 @@ export default function Sankey_chart({ papers }) {
   const parallax = useRef();
   const [year, setYear] = useState(2022);
   const labels = [''];
-  
-  
-
+  const [info, setinfo] = useState({ "goal": "", "task": "", "method": "" });
 
   const Wrap = styled("Item")`
   position: relative;
@@ -58,63 +54,122 @@ export default function Sankey_chart({ papers }) {
     background-size: cover;
   }
 `;
-const Wrap1 = styled(Wrap)`
+  const Wrap1 = styled(Wrap)`
 &:before {
   background-image: url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_2-1-1024x1024.jpg');
 }
 `;
 
-
-const router = useRouter();
-const Content = styled("div")`
+  const router = useRouter();
+  const Content = styled("div")`
 position: relative;
 `;
 
-function valuetext(value) {
-  return `${value}`;
-}
-const customPalette = ['#ecef00','#0000c5','#ee0000','#ffa900','#ff7500','#00aa8d','#f9d700','#49ff00','#ff5100','#00a3bf','#009b13','#00aaa8','#0025dd','#0041dd','#ffcd00','#cc0c0c','#008add','#00a97d',
-'#84ff00','#830094','#009f33','#00d200','#b0ff00','#ffb500','#0000d1','#00e200','#dc0000','#d80000','#00a400','#700080','#00a7b3','#00da00','#1c0020','#cc6c6c','#dcf400','#63009e','#0082dd','#c4fc00','#7f0090','#f1e700','#00c700','#00fc00','#00aa95','#380040','#009adb','#870098','#f5df00','#f2f2f2','#fe0000','#0300aa','#cc9c9c','#0078dd','#1dff00','#000000','#ff9900',
-'#009c00','#e60000','#00aaa0','#f60000','#d40000','#009fcb','#ffc100','#0092dd','#0000dd','#4300a2','#d00000','#2300a6','#d0f800','#0000b9','#00b700','#00ea00','#005ddd','#7b008c','#00bf00','#540060','#ff2d00','#00f400','#00a55d','#f2f2f2'];
+  function valuetext(value) {
+    return `${value}`;
+  }
+  const handleClick = (e) => {
+    var node_type_source = names.filter((a) => a.name == e.target.connection.source)[0]['node_type'];
+    var node_source = names.filter((a) => a.name == e.target.connection.source)[0]['name'];
+    var node_type_target = names.filter((a) => a.name == e.target.connection.target)[0]['node_type'];
+    var node_target = names.filter((a) => a.name == e.target.connection.target)[0]['name'];
+    var goal = "";
+    var task = "";
+    var method = "";
+    var info_data = { "goal": goal, "task": task, "method": method }
+    if (node_source == "Other tasks") { node_source = "" }
+    if (node_target == "Other tasks" || node_target == "Other methods") { node_target = "" }
+    info_data[node_type_source.toLowerCase()] = node_source
+    info_data[node_type_target.toLowerCase()] = node_target
+    setinfo(info_data)
+    const anchor = document.querySelector('#papers')
+    anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+  const handleClickNode = (e) => {
+    var node_type = names.filter((a) => a.name == e.target.label)[0]['node_type']
+    var node = names.filter((a) => a.name == e.target.label)[0]['name']
+    var goal = "";
+    var task = "";
+    var method = "";
+    if (node_type == "Goal") {
+      goal = node;
+    } else if (node_type == "Task") {
+      task = node;
+    } else {
+      method = node;
+    }
+    setinfo({ "goal": goal, "task": task, "method": method })
+    const anchor = document.querySelector('#papers')
+    anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+
+  const customPalette = ['#00ac00', '#d30000', '#00aa98', '#cc9c9c', '#ff4500', '#00a97d', '#00a4bb', '#00aaab', '#d80000', '#670075', '#00aaa3', '#009fcb', '#00ca00', '#00aa8d', '#ffa900', '#ccf900', '#58ff00', '#0000d1', '#00fc00', '#0070dd',
+    '#0092dd', '#63009e', '#004bdd', '#ecef00', '#009a00', '#0025dd', '#cc5c5c', '#1c0020', '#ff1500', '#0000dd', '#fcd200', '#00a200', '#ce0000', '#0000b1', '#ff9900', '#e60000', '#7e008f', '#0000c1', '#ff7500', '#dc0000', '#ffb900', '#79008a',
+    '#f2f2f2', '#00dc00', '#41004b', '#00a353', '#009adb', '#cc1c1c', '#00e700', '#00f200', '#f1e700', '#bcff00', '#1dff00', '#009e28', '#830094', '#0d00a8', '#007ddd', '#93ff00', '#3800a3', '#870098', '#00b700', '#dcf400', '#ffc900', '#00d400', '#f10000', '#00bf00', '#fc0000', '#000000', '#f2f2f2'];
   return (
-    
-    <Box css={{ bc: '$contrast2', width: '90vw', height: '100vh'}}>
+
+    <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh' }}>
+
+      <Navbar />
+
+      {/*
       <ProSidebar>
   <Menu iconShape="square">
     <MenuItem onClick={() => router.push('/social_needs')}>UN Goals </MenuItem>
     <MenuItem onClick={() => router.push('/sankey')}>NLP4SG </MenuItem>
     <MenuItem onClick={() => router.push('/sankey_org')}>NLP4SG org</MenuItem>
   </Menu>
-</ProSidebar>
-      <Box css={{width: '90vw', height: '100vh',position:'fixed',top:'0',backgroundColor:'white',left:'8%'}}>
-      <Grid item xs={10} >
-      <Sankey id="sankey" css={{ height: '100vh',width: '90vw'}}
-      palette={customPalette}
-        dataSource={data2}
-        sourceField="source"
-        targetField="target"
-        weightField="weight"
-        sortData ={order}
-        title="NLP Research Activity"
-        
-      >
-        <Tooltip
-          enabled={true}
-          customizeLinkTooltip={customizeLinkTooltip}
-        >
-        </Tooltip>
+</ProSidebar> */}
+      <Box css={{ width: '97vw', height: '100vh', top: '0', backgroundColor: 'white', left: '18%' }}>
+        <br />
+        <br />
+        <Grid item xs={11} >
+          <Sankey id="sankey" css={{ height: '100vh', width: '97vw' }}
+            palette={customPalette}
+            dataSource={data2}
+            sourceField="source"
+            targetField="target"
+            weightField="weight"
+            sortData={order}
+            title="NLP Research Activity"
+            onLinkClick={handleClick}
+            onNodeClick={handleClickNode}
+          >
+            <Tooltip
+              enabled={true}
+              customizeLinkTooltip={customizeLinkTooltip}
+              customizeNodeTooltip={customizeNodeTooltip}
+            >
+            </Tooltip>
 
-        <Link
-          colorMode="gradient" border={{width:0.01}}>
-        </Link>
-        <Node
-          width={10}
-          padding={20}>
-        </Node>
+            <Link
+              colorMode="gradient" border={{ width: 0.01 }}>
+            </Link>
+            <Node
+              width={10}
+              padding={14}>
+            </Node>
 
-      </Sankey>
-      </Grid>
+          </Sankey>
+        </Grid>
+        <br />
+        <br />
+        <Grid item xs={8}>
+          <br />
+          <div id="papers" >
+            <Text
+              type="subtitle"
+              css={{
+                textAlign: 'center'
+              }}>
+              List of NLP4SG Papers
+            </Text>
+          </div>
+          <br />
+          <GetPapers info={info} ></GetPapers>
+        </Grid>
       </Box>
+
     </Box>
   );
 }
@@ -127,7 +182,13 @@ export async function getStaticProps(context) {
 
 function customizeLinkTooltip(info) {
   return {
-    html: `<b>From:</b> ${info.source}<br/><b>To:</b> ${info.target}<br/><b># Weighted papers:</b> ${info.weight}`,
+    html: `<b>From:</b> ${info.source}<br/><b>To:</b> ${info.target}<br/><b># Weighted papers:</b> ${Math.round(info.weight * 10) / 10}`,
+  };
+}
+
+function customizeNodeTooltip(info) {
+  return {
+    html: `<b>${info.label}</b><br/><b>Incoming weight:</b> ${Math.round(info.weightIn * 10) / 10}<br/><b>Outgoing weight:</b> ${Math.round(info.weightOut * 10) / 10}`,
   };
 }
 

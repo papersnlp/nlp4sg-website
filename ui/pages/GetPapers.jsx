@@ -1,72 +1,85 @@
 import React, { Component } from 'react';
 import { useState, useEffect } from "react";
-import papers from 'public/papers_goals.json';
+import papers from 'public/papers_features.json';
 import Highlighter from "react-highlight-words";
-// get posts from online api
-// it's return a json file
-//class GetPapers extends Component {
-//    constructor(props){
-//        super(props);
-//        this.state = {            
-//            posts :posts            
-//        };
-//    }
-const GetPapers = ({ goal }) => {
+import Pagination from '@mui/material/Pagination';
+
+
+const GetPapers = ({ info }) => {
     const [data, setData] = useState([]);
+    const [datapage, setDatapage] = useState([]);
+    const [page, setPage] = useState(1);
+    const handleChange = (event, value) => {
+        setDatapage(data.slice((value - 1) * 100, (value) * 100));
+        setPage(value);
+    };
     useEffect(() => {
-        
-            setData(papers.filter((a) => a.Goal ==goal ));
-        
-      }, [goal]);
-        //const {posts} = this.state;
-        return(
-            <div>
-                <ol className="item">
+        var data_filtered = papers
+        if (info["goal"] != "") {
+            data_filtered = data_filtered.filter((a) => a.Goal == info["goal"]);
+        }
+        if (info["task"] != "") {
+            data_filtered = data_filtered.filter((a) => a.center_task.includes(info["task"]));
+        }
+        if (info["method"] != "") {
+            data_filtered = data_filtered.filter((a) => a.center_method.includes(info["method"]));
+        }
+        setData(data_filtered);
+        setDatapage(data_filtered.slice(0, 100));
+        setPage(1);
+
+    }, [info]);
+    return (
+        <div css={{ align: 'center' }}>
+            <div style={{ textAlign: 'center' }}>
+                {info["goal"] != "" && <text><b>Goal: </b>{info["goal"]}</text>}&emsp;
+                {info["task"] != "" && <text><b>Task: </b>{info["task"]} </text>}&emsp;
+                {info["method"] != "" && <text><b>Method: </b>{info["method"]}</text>}
+            </div>
+            <ol className="item" start={((page - 1) * 100) + 1}>
                 {
-                    data.map(post => (
-                        <li key={post.url} align="start">
+                    datapage.map(post => (
+                        <li key={page + post.ID} align="start">
                             <div>
                                 <Highlighter
                                     className="title"
-                                    highlightClassName="YourHighlightClass"
-                                    searchWords={post.Task.concat(post.Method)}
+                                    highlightClassName="HighlightClass"
+                                    unhighlightClassName="HighlightClass"
+                                    searchWords={post.tasks.concat(post.methods)}
                                     autoEscape={true}
-                                    textToHighlight={post.title}
+                                    textToHighlight={post.title_clean}
                                 />
-                 
-                                <p className="body">TASK: 
-                                {post.Task.map((child, i) => (
-                                 <text> {child},,</text> 
-                                ))} </p>
+
+                                <p className="body"><b>Goal:</b>
+                                    <text> {post.Goal} </text></p>
+
+                                <p className="body"><b>Tasks:</b>
+                                    <text> {post.tasks.join(", ")}</text>
+                                </p>
+
+                                <p className="body"><b>Methods:</b>
+                                    <text> {post.methods.join(", ")}</text>
+                                </p>
 
                                 <Highlighter
                                     className="body"
-                                    highlightClassName="YourHighlightTask"
-                                    searchWords={post.Task}
+                                    highlightClassName="HighlightAbstract"
+                                    searchWords={post.tasks.concat(post.methods)}
                                     autoEscape={true}
-                                    textToHighlight={post.abstract}
+                                    textToHighlight={post.abstract_clean}
                                 />
-
-                                <p className="body">METHOD: 
-                                {post.Method.map((child, i) => (
-                                 <text> {child},,</text> 
-                                ))} </p>
-
-                                <Highlighter
-                                    className="body"
-                                    highlightClassName="YourHighlightMethod"
-                                    searchWords={post.Method}
-                                    autoEscape={true}
-                                    textToHighlight={post.abstract}
-                                />
-
+                                <br />
+                                <br />
                             </div>
                         </li>
                     ))
                 }
-                </ol>
+            </ol>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <Pagination className="d-flex justify-content-center" count={Math.ceil(data.length / 100)} page={page} onChange={handleChange} />
             </div>
-        );
-  };
-  
-  export default GetPapers;
+        </div>
+    );
+};
+
+export default GetPapers;
