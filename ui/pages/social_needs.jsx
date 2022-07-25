@@ -237,10 +237,10 @@ position: relative;
   }
 
   return (
-    <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh' }}>
+    <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh' ,backgroundColor: 'white'}}>
 
 
-      <Box css={{ width: '100vw', height: '27vh', position: 'fixed', backgroundColor: 'white', zIndex: '1' }}>
+      <Box css={{ width: '100vw', height: '23vh', position: 'fixed', backgroundColor: 'white', zIndex: '1' }}>
         {/*
     <Navbar bg="dark" variant="dark" fixed="top" css={{zIndex: '100'}}>
     <Container>
@@ -251,7 +251,7 @@ position: relative;
     </Nav>
     </Container>
   </Navbar>*/}
-        <Navbar />
+        <Navbar title={"Visualization of NLP4SG Research Papers Tracking"}/>
         <Text
           type="subtitle"
           css={{
@@ -264,8 +264,6 @@ position: relative;
             zIndex: '-1',
           }}
         >
-
-          Visualization of NLP4SG Research Papers Tracking
 
           <div>
           <div style={{
@@ -285,12 +283,12 @@ position: relative;
             Current visualization showing: <span style={{ fontWeight: 'bold' }}>{year}</span></div>
         </Text>
 
-        <Box sx={{ flexGrow: 1 }}>
+        <Box >
 
 
           <Grid item xs={10} >
 
-            <Slider style={{ width: '85vw', left: '5%',top:'180px' }}
+            <Slider style={{ width: '85vw', left: '5%',top:'145px' }}
               value={slideryear}
               onChange={event => setsliderradio(event.target.value)}
               aria-label="Year"
@@ -310,7 +308,7 @@ position: relative;
       </Box>
       <br />
 
-      <Box style={{marginTop:'210px' }}>
+      <Box style={{marginTop:'230px' }}>
 
         <Grid container spacing={4} >
 
