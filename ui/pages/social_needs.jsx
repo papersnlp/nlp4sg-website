@@ -240,7 +240,7 @@ position: relative;
     <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh' ,backgroundColor: 'white'}}>
 
 
-      <Box css={{ width: '100vw', height: '21vh', position: 'fixed', backgroundColor: 'white', zIndex: '1' }}>
+      <Box css={{ width: '100vw', height: '190px', position: 'fixed', backgroundColor: 'white', zIndex: '1' }}>
         {/*
     <Navbar bg="dark" variant="dark" fixed="top" css={{zIndex: '100'}}>
     <Container>
@@ -307,7 +307,7 @@ position: relative;
       </Box>
       <br />
 
-      <Box style={{marginTop:'200px' }}>
+      <Box style={{marginTop:'200px',backgroundColor: 'white' }}>
 
         <Grid container spacing={4} >
 
