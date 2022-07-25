@@ -121,7 +121,7 @@ position: relative;
     <MenuItem onClick={() => router.push('/sankey_org')}>NLP4SG org</MenuItem>
   </Menu>
 </ProSidebar> */}
-      <Box css={{ width: '97vw', height: '100vh', top: '0', backgroundColor: 'white', left: '18%' }}>
+      <Box css={{ width: '100vw', height: '100vh', top: '0', backgroundColor: 'white', left: '18%' }}>
         <br />
         <br />
         <Grid item xs={11} style={{ marginTop:'20px'}} >

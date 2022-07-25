@@ -240,7 +240,7 @@ position: relative;
     <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh' ,backgroundColor: 'white'}}>
 
 
-      <Box css={{ width: '100vw', height: '23vh', position: 'fixed', backgroundColor: 'white', zIndex: '1' }}>
+      <Box css={{ width: '100vw', height: '21vh', position: 'fixed', backgroundColor: 'white', zIndex: '1' }}>
         {/*
     <Navbar bg="dark" variant="dark" fixed="top" css={{zIndex: '100'}}>
     <Container>
@@ -253,15 +253,14 @@ position: relative;
   </Navbar>*/}
         <Navbar title={"Visualization of NLP4SG Research Papers Tracking"}/>
         <Text
-          type="subtitle"
           css={{
             position: 'absolute',
             textAlign: 'center',
             top: 34,
             width: '100vw',
-            pt: '$4',
+            pt: '$3',
             px: '$3',
-            zIndex: '-1',
+            zIndex: '-1'
           }}
         >
 
@@ -288,7 +287,7 @@ position: relative;
 
           <Grid item xs={10} >
 
-            <Slider style={{ width: '85vw', left: '5%',top:'145px' }}
+            <Slider style={{ width: '85vw', left: '5%',top:'125px' }}
               value={slideryear}
               onChange={event => setsliderradio(event.target.value)}
               aria-label="Year"
@@ -308,7 +307,7 @@ position: relative;
       </Box>
       <br />
 
-      <Box style={{marginTop:'230px' }}>
+      <Box style={{marginTop:'200px' }}>
 
         <Grid container spacing={4} >
 
