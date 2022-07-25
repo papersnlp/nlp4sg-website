@@ -21,7 +21,7 @@ import { Chart }            from 'react-chartjs-2'
 import data_tasks from 'public/tasks_scirex.json';
 import data_methods from 'public/methods_scirex.json';
 import { ImageBitmapLoader } from 'three';
-import GetPapers from './GetPapers';
+import GetPapers from '../components/GetPapers';
 
 // or
 
