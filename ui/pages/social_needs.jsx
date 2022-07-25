@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import { useEffect, useState, useRef } from 'react';
 import { Box, Text, Span, Link, Separator, List } from '@styles/components';
 
@@ -22,7 +23,7 @@ import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 //import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import Navbar from './navbar';
+import Navbar from '../components/navbar';
 
 
 export default function Papers({ papers }) {

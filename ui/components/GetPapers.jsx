@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import React, { Component } from 'react';
 import { useState, useEffect } from "react";
 import papers from 'public/papers_features.json';
@@ -5,7 +6,8 @@ import Highlighter from "react-highlight-words";
 import Pagination from '@mui/material/Pagination';
 
 
-const GetPapers = ({ info }) => {
+const GetPapers = (props) => {
+    const { info } = props;
     const [data, setData] = useState([]);
     const [datapage, setDatapage] = useState([]);
     const [page, setPage] = useState(1);

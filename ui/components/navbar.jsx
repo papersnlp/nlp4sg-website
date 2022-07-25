@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
@@ -7,7 +8,7 @@ import { margin } from '@mui/system';
 import { useRouter } from 'next/router';
 
 
-function navbar() {
+const navbar = (props) => {
   const [sidebar, setSidebar] = useState(false);
   const router = useRouter();
   const showSidebar = () => setSidebar(!sidebar);

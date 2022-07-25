@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import { useEffect, useState, useRef } from 'react';
 import { Box, Text, Span, Separator, List } from '@styles/components';
 
@@ -14,11 +15,11 @@ import Sankey, {
   Node,
 } from 'devextreme-react/sankey';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import GetPapers from './GetPapers';
+import GetPapers from '../components/GetPapers';
 import data2 from 'public/sankey_no_org.json';
 import names from 'public/names.json';
 import { useRouter } from 'next/router';
-import Navbar from './navbar';
+import Navbar from '../components/navbar';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
