@@ -111,7 +111,7 @@ position: relative;
 
     <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh' }}>
 
-      <Navbar />
+      <Navbar title={"NLP Research Activity"} />
 
       {/*
       <ProSidebar>
@@ -124,15 +124,15 @@ position: relative;
       <Box css={{ width: '97vw', height: '100vh', top: '0', backgroundColor: 'white', left: '18%' }}>
         <br />
         <br />
-        <Grid item xs={11} >
-          <Sankey id="sankey" css={{ height: '100vh', width: '97vw' }}
+        <Grid item xs={11} style={{ marginTop:'20px'}} >
+          <Sankey id="sankey" css={{ height: '105vh', width: '97vw'}}
             palette={customPalette}
             dataSource={data2}
             sourceField="source"
             targetField="target"
             weightField="weight"
             sortData={order}
-            title="NLP Research Activity"
+            title=""
             onLinkClick={handleClick}
             onNodeClick={handleClickNode}
           >
