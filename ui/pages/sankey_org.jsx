@@ -15,7 +15,7 @@ import Sankey, {
   Node,
 } from 'devextreme-react/sankey';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-
+import Navbar from '../components/navbar';
 import  data2   from 'public/sankey_json.json';
 import { useRouter } from 'next/router';
 
@@ -75,22 +75,29 @@ function valuetext(value) {
 
   return (
     
-    <Box css={{ bc: '$contrast2', width: '90vw', height: '100vh'}}>
+
+    <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh' }}>
+
+      <Navbar title={"NLP Research Activity"} />
+
+      {/*
       <ProSidebar>
   <Menu iconShape="square">
     <MenuItem onClick={() => router.push('/social_needs')}>UN Goals </MenuItem>
     <MenuItem onClick={() => router.push('/sankey')}>NLP4SG </MenuItem>
     <MenuItem onClick={() => router.push('/sankey_org')}>NLP4SG org</MenuItem>
   </Menu>
-</ProSidebar>
-      <Box css={{width: '90vw', height: '100vh',position:'fixed',top:'0',backgroundColor:'white',left:'8%'}}>
-      <Grid item xs={10} >
+</ProSidebar> */}
+      <Box css={{ width: '100vw', height: '100vh', top: '0', backgroundColor: 'white', left: '18%' }}>
+        <br />
+        <br />
+        <Grid item xs={11} style={{ marginTop:'20px'}} >
       <Sankey id="sankey" css={{ height: '100vh',width: '90vw'}}
         dataSource={data2}
         sourceField="source"
         targetField="target"
         weightField="weight"
-        title="NLP Research Activity"
+        title=""
         
       >
         <Tooltip
