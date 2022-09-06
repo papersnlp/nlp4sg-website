@@ -29,7 +29,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function Sankey_chart({ papers }) {
+export default function papers_test({ papers }) {
   const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [paper, setPaper] = useState(null);

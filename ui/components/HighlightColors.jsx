@@ -83,10 +83,7 @@ export default function HighlightColors ({
     searchWords,
     textToHighlight
   })
-  console.log(searchWords)
-  console.log(searchWords2)
-  console.log(chunks)
-  console.log(textToHighlight)
+
   const HighlightTag = highlightTag
   let highlightIndex = -1
   let highlightClassNames = ''
@@ -129,7 +126,6 @@ export default function HighlightColors ({
           ? Object.assign({}, highlightStyle, activeStyle)
           : highlightStyle
 
-        console.log(text)
         /*var searchRegex  = new RegExp(searchWords.join('|'), 'g');
         var numOfMatches = text.match(searchRegex);
         if (numOfMatches){
@@ -137,9 +133,6 @@ export default function HighlightColors ({
             highlightClassNames="HighlightClass2"
           }
         }*/
-        console.log("s2:")
-        console.log(searchWords2)
-        console.log(text)
         const chunks2 = findAll({
           autoEscape,
           caseSensitive,
@@ -154,7 +147,6 @@ export default function HighlightColors ({
           searchWords:searchWords3,
           textToHighlight:text
         })
-        console.log(chunks2)
         var gold=0
         var predict=0
         if (chunks2.length>1){
