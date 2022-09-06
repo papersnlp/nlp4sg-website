@@ -5,7 +5,19 @@
   
 .HighlightClass {
     font-weight: bold;
+    background-color: #0091FF;
 }
+
+.HighlightClass2 {
+  font-weight: bold;
+  background-color: #e5ff00f3;
+}
+
+.HighlightClass3 {
+  font-weight: bold;
+  background-color: #09ff00e0;
+}
+
 
 .navbar {
   background-color: #0091FF;
