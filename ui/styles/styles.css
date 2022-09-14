@@ -3,9 +3,9 @@
     width: 99vw;
   }
   
-.HighlightClass {
+.HighlightClass5{
     font-weight: bold;
-    background-color: #0091FF;
+    background-color: #d4a3e0;
 }
 
 .HighlightClass2 {
@@ -17,7 +17,14 @@
   font-weight: bold;
   background-color: #09ff00e0;
 }
-
+.HighlightClass4 {
+  font-weight: bold;
+  background-color: #a5f5a3e0;
+}
+.HighlightClass{
+  font-weight: bold;
+  background-color: #e0a3a8;
+}
 
 .navbar {
   background-color: #0091FF;
