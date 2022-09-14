@@ -15,7 +15,8 @@ import Sankey, {
   Node,
 } from 'devextreme-react/sankey';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import GetPaperstest from '../components/GetPaperstest';
+import GetPaperstest from '../components/GetPaperstest';GetPaperscorref
+import GetPaperscorref from '../components/GetPaperscorref';
 import data2 from 'public/sankey_no_org.json';
 import names from 'public/names.json';
 import { useRouter } from 'next/router';
@@ -136,7 +137,7 @@ position: relative;
             </Text>
           </div>
           <br />
-          <GetPaperstest info={info} ></GetPaperstest>
+          <GetPaperscorref info={info} ></GetPaperscorref>
         </Grid>
       </Box>
 
