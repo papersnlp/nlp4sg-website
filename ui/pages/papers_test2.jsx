@@ -16,7 +16,7 @@ import Sankey, {
 } from 'devextreme-react/sankey';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import GetPaperstest from '../components/GetPaperstest';
-import GetPaperscorref from '../components/GetPaperscorref';
+import GetPaperscorref2 from '../components/GetPaperscorref2';
 import data2 from 'public/sankey_no_org.json';
 import names from 'public/names.json';
 import { useRouter } from 'next/router';
@@ -30,7 +30,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function papers_test({ papers }) {
+export default function papers_test2({ papers }) {
   const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [paper, setPaper] = useState(null);
@@ -137,7 +137,7 @@ position: relative;
             </Text>
           </div>
           <br />
-          <GetPaperscorref info={info} ></GetPaperscorref>
+          <GetPaperscorref2 info={info} ></GetPaperscorref2>
         </Grid>
       </Box>
 

@@ -1,12 +1,12 @@
 import dynamic from 'next/dynamic';
 import React, { Component } from 'react';
 import { useState, useEffect } from "react";
-import papers from 'public/papers_features_corref.json';
+import papers from 'public/papers_features_corref_all_vs_all.json';
 import HighlightColors2 from "../components/HighlightColors2";
 import Pagination from '@mui/material/Pagination';
 
 
-const GetPaperscorref = (props) => {
+const GetPaperscorref2 = (props) => {
     const { info } = props;
     const [data, setData] = useState([]);
     const [datapage, setDatapage] = useState([]);
@@ -112,4 +112,4 @@ const GetPaperscorref = (props) => {
     );
 };
 
-export default GetPaperscorref;
+export default GetPaperscorref2;
