@@ -1,12 +1,12 @@
 import dynamic from 'next/dynamic';
 import React, { Component } from 'react';
 import { useState, useEffect } from "react";
-import papers from 'public/papers_features.json';
+import papers from 'public/papers_features_gold.json';
 import Highlighter from "react-highlight-words";
 import Pagination from '@mui/material/Pagination';
 
 
-const GetPapers = (props) => {
+const GetPapers_gold = (props) => {
     const { info } = props;
     const [data, setData] = useState([]);
     const [datapage, setDatapage] = useState([]);
@@ -84,4 +84,4 @@ const GetPapers = (props) => {
     );
 };
 
-export default GetPapers;
+export default GetPapers_gold;
