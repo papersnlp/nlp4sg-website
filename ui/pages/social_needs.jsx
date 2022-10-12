@@ -548,7 +548,7 @@ position: relative;
                 <br />
                 <br />
                 <br />
-                <Bar options={options} data={goal_specific("Industry, Innovation and Infrastrucure")} />
+                <Bar options={options} data={goal_specific("Industry, Innovation and Infrastructure")} />
                 <br />
                 <br />
                 <br />
@@ -561,7 +561,7 @@ position: relative;
             </Wrap>
             <Item>
               <Typography gutterBottom variant="subtitle1" component="div" css={{ position: 'relative' }}>
-                Goal 9: Industry, Innovation and Infrastrucure
+                Goal 9: Industry, Innovation and Infrastructure
               </Typography>
             </Item>
           </Grid>
