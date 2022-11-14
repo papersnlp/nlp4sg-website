@@ -102,9 +102,11 @@ function valuetext(value) {
       >
         <Tooltip
           enabled={true}
+          customizeNodeTooltip={customizeNodeTooltip}
           customizeLinkTooltip={customizeLinkTooltip}
         >
         </Tooltip>
+
 
         <Link
           colorMode="gradient">
@@ -132,7 +134,9 @@ function customizeLinkTooltip(info) {
     html: `<b>From:</b> ${info.source}<br/><b>To:</b> ${info.target}<br/><b>Weight:</b> ${info.weight}`,
   };
 }
-
+function customizeNodeTooltip(info) {
+    return null
+}
 const StyledToggleGroup = styled(ToggleGroupPrimitive.Root, {
   display: 'inline-flex',
   fontFamily: '$sans',
