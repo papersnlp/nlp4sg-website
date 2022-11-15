@@ -148,7 +148,7 @@ position: relative;
             </Link>
             <Node
               width={10}
-              padding={14}>
+              padding={18}>
             </Node>
 
           </Sankey>
