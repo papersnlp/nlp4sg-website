@@ -34,8 +34,8 @@ export default function Papers({ papers }) {
   const colorScale2 = scaleLinear().domain([0, 100]).range([color, "white"]);
   const colorScale3 = scaleLinear().domain([0, 3000]).range([color, "white"]);
   const [RadioSelect, setRadioSelect] = useState(true);
-  const [year, setYear] = useState(2022);
-  const [slideryear, setsliderYear] = useState(2022);
+  const [year, setYear] = useState(2021);
+  const [slideryear, setsliderYear] = useState(2021);
   const setRadio = () => {
     setRadioSelect(!RadioSelect)
   };
@@ -86,6 +86,9 @@ export default function Papers({ papers }) {
     var max_val = Math.max.apply(Math, data.map(function (data) { return data.papers; }))
     var min_val = Math.min.apply(Math, data.map(function (data) { return data.papers; }))
     var colorScale4 = scaleLinear().domain([min_val, max_val + (max_val / 10)]).range([color, "white"]);
+    if (year!='All years'){
+      colorScale4 = scaleLinear().domain([0, 600]).range([color, "white"]);
+    }
     setdataPapers({
       labels: data.map((data) => data.goal_long),
       datasets: [
@@ -108,6 +111,11 @@ export default function Papers({ papers }) {
       },
     },
     scales: {
+      y: {
+        grid: {
+          display: false
+        }
+      },
       xAxes: {
         min: 30,
         title: {
@@ -126,8 +134,12 @@ export default function Papers({ papers }) {
         display: false
       },
       title: {
+        font: {
+          size: 14,
+        },
         display: true,
-        text: 'Rated Importance (1-100) by 360 Sustainability Researchers',
+        text: ['                                                             Rated Importance (1-100)',
+               '                                                               by 360 Sustainability Researchers'],
       },
 
     },
@@ -161,12 +173,24 @@ export default function Papers({ papers }) {
         display: false
       },
       title: {
+        font: {
+          size: 14,
+        },
         display: true,
-        text: '% Mentions of This Goal as Important by 80 NLP Researchers',
+        text: ['% Mentions as Important Goal','by 80 NLP Researchers'],
       },
 
+
     },
-  };
+  }
+  const computemax=()=>{
+    if (year=='All years'){
+      return 3000
+    }
+    else{
+      return 460
+    }
+  }
   const options3 = {
     indexAxis: 'y',
     elements: {
@@ -176,6 +200,7 @@ export default function Papers({ papers }) {
     },
     scales: {
       xAxes: {
+        max: computemax,
         title: {
           display: true,
           text: '# Papers',
@@ -195,8 +220,11 @@ export default function Papers({ papers }) {
         display: false
       },
       title: {
+        font: {
+          size: 14,
+        },
         display: true,
-        text: '# NLP4SG Papers in ACL Anthology',
+        text: ['# NLP4SG Papers in',' ACL Anthology'],
       },
     },
   };
@@ -214,8 +242,8 @@ export default function Papers({ papers }) {
       label: '1990',
     },
     {
-      value: 2022,
-      label: '2022',
+      value: 2021,
+      label: '2021',
     },
   ])
   return (
@@ -254,7 +282,7 @@ export default function Papers({ papers }) {
 
         <Grid item xs={10} >
 
-          <Slider style={{ width: '85vw', left: '5%', top: '125px' }}
+          <Slider style={{ width: '85vw', left: '8%', top: '125px' }}
             value={slideryear}
             onChange={event => setsliderradio(event.target.value)}
             aria-label="Year"
@@ -263,7 +291,7 @@ export default function Papers({ papers }) {
             valueLabelDisplay="auto"
             step={1}
             min={1990}
-            max={2022}
+            max={2021}
             marks={marks}
           // valueLabelDisplay="on"
           // https://mui.com/material-ui/react-slider/
@@ -272,12 +300,12 @@ export default function Papers({ papers }) {
         </Grid>
       </Box>
       <br />
-      <Box style={{ marginTop: '155px', bc: '$contrast2', width: '100vw', height: '80vh', flex: 1 }}>
+      <Box style={{ marginTop: '160px', bc: '$contrast2', width: '100vw', height: '80vh', flex: 1 }}>
 
         <Grid
           container
         >
-          <Grid item xs={1}>
+          <Grid item xs={2}>
 
             <Grid style={{ height: "77vh" }}>
               
@@ -295,7 +323,7 @@ export default function Papers({ papers }) {
               <Bar options={options2} data={dataSurvey} />
             </Grid>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={2}>
 
             <Grid style={{ height: "77vh" }}>
               <Bar options={options3} data={dataPapers} />
