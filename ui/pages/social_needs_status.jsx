@@ -138,10 +138,10 @@ export default function Papers({ papers }) {
           size: 14,
         },
         display: true,
-        text: ['                                                             Rated Importance (1-100)',
-               '                                                               by 360 Sustainability Researchers'],
+        text: ['                                                             # NLP4SG Papers in',
+               '                                                               ACL Anthology'],
       },
-
+      //['# NLP4SG Papers in',' ACL Anthology']
     },
   };
   const options2 = {
@@ -314,7 +314,7 @@ export default function Papers({ papers }) {
           <Grid item xs={4}>
 
             <Grid style={{ height: "77vh" }}>
-              <Bar options={options} data={dataPriority} />
+              <Bar options={options} data={dataPapers} />
             </Grid>
           </Grid>
           <Grid item xs={2}>
