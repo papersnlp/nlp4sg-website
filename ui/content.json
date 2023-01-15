@@ -39,6 +39,39 @@
           }
         ]
       },
+      {
+        "type": "visualization",
+        "content": [
+          {
+            "text": "",
+            "img":"/images/status.png",
+            "link": "https://nlp4sg.vercel.app/social_needs_status",
+            "path":"/social_needs_status",
+            "linkText": "NLP4SG Research Overview"
+          },
+          {
+            "text": "",
+            "img":"/images/papers.png",
+            "link": "https://nlp4sg.vercel.app/papers",
+            "path":"/papers",
+            "linkText": "Topic Clustering"
+          },
+          {
+            "text": "",
+            "img":"/images/sankey.png",
+            "link": "https://nlp4sg.vercel.app/sankey",
+            "path":"/sankey",
+            "linkText": "NLP4SG Tasks and Methods"
+          },
+          {
+            "text": "",
+            "img":"/images/sankey_org.png",
+            "link": "https://nlp4sg.vercel.app/sankey_org",
+            "path":"/sankey_org",
+            "linkText": "Organizations Diagram"
+          }
+        ]
+      },
       { "type": "space" },
       {
         "title": "What do people think about NLP4SG?",

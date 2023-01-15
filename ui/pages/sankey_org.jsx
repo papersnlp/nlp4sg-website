@@ -16,8 +16,9 @@ import Sankey, {
 } from 'devextreme-react/sankey';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import Navbar from '../components/navbar';
-import  data2   from 'public/sankey_json.json';
+import  data2   from 'public/sankey_org.json';
 import { useRouter } from 'next/router';
+import order from 'public/order_sankey_org.json';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -88,15 +89,16 @@ function valuetext(value) {
     <MenuItem onClick={() => router.push('/sankey_org')}>NLP4SG org</MenuItem>
   </Menu>
 </ProSidebar> */}
-      <Box css={{ width: '100vw', height: '100vh', top: '0', backgroundColor: 'white', left: '18%' }}>
+      <Box css={{ width: '100vw', height: '80vh', top: '0', backgroundColor: 'white', left: '18%' }}>
         <br />
         <br />
         <Grid item xs={11} style={{ marginTop:'20px'}} >
-      <Sankey id="sankey" css={{ height: '100vh',width: '90vw'}}
+      <Sankey id="sankey_org" css={{ height: '100vh',width: '80vw'}}
         dataSource={data2}
         sourceField="source"
         targetField="target"
         weightField="weight"
+        sortData={order}
         title=""
         
       >
@@ -135,7 +137,9 @@ function customizeLinkTooltip(info) {
   };
 }
 function customizeNodeTooltip(info) {
-    return null
+  return {
+    html: `<b>${info.label}</b><br/><b>Incoming weight:</b> ${Math.round(info.weightIn * 10) / 10}<br/><b>Outgoing weight:</b> ${Math.round(info.weightOut * 10) / 10}`,
+  };
 }
 const StyledToggleGroup = styled(ToggleGroupPrimitive.Root, {
   display: 'inline-flex',

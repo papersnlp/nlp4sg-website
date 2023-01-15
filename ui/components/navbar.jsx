@@ -33,8 +33,8 @@ const navbar = (props) => {
       cName: 'nav-text'
     },
     {
-      title: 'NLP4SG gold',
-      path: '/sankey_gold',
+      title: 'NLP4SG organizations',
+      path: '/sankey_org',
       icon: <IoIcons.IoIosPaper />,
       cName: 'nav-text'
     },

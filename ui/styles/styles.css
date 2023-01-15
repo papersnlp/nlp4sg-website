@@ -2,6 +2,11 @@
     height: 98vh;
     width: 99vw;
   }
+#sankey_org {
+    height: 98vh;
+    width: 90vw;
+    margin: auto;
+  }
   
 .HighlightClass5{
     font-weight: bold;

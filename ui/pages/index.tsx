@@ -11,6 +11,8 @@ import content from '../content.json';
 import Events from '@components/Events';
 import Avatars from '@components/Avatars';
 import ListBlock from '@components/ListBlock';
+import * as AvatarPrimitive from '@radix-ui/react-avatar';
+import { Url } from 'devextreme-react/chart';
 
 const Button = styled('button', {
   borderRadius: '$round',
@@ -27,6 +29,13 @@ const Button = styled('button', {
   },
 });
 
+const Card = styled('li', {
+  bc: '$contrast6',
+  borderRadius: '$3',
+  display: 'inline',
+  zIndex:0,
+  opacity:0.7
+});
 const Home = (props) => {
   const router = useRouter();
   return (
@@ -38,7 +47,7 @@ const Home = (props) => {
         <Box
           column
           center
-          css={{ width: '100vw', height: '90vh', backgroundColor: '$contrast1', zIndex: 0 }}
+          css={{ width: '100vw', height: '96vh', backgroundColor: '$contrast1', zIndex: 0 }}
         >
           <Box container column center>
             <EarthIcon />
@@ -49,7 +58,7 @@ const Home = (props) => {
                 fontSize: '$9',
                 fontWeight: '500',
                 lineHeight: '$9',
-                pt: '$6',
+                pt: '$5',
               }}
             >
               {content.index.title}
@@ -59,23 +68,60 @@ const Home = (props) => {
                 fontFamily: '$mono',
                 color: '$contrast10',
                 pt: '$5',
-                pb: '$5',
+                pb: '$1',
                 textAlign: 'center',
               }}
             >
               {content.index.slogan}
             </Text>
-            <Button onClick={() => router.push('/papers')}>
+          </Box>
+          <Box container css={{ pt: '0px', pb: '$5', gap: '$3' }}>
+            <Grid css={{ gridTemplateColumns: 'repeat(auto-fit, minmax($7, 1fr))' }}>
+            {content.index.content.map((b, c) => {
+              if (b.type === 'visualization'){
+                return(
+                b['content'].map((v, k) => {
+                  return(
+                  <Card key={k}>
+                     
+
+                    <Link
+                      href={v.path}
+                      /* onClick={() => router.push(v.path)} */
+                      css={{
+                        backgroundImage:"url("+v.img+")",
+                        backgroundSize:'cover',
+                        height: '200px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                      }}
+                    >
+                    </Link>
+
+                    <Box css={{ flex: 1 }}></Box>
+                <Box css={{ borderTop: '1.5px solid $contrast5', p: '$4', py: '$1' }}>
+                  <Text>{v.linkText}</Text>
+                </Box>
+                  </Card>
+                  );
+              }));}
+            }
+              )}
+              </Grid>
+
+
+ {/*           <Button onClick={() => router.push('/papers')}>
               <Icon.Play></Icon.Play>
             </Button>
-            <Text mono css={{ pt: '$3', zIndex: '1', color: '$contrast8' }}>
+             <Text mono css={{ pt: '$3', zIndex: '1', color: '$contrast8' }}>
               Open paper visualization
-            </Text>
+            </Text> */}
           </Box>
         </Box>
 
         {content.index.content.map((v, k) => {
-          if (v.type === 'cards') return <Cards key={k} {...v} />;
+          if (v.type === 'cards') return (<Cards key={k} {...v} />);
           if (v.type === 'events') return <Events key={k} {...v} />;
           if (v.type === 'avatars') return <Avatars key={k} {...v} />;
           if (v.type === 'list') return <ListBlock key={k} {...v} />;
