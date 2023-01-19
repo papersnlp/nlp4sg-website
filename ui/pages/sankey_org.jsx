@@ -12,7 +12,7 @@ import Grid from '@mui/material/Grid';
 import Sankey, {
   Tooltip,
   Link,
-  Node,
+  Node,Label,Font,Size,weight
 } from 'devextreme-react/sankey';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import Navbar from '../components/navbar';
@@ -79,7 +79,7 @@ function valuetext(value) {
 
     <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh' }}>
 
-      <Navbar title={"NLP Research Activity"} />
+      <Navbar title={"NLP4SG Research Activity"} />
 
       {/*
       <ProSidebar>
@@ -102,6 +102,12 @@ function valuetext(value) {
         title=""
         
       >
+            <Label>
+                <Font size={14} weight={700}>
+
+                </Font>
+              </Label>
+
         <Tooltip
           enabled={true}
           customizeNodeTooltip={customizeNodeTooltip}

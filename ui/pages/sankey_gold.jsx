@@ -111,7 +111,7 @@ position: relative;
 
     <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh' }}>
 
-      <Navbar title={"NLP Research Activity"} />
+      <Navbar title={"NLP4SG Research Activity"} />
 
       {/*
       <ProSidebar>
