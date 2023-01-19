@@ -12,7 +12,7 @@ import Grid from '@mui/material/Grid';
 import Sankey, {
   Tooltip,
   Link,
-  Node,
+  Node,Label,Font,Size,weight
 } from 'devextreme-react/sankey';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import GetPapers from '../components/GetPapers';
@@ -111,7 +111,7 @@ position: relative;
 
     <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh' }}>
 
-      <Navbar title={"NLP Research Activity"} />
+      <Navbar title={"NLP4SG Research Activity"} />
 
       {/*
       <ProSidebar>
@@ -136,6 +136,12 @@ position: relative;
             onLinkClick={handleClick}
             onNodeClick={handleClickNode}
           >
+            <Label>
+                <Font size={14} weight={700}>
+
+                </Font>
+              </Label>
+
             <Tooltip
               enabled={true}
               customizeLinkTooltip={customizeLinkTooltip}
