@@ -78,8 +78,10 @@ position: relative;
     var task = "";
     var method = "";
     var info_data = { "goal": goal, "task": task, "method": method }
-    if (node_source == "Other tasks") { node_source = "" }
-    if (node_target == "Other tasks" || node_target == "Other methods") { node_target = "" }
+    if (node_source == "Other Tasks") { node_source = "" }
+    if (node_source == "Toxicity Detection") { node_source = "hate speech" }
+    if (node_target == "Toxicity Detection") { node_target = "hate speech" }
+    if (node_target == "Other Tasks" || node_target == "Other Methods") { node_target = "" }
     info_data[node_type_source.toLowerCase()] = node_source
     info_data[node_type_target.toLowerCase()] = node_target
     setinfo(info_data)
@@ -88,7 +90,7 @@ position: relative;
   }
   const handleClickNode = (e) => {
     var node_type = names.filter((a) => a.name == e.target.label)[0]['node_type']
-    var node = names.filter((a) => a.name == e.target.label)[0]['name']
+    var node = names.filter((a) => a.name == e.target.label)[0]['name'];
     var goal = "";
     var task = "";
     var method = "";
@@ -105,11 +107,11 @@ position: relative;
   }
 
   const customPalette = ['#00ac00', '#d30000', '#00aa98', '#cc9c9c', '#ff4500', '#00a97d', '#00a4bb', '#ffc900', '#d80000', '#670075', '#00aaa3', '#009fcb', '#00ca00', '#00aa8d', '#ffa900', '#ccf900', '#58ff00', '#0000d1', '#00fc00', '#0070dd',
-    '#0092dd', '#63009e', '#004bdd', '#ecef00', '#009a00', '#0025dd', '#cc5c5c', '#1c0020', '#ff1500', '#0000dd', '#fcd200', '#00a200', '#ce0000', '#0000b1', '#ff9900', '#0000c1', '#7e008f', '#00b700', '#ff7500', '#dc0000', '#ffb900', '#79008a',
+    '#0092dd', '#63009e', '#004bdd', '#ecef00', '#009a00', '#0025dd', '#cc5c5c', '#1c0020', '#ff1500', '#0000dd', '#fcd200', '#00a200', '#ce0000', '#0000b1', '#ff9900', '#0000c1', '#7e008f', '#00b700', '#ff7500',
     '#f2f2f2', '#00dc00', '#41004b', '#00a353', '#009adb', '#cc1c1c', '#00e700', '#00f200', '#f1e700', '#bcff00', '#1dff00', '#009e28', '#830094', '#0d00a8', '#007ddd', '#93ff00', '#3800a3', '#870098', '#00b700', '#00d400', '#ffc900', '#0070dd', '#f10000', '#00bf00', '#fc0000', '#000000', '#f2f2f2'];
   return (
 
-    <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh' }}>
+    <Box css={{ bc: '$contrast2', width: '97vw', height: '100vh' }}>
 
       <Navbar title={"NLP4SG Research Activity"} />
 
@@ -121,11 +123,11 @@ position: relative;
     <MenuItem onClick={() => router.push('/sankey_org')}>NLP4SG org</MenuItem>
   </Menu>
 </ProSidebar> */}
-      <Box css={{ width: '100vw', height: '100vh', top: '0', backgroundColor: 'white', left: '18%' }}>
+      <Box css={{ width: '99vw', height: '100vh', top: '0', backgroundColor: 'white', left: '18%' }}>
         <br />
         <br />
         <Grid item xs={11} style={{ marginTop:'20px'}} >
-          <Sankey id="sankey" css={{ height: '105vh', width: '97vw'}}
+          <Sankey id="sankey" css={{ height: '100vh', width: '99vw'}}
             palette={customPalette}
             dataSource={data2}
             sourceField="source"
