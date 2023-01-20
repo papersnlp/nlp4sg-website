@@ -16,16 +16,18 @@ const GetPapers = (props) => {
         setPage(value);
     };
     useEffect(() => {
+        console.log(info,papers)
         var data_filtered = papers
         if (info["goal"] != "") {
             data_filtered = data_filtered.filter((a) => a.Goal == info["goal"]);
         }
         if (info["task"] != "") {
-            data_filtered = data_filtered.filter((a) => a.center_task.includes(info["task"]));
+            data_filtered = data_filtered.filter((a) => a.center_task.includes(info["task"].toLowerCase()));
         }
         if (info["method"] != "") {
-            data_filtered = data_filtered.filter((a) => a.center_method.includes(info["method"]));
+            data_filtered = data_filtered.filter((a) => a.center_method.includes(info["method"].toLowerCase()));
         }
+        console.log(data_filtered)
         setData(data_filtered);
         setDatapage(data_filtered.slice(0, 100));
         setPage(1);
