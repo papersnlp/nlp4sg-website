@@ -5,7 +5,6 @@ import { Box, Text, Span, Separator, List } from '@styles/components';
 import { styled } from '@mui/material/styles';
 import { useTheme } from 'next-themes';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
-import papers from 'public/json/papers.json';
 import order from 'public/order_sankey.json';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
@@ -29,7 +28,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function Sankey_chart({ papers }) {
+export default function Sankey_chart({  }) {
   const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [paper, setPaper] = useState(null);
@@ -185,7 +184,7 @@ position: relative;
 
 export async function getStaticProps(context) {
   return {
-    props: { papers }, // will be passed to the page component as props
+    props: {  }, // will be passed to the page component as props
   };
 }
 

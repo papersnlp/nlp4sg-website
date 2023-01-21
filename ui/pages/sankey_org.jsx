@@ -6,7 +6,6 @@ import { styled } from '@mui/material/styles';
 import * as Icon from 'react-feather';
 import { useTheme } from 'next-themes';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
-import papers from 'public/json/papers.json';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Sankey, {
@@ -30,7 +29,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-export default function Sankey_org({ papers }) {
+export default function Sankey_org({  }) {
   const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [paper, setPaper] = useState(null);
@@ -133,7 +132,7 @@ function valuetext(value) {
 
 export async function getStaticProps(context) {
   return {
-    props: { papers }, // will be passed to the page component as props
+    props: {  }, // will be passed to the page component as props
   };
 }
 
