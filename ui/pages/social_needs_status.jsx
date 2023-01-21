@@ -7,7 +7,6 @@ import * as Icon from 'react-feather';
 import { useTheme } from 'next-themes';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import PapersPlot from '@components/PapersPlot';
-import papers from 'public/json/papers.json';
 import Paper from '@mui/material/Paper';
 import { HelpCircle } from 'react-feather';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
@@ -26,7 +25,7 @@ import data_scores from 'public/scores.json';
 
 // or
 import { scaleLinear } from "d3";
-export default function Papers({ papers }) {
+export default function Papers({  }) {
   const { setTheme, theme } = useTheme();
   const parallax = useRef();
   const [color, setcolor] = useState("#5eb0ef");
@@ -337,7 +336,7 @@ export default function Papers({ papers }) {
 
 export async function getStaticProps(context) {
   return {
-    props: { papers }, // will be passed to the page component as props
+    props: {  }, // will be passed to the page component as props
   };
 }
 
