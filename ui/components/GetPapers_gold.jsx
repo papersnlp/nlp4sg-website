@@ -21,10 +21,10 @@ const GetPapers_gold = (props) => {
             data_filtered = data_filtered.filter((a) => a.Goal == info["goal"]);
         }
         if (info["task"] != "") {
-            data_filtered = data_filtered.filter((a) => a.center_task.includes(info["task"]));
+            data_filtered = data_filtered.filter((a) => a.center_task.includes(info["task"].toLowerCase()));
         }
         if (info["method"] != "") {
-            data_filtered = data_filtered.filter((a) => a.center_method.includes(info["method"]));
+            data_filtered = data_filtered.filter((a) => a.center_method.includes(info["method"].toLowerCase()));
         }
         setData(data_filtered);
         setDatapage(data_filtered.slice(0, 100));
