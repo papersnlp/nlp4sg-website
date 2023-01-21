@@ -6,18 +6,18 @@ import { styled } from '@mui/material/styles';
 import { useTheme } from 'next-themes';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import papers from 'public/json/papers.json';
-import order from 'public/order_sankey.json';
+import order from 'public/order_gold.json';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Sankey, {
   Tooltip,
   Link,
-  Node,
+  Node,Label,Font,Size,weight
 } from 'devextreme-react/sankey';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import GetPapers_gold from '../components/GetPapers_gold';
 import data2 from 'public/sankey_gold.json';
-import names from 'public/names.json';
+import names from 'public/names_gold.json';
 import { useRouter } from 'next/router';
 import Navbar from '../components/navbar';
 
@@ -78,8 +78,10 @@ position: relative;
     var task = "";
     var method = "";
     var info_data = { "goal": goal, "task": task, "method": method }
-    if (node_source == "Other tasks") { node_source = "" }
-    if (node_target == "Other tasks" || node_target == "Other methods") { node_target = "" }
+    if (node_source == "Other Tasks") { node_source = "" }
+    if (node_source == "Toxicity Detection") { node_source = "hate speech" }
+    if (node_target == "Toxicity Detection") { node_target = "hate speech" }
+    if (node_target == "Other Tasks" || node_target == "Other Methods") { node_target = "" }
     info_data[node_type_source.toLowerCase()] = node_source
     info_data[node_type_target.toLowerCase()] = node_target
     setinfo(info_data)
@@ -104,12 +106,12 @@ position: relative;
     anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
   }
 
-  const customPalette = ['#00ac00', '#d30000', '#00aa98', '#cc9c9c', '#ff4500', '#00a97d', '#00a4bb', '#00aaab', '#d80000', '#670075', '#00aaa3', '#009fcb', '#00ca00', '#00aa8d', '#ffa900', '#ccf900', '#58ff00', '#0000d1', '#00fc00', '#0070dd',
-    '#0092dd', '#63009e', '#004bdd', '#ecef00', '#009a00', '#0025dd', '#cc5c5c', '#1c0020', '#ff1500', '#0000dd', '#fcd200', '#00a200', '#ce0000', '#0000b1', '#ff9900', '#f2f2f2', '#7e008f', '#0000c1', '#ff7500', '#dc0000', '#ffb900', '#79008a',
-    '#f2f2f2', '#00dc00', '#41004b', '#00a353', '#009adb', '#cc1c1c', '#00e700', '#00f200', '#f1e700', '#bcff00', '#1dff00', '#009e28', '#830094', '#0d00a8', '#007ddd', '#93ff00', '#3800a3', '#870098', '#00b700', '#f2f2f2', '#ffc900', '#00d400', '#f10000', '#00bf00', '#fc0000', '#000000', '#f2f2f2'];
+  const customPalette = ['#00ac00', '#d30000', '#00aaab', '#d80000', '#670075', '#00aaa3', '#009fcb', '#00ca00', '#00aa8d', '#ffa900', '#ccf900', '#58ff00', '#0000d1', '#00fc00', '#0070dd',
+    '#0092dd', '#63009e', '#004bdd', '#ecef00', '#009a00', '#0025dd', '#cc5c5c',  '#f2f2f2', '#7e008f', '#0000c1', '#ff7500', 
+     '#00dc00', '#41004b', '#00a353', '#009adb', '#cc1c1c', '#00e700', '#00f200', '#f1e700',  '#1dff00','#f2f2f2', '#009e28', '#830094', '#0d00a8', '#007ddd', '#93ff00', '#3800a3', '#870098', '#00b700', '#f2f2f2', '#ffc900', '#00d400', '#f10000', '#00bf00', '#fc0000', '#000000', '#f2f2f2'];
   return (
 
-    <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh' }}>
+    <Box css={{ bc: '$contrast2', width: '97vw', height: '97vh' }}>
 
       <Navbar title={"NLP4SG Research Activity"} />
 
@@ -121,11 +123,11 @@ position: relative;
     <MenuItem onClick={() => router.push('/sankey_org')}>NLP4SG org</MenuItem>
   </Menu>
 </ProSidebar> */}
-      <Box css={{ width: '100vw', height: '100vh', top: '0', backgroundColor: 'white', left: '18%' }}>
+      <Box css={{ width: '97vw', height: '97vh', top: '0', backgroundColor: 'white', left: '18%' }}>
         <br />
         <br />
         <Grid item xs={11} style={{ marginTop:'20px'}} >
-          <Sankey id="sankey" css={{ height: '105vh', width: '97vw'}}
+          <Sankey id="sankey" css={{ height: '90vh', width: '95vw'}}
             palette={customPalette}
             dataSource={data2}
             sourceField="source"
@@ -136,6 +138,12 @@ position: relative;
             onLinkClick={handleClick}
             onNodeClick={handleClickNode}
           >
+
+            <Label>
+                <Font size={14} weight={700}>
+
+                </Font>
+              </Label>
             <Tooltip
               enabled={true}
               customizeLinkTooltip={customizeLinkTooltip}
