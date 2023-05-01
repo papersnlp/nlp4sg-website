@@ -38,19 +38,6 @@ const navbar = (props) => {
       icon: <IoIcons.IoIosPaper />,
       cName: 'nav-text'
     },
-    //{
-    //  title: 'Organizations',
-    //  path: '/sankey_org',
-    //  icon: <IoIcons.IoIosPaper />,
-    //  cName: 'nav-text'
-    //}
-    //,
-    //{
-    //  title: 'Directions',
-    //  path: '/sankey_directions',
-    //  icon: <IoIcons.IoIosPaper />,
-    //  cName: 'nav-text'
-    //}
   ];
   return (
     <>
