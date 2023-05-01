@@ -13,7 +13,6 @@ import Sankey, {
   Link,
   Node,Label,Font,Size,weight
 } from 'devextreme-react/sankey';
-import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import GetPapers from '../components/GetPapers';
 import data2 from 'public/sankey_no_org.json';
 import names from 'public/names.json';
@@ -36,30 +35,6 @@ export default function Sankey_chart({  }) {
   const [year, setYear] = useState(2022);
   const labels = [''];
   const [info, setinfo] = useState({ "goal": "", "task": "", "method": "" });
-
-  const Wrap = styled("Item")`
-  position: relative;
-  &:before {
-    content: ' ';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.2;
-    background-image: url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_1-1024x1024.jpg');
-    background-repeat: no-repeat;
-    background-position: 50% 0;
-    background-size: cover;
-  }
-`;
-  const Wrap1 = styled(Wrap)`
-&:before {
-  background-image: url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_2-1-1024x1024.jpg');
-}
-`;
-
   const router = useRouter();
   const Content = styled("div")`
 position: relative;
@@ -114,14 +89,6 @@ position: relative;
 
       <Navbar title={"NLP4SG Research Activity"} />
 
-      {/*
-      <ProSidebar>
-  <Menu iconShape="square">
-    <MenuItem onClick={() => router.push('/social_needs')}>UN Goals </MenuItem>
-    <MenuItem onClick={() => router.push('/sankey')}>NLP4SG </MenuItem>
-    <MenuItem onClick={() => router.push('/sankey_org')}>NLP4SG org</MenuItem>
-  </Menu>
-</ProSidebar> */}
       <Box css={{ width: '99vw', height: '100vh', top: '0', backgroundColor: 'white', left: '18%' }}>
         <br />
         <br />

@@ -111,12 +111,6 @@ const Home = (props) => {
               </Grid>
 
 
- {/*           <Button onClick={() => router.push('/papers')}>
-              <Icon.Play></Icon.Play>
-            </Button>
-             <Text mono css={{ pt: '$3', zIndex: '1', color: '$contrast8' }}>
-              Open paper visualization
-            </Text> */}
           </Box>
         </Box>
 

@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from 'react';
 import { Box, Text, Span, Link, Separator, List } from '@styles/components';
 import Navbar from '../components/navbar';
 import { styled } from '@mui/material/styles';
-import * as Icon from 'react-feather';
 import { useTheme } from 'next-themes';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import PapersPlot from '@components/PapersPlot';
@@ -25,7 +24,7 @@ import data_scores from 'public/scores.json';
 
 // or
 import { scaleLinear } from "d3";
-export default function Papers({  }) {
+export default function Papers({ }) {
   const { setTheme, theme } = useTheme();
   const parallax = useRef();
   const [color, setcolor] = useState("#5eb0ef");
@@ -64,28 +63,28 @@ export default function Papers({  }) {
 
     ],
   });
-  const [dataPapers, setdataPapers] = useState(()=>{
-  return {
-    labels: data_papers.filter((a) => a.year === year).map((data) => data.goal_long),
-    datasets: [
-      {
-        minBarLength: 2,
-        data: data_papers.filter((a) => a.year === year).map((data) => (data['papers'])),
-        backgroundColor: data_papers.filter((a) => a.year === year).map((data) => colorScale3(data['papers'])),
-      },
+  const [dataPapers, setdataPapers] = useState(() => {
+    return {
+      labels: data_papers.filter((a) => a.year === year).map((data) => data.goal_long),
+      datasets: [
+        {
+          minBarLength: 2,
+          data: data_papers.filter((a) => a.year === year).map((data) => (data['papers'])),
+          backgroundColor: data_papers.filter((a) => a.year === year).map((data) => colorScale3(data['papers'])),
+        },
 
-    ]
- }
+      ]
+    }
   });
 
   useEffect(() => {
-    var data = data_papers.filter((c) => c.year === year).sort(function(a, b){
+    var data = data_papers.filter((c) => c.year === year).sort(function (a, b) {
       return a.goal_number.localeCompare(b.goal_number);
-  });
+    });
     var max_val = Math.max.apply(Math, data.map(function (data) { return data.papers; }))
     var min_val = Math.min.apply(Math, data.map(function (data) { return data.papers; }))
     var colorScale4 = scaleLinear().domain([min_val, max_val + (max_val / 10)]).range([color, "white"]);
-    if (year!='All years'){
+    if (year != 'All years') {
       colorScale4 = scaleLinear().domain([0, 600]).range([color, "white"]);
     }
     setdataPapers({
@@ -138,9 +137,8 @@ export default function Papers({  }) {
         },
         display: true,
         text: ['                                                          Rated Importance (1-100)',
-               '                                                         by 360 Sustainability Researchers'],
+          '                                                         by 360 Sustainability Researchers'],
       },
-      //['# NLP4SG Papers in',' ACL Anthology']
     },
   };
   const options2 = {
@@ -176,17 +174,17 @@ export default function Papers({  }) {
           size: 14,
         },
         display: true,
-        text: ['% Mentions as Important Goal','by 80 NLP Researchers'],
+        text: ['% Mentions as Important Goal', 'by 80 NLP Researchers'],
       },
 
 
     },
   }
-  const computemax=()=>{
-    if (year=='All years'){
+  const computemax = () => {
+    if (year == 'All years') {
       return 3000
     }
-    else{
+    else {
       return 460
     }
   }
@@ -223,15 +221,12 @@ export default function Papers({  }) {
           size: 14,
         },
         display: true,
-        text: ['# NLP4SG Papers in',' ACL Anthology'],
+        text: ['# NLP4SG Papers in', ' ACL Anthology'],
       },
     },
   };
 
-/*useEffect(() => {
-    console.log(data_scores.map((data) => data['priority_score']));
-    console.log(colorScale(10));
-  }, []); */
+
   function valuetext(value) {
     return `${value}`;
   }
@@ -307,7 +302,7 @@ export default function Papers({  }) {
           <Grid item xs={2}>
 
             <Grid style={{ height: "77vh" }}>
-              
+
             </Grid>
           </Grid>
           <Grid item xs={4}>
@@ -336,7 +331,7 @@ export default function Papers({  }) {
 
 export async function getStaticProps(context) {
   return {
-    props: {  }, // will be passed to the page component as props
+    props: {}, // will be passed to the page component as props
   };
 }
 

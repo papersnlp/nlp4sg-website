@@ -13,7 +13,6 @@ import Sankey, {
   Link,
   Node,Label,Font,Size,weight
 } from 'devextreme-react/sankey';
-import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import Navbar from '../components/navbar';
 import  data2   from 'public/sankey_org.json';
 import { useRouter } from 'next/router';
@@ -31,37 +30,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Sankey_org({  }) {
   const { setTheme, theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const [paper, setPaper] = useState(null);
   const parallax = useRef();
-  const [year, setYear] = useState(2022);
-  const labels = [''];
-  
-  
-
-
-  const Wrap = styled("Item")`
-  position: relative;
-  &:before {
-    content: ' ';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.2;
-    background-image: url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_1-1024x1024.jpg');
-    background-repeat: no-repeat;
-    background-position: 50% 0;
-    background-size: cover;
-  }
-`;
-const Wrap1 = styled(Wrap)`
-&:before {
-  background-image: url('https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/12/E_SDG_action_card_square_2-1-1024x1024.jpg');
-}
-`;
 
 
 const router = useRouter();
@@ -79,15 +48,6 @@ function valuetext(value) {
     <Box css={{ bc: '$contrast2', width: '100vw', height: '100vh' }}>
 
       <Navbar title={"NLP4SG Research Activity"} />
-
-      {/*
-      <ProSidebar>
-  <Menu iconShape="square">
-    <MenuItem onClick={() => router.push('/social_needs')}>UN Goals </MenuItem>
-    <MenuItem onClick={() => router.push('/sankey')}>NLP4SG </MenuItem>
-    <MenuItem onClick={() => router.push('/sankey_org')}>NLP4SG org</MenuItem>
-  </Menu>
-</ProSidebar> */}
       <Box css={{ width: '100vw', height: '80vh', top: '0', backgroundColor: 'white', left: '18%' }}>
         <br />
         <br />
@@ -99,7 +59,6 @@ function valuetext(value) {
         weightField="weight"
         sortData={order}
         title=""
-        
       >
             <Label>
                 <Font size={14} weight={700}>
