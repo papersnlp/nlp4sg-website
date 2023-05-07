@@ -24,7 +24,7 @@ import data_scores from 'public/scores.json';
 
 // or
 import { scaleLinear } from "d3";
-export default function Papers({ }) {
+export default function sdg({ }) {
   const { setTheme, theme } = useTheme();
   const parallax = useRef();
   const [color, setcolor] = useState("#5eb0ef");
