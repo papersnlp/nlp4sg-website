@@ -22,7 +22,7 @@ const navbar = (props) => {
     },
     {
       title: 'UN Goals',
-      path: '/social_needs_status',
+      path: '/sdg',
       icon: <IoIcons.IoIosPaper />,
       cName: 'nav-text'
     },

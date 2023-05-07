@@ -45,8 +45,8 @@
           {
             "text": "",
             "img":"/images/status.png",
-            "link": "https://nlp4sg.vercel.app/social_needs_status",
-            "path":"/social_needs_status",
+            "link": "https://nlp4sg.vercel.app/sdg",
+            "path":"/sdg",
             "linkText": "NLP4SG Research Overview"
           },
           {
