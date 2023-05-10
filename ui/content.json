@@ -44,6 +44,13 @@
         "content": [
           {
             "text": "",
+            "img":"/images/sankey.png",
+            "link": "https://nlp4sg.vercel.app/sankey",
+            "path":"/sankey",
+            "linkText": "NLP4SG Tasks and Methods"
+          },
+          {
+            "text": "",
             "img":"/images/status.png",
             "link": "https://nlp4sg.vercel.app/sdg",
             "path":"/sdg",
@@ -55,13 +62,6 @@
             "link": "https://nlp4sg.vercel.app/papers",
             "path":"/papers",
             "linkText": "Topic Clustering"
-          },
-          {
-            "text": "",
-            "img":"/images/sankey.png",
-            "link": "https://nlp4sg.vercel.app/sankey",
-            "path":"/sankey",
-            "linkText": "NLP4SG Tasks and Methods"
           },
           {
             "text": "",
