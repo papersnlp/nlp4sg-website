@@ -91,9 +91,6 @@
         "type": "list",
         "content": [
           {
-            "text": "Participate in various discussions: ACL 2021 Workshop - <a href='https://sites.google.com/view/nlp4positiveimpact2021/'>NLP for Positive Impact 2021</a>"
-          },
-          {
             "text": "Join the Birds-of-A-Feather session of NLP4SG at *ACL conferences."
           },
           {
@@ -107,27 +104,27 @@
         "type": "events",
         "content": [
           {
-            "name": "BoF: NLP for Social Good @ ACL 2023 Toronto",
+            "name": "(Upcoming) Birds-of-a-Feather Gathering: NLP for Social Good @ ACL 2023 Toronto",
             "date": "07-09-2023",
             "link": "https://2021.aclweb.org/"
           },
           {
-            "name": "NLP for Positive Impact",
+            "name": "2nd NLP for Positive Impact Workshop @ EMNLP 2023",
             "date": "12-07-2022",
             "link": "https://sites.google.com/view/nlp4positiveimpact"
           },
           {
-            "name": "ACL 2021 Workshop - NLP for Positive Impact",
+            "name": "1st NLP for Positive Impact Workshop @ ACL 2021",
             "date": "08-05-2021",
             "link": "https://2021.aclweb.org/"
           },
           {
-            "name": "ACL 2021 - Theme Track \"NLP for Social Good\"",
+            "name": "Theme Track \"NLP for Social Good\" @ ACL 2021",
             "date": "08-04-2021",
             "link": "https://2021.aclweb.org/"
           },
           {
-            "name": "BoF/Meetup: NLP for Social Good",
+            "name": "1st Birds-of-a-Feather Gathering: NLP for Social Good @ ACL 2021",
             "date": "08-03-2021",
             "link": "https://2021.aclweb.org/"
           }
