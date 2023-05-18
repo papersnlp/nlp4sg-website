@@ -18,9 +18,9 @@
         ],
         "content": [
           {
-            "text": "View our GitHub paper list of NLP on Social Good curated by Zhijing Jin",
-            "link": "https://github.com/zhijing-jin/NLP4SocialGood_Papers",
-            "linkText": "View on Github"
+            "text": "Explore our comprehensive analysis of the NLP4SG research landscape in our paper “Beyond Good Intentions”",
+            "link": "https://arxiv.org/abs/2305.05471",
+            "linkText": "Check arXiv"
           },
           {
             "text": "Check the definition and thinking framework in our ACL 2021 Findings paper “How Good Is NLP?”",
@@ -28,9 +28,9 @@
             "linkText": "Check arXiv"
           },
           {
-            "text": "Join our Slack \"ACL with Love ❤️\" #nlp4sg-discussions channel to keep you updated.",
-            "link": "https://acl-with-love.slack.com/",
-            "linkText": "Join Slack Channel"
+            "text": "View our GitHub paper list of NLP on Social Good curated by Zhijing Jin",
+            "link": "https://github.com/zhijing-jin/NLP4SocialGood_Papers",
+            "linkText": "View on Github"
           },
           {
             "text": "Follow us on Twitter @nlp4sg !",
@@ -107,9 +107,14 @@
         "type": "events",
         "content": [
           {
-            "name": "NLP for Positive Impact (Date tentative)",
-            "date": "08-01-2022",
-            "link": "https://sites.google.com/view/nlp4positiveimpact2020"
+            "name": "BoF: NLP for Social Good @ ACL 2023 Toronto",
+            "date": "07-09-2023",
+            "link": "https://2021.aclweb.org/"
+          },
+          {
+            "name": "NLP for Positive Impact",
+            "date": "12-07-2022",
+            "link": "https://sites.google.com/view/nlp4positiveimpact"
           },
           {
             "name": "ACL 2021 Workshop - NLP for Positive Impact",
