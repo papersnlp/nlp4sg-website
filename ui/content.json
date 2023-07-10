@@ -104,26 +104,31 @@
         "type": "events",
         "content": [
           {
+            "id":"ACL2023",
             "name": "(Upcoming) Birds-of-a-Feather Gathering: NLP for Social Good @ ACL 2023 Toronto",
-            "date": "07-09-2023",
-            "link": "https://2021.aclweb.org/"
+            "date": "07-12-2023",
+            "link": "https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=M2xtbjhkY3JydGpwN2xqbm5rdGd1cmd1N24gZmVyLmFkYXV0b0Bt&tmsrc=fer.adauto%40gmail.com"
           },
           {
+            "id":"EMNLP2022",
             "name": "2nd NLP for Positive Impact Workshop @ EMNLP 2023",
             "date": "12-07-2022",
             "link": "https://sites.google.com/view/nlp4positiveimpact"
           },
           {
+            "id":"ACL2021",
             "name": "1st NLP for Positive Impact Workshop @ ACL 2021",
             "date": "08-05-2021",
             "link": "https://2021.aclweb.org/"
           },
           {
+            "id":"ACL2021a",
             "name": "Theme Track \"NLP for Social Good\" @ ACL 2021",
             "date": "08-04-2021",
             "link": "https://2021.aclweb.org/"
           },
           {
+            "id":"ACL2021b",
             "name": "1st Birds-of-a-Feather Gathering: NLP for Social Good @ ACL 2021",
             "date": "08-03-2021",
             "link": "https://2021.aclweb.org/"
