@@ -45,7 +45,7 @@ const Events = (props) => {
 };
 
 const Event = (props) => {
-  const { name, date: dateTxt, link } = props;
+  const { name, date: dateTxt, link,id } = props;
 
   const [date] = useState(new Date(dateTxt));
 
@@ -65,7 +65,7 @@ const Event = (props) => {
   ];
 
   return (
-    <Card>
+    <Card id={id}>
       <Link href={link} css={{ display: 'flex', flexDirection: 'row' }}>
         <Box css={{ flex: 1, pr: '$3' }}>
           <Text>{name}</Text>
